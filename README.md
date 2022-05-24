@@ -1,20 +1,20 @@
 # ゲームのタイトル募集中
 以下にファイルの構造のうち私たちが編集する部分を示します．(変更した場合はここを更新してください．)
 
-Test05/ \n
-  ├ public/ \n
-  │    ├ index.html \n
-  │    └ js/ \n
-  │       ├ client.js \n
-  │       └ display.js \n
-  └ libs/ \n
-     ├ board.js \n
-     ├ game.js \n
-     ├ matching.js \n
-     ├ matchingLogic.js \n
-     ├ player.js \n
-     ├ room.js \n
-     ├ serverSettings.js \n
+Test05/
+  ├ public/
+  │    ├ index.html
+  │    └ js/
+  │       ├ client.js
+  │       └ display.js
+  └ libs/
+     ├ board.js
+     ├ game.js
+     ├ matching.js
+     ├ matchingLogic.js
+     ├ player.js
+     ├ room.js
+     ├ serverSettings.js
 
 ## 概要
 
