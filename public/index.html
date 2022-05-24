@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <title>5班テストゲーム</title>
+        <script src = "/socket.io/socket.io.js"></script>
+        <style>
+            canvas {background:#eee; display:block; margin:0 auto;}
+        </style>
+    </head>
+    <body>
+        <form id="frm-login">
+            <input type="text" id="userName">
+            <button>Login</button>
+            </form>
+        
+        <canvas id="cvs" width="500" height="400"></canvas>
+        <script>
+            const myData = {
+                token:null,
+                name:null
+            };
+
+
+            var socket = io();
+
+            socket.on('displayToClient',function (data){
+                const list = document.querySelector("#msg_list");
+                const li = document.createElement("li");
+                li.innerHTML = data;
+                list.insertBefore(li, list.firstChild);
+            });
+
+            socket.on("sendToken",function (data){
+                myData.token = data.token;
+            });
+
+            document.querySelector('#frm-login').addEventListener('submit',(e)=>{
+                e.preventDefault();
+
+                var msg = document.querySelector("#userName");
+                if(msg.value==""){
+                    return false;
+                }
+                myData.name = userName.value;
+                socket.emit('login',userName.value);
+            });
+
+        </script>
+
+        <ul id = "msg_list"></ul>
+    </body>
+</html>
