@@ -5,8 +5,8 @@ Test05/
  ├ public/  
  │    ├ index.html  
  │    └ js/<br>
- │　　　 ├ client.js  
- │　　　 └ display.js  
+ │　 ├ client.js  
+ │　 └ display.js  
  └ libs/  
 　　├ board.js  
 　　├ game.js  
