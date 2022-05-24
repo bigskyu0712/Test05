@@ -5,16 +5,16 @@ Test05/
  ├ public/  
  │    ├ index.html  
  │    └ js/<br>
- │       ├ client.js  
- │       └ display.js  
+ │　　　 ├ client.js  
+ │　　　 └ display.js  
  └ libs/  
-   ├ board.js  
-   ├ game.js  
-   ├ matching.js  
-   ├ matchingLogic.js  
-   ├ player.js  
-   ├ room.js  
-   ├ serverSettings.js  
+　　├ board.js  
+　　├ game.js  
+　　├ matching.js  
+　　├ matchingLogic.js  
+　　├ player.js  
+　　├ room.js  
+　　├ serverSettings.js  
 
 ## 概要
 
