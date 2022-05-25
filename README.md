@@ -2,12 +2,12 @@
 以下にファイルの構造のうち私たちが編集する部分を示します．(変更した場合はここを更新してください．)
 
 Test05/  
- ├ public/  
- │    ├ index.html  
- │    └ js/<br>
- │　 ├ client.js  
- │　 └ display.js  
- └ libs/  
+　 ├ public/  
+　 │　    ├ index.html  
+　 │ 　   └ js/<br>
+　 │　　 ├ client.js  
+　 │　　 └ display.js  
+　 └ libs/  
 　　├ board.js  
 　　├ game.js  
 　　├ matching.js  
