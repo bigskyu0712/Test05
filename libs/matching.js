@@ -2,6 +2,9 @@
 const matching = require('./matchingLogic.js');
 const server = require('./serverSettings.js');
 const room = require('./room.js');
+const display = require('./display.js');
+const receiver = require('./receiver.js');
+const Game = require('./game.js');
 
 
 
@@ -10,7 +13,6 @@ module.exports = class Matching{
 
     //始動
     start(io){
-        let waitPlayer = "0";
 
         let tempRoomId;
 
@@ -18,9 +20,13 @@ module.exports = class Matching{
 
         let rooms = new Array();
 
+        let latestRoomNum = 0;
+
         io.on('connection', function(socket) {
             console.log("connect..." + socket.id);
             let userData;
+
+            receiver.startReceive(io,socket,rooms);
 
             //切断時処理
             socket.on('disconnect',function() {
@@ -61,14 +67,15 @@ module.exports = class Matching{
                 //userDataオブジェクトはmatching.js以外では操作しないでください．
                 userData={
                     userName:userName,
-                    id:socket.id,
+                    id:token,
                     isPlayingGame:0
                 };
 
             //待ち人数が6人以下の場合
                 if( waitUserList.length > 0) {
                     //ゲーム開始時にtempRoomIdをそのままルームidに
-                    socket.join(tempRoomId);
+                    socket.join(latestRoomNum);
+                    console.log("rooms!!" + Array.from(socket.rooms));
                     
                     //waitUserListを更
                     waitUserList.push(userData);
@@ -79,30 +86,38 @@ module.exports = class Matching{
                     console.log("userList::"+ waitUserList);
 
 
-                    if(waitUserList.length == 6){
+                    if(waitUserList.length == 2){
                         //待機中プレイヤーのリストを初期化
                         const userList = waitUserList;
-                        waitUserList = [];
 
-                        //ゲーム開始
-                        room.startGame(tempRoomId,userList);
+                        //ゲームのインスタンスを作成
+                        const game = new Game(latestRoomNum,userList);
+                        rooms.push(game);
+
+                        rooms[latestRoomNum].startGame();
+
+                        //現在の部屋数を更新
+                        latestRoomNum++;
+
 
                     }
                     //待機中プレイヤーがいない場合
                 }else{
                     
-                    //RoomIdを作成
-                    tempRoomId = matching.createRoomId(rooms, server.MAXROOMIDNUMBER);
-                    socket.join(tempRoomId);
+                    //部屋に入室
+                    socket.join(latestRoomNum);
+
+                    console.log("rooms!!" + Array.from(socket.rooms));
 
                     //自分を待ちプレイヤーに追加
                     waitUserList.push(userData);
 
                     io.emit("displayToClient",waitUserList);
-                    console.log("new::" + userName + ",RoomId::" + tempRoomId);
+                    console.log("new::" + userName + ",RoomId::" + latestRoomNum);
                     console.log(waitUserList);
 
-                }   
+                }
+
             });
 
         });
