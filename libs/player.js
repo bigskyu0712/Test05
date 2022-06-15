@@ -3,10 +3,10 @@
 //プレイヤーのクラス
 module.exports = class Player
 {
-    constructor(playerData){
+    constructor(name,userId){
 
-        this.name = playerData.userName;
-        this.id = playerData.id;
+        this.name = name;
+        this.userId = userId;
         this.score = 0; //スコア
         this.hand = []; //手札
         this.item = []; //所持アイテム
@@ -19,8 +19,8 @@ module.exports = class Player
         return this.username;
     }
 
-    getId(){
-        return this.id;
+    getUserId(){
+        return this.userid;
     }
 
     getScore(){
@@ -39,11 +39,33 @@ module.exports = class Player
         return this.position;
     }
 
-    addCard(card){
-        this.item.push(card);
+    addCard(cardId){
+        this.hand.push(cardId);
     }
 
-    updatePosition(dice){
-        this.position += dice;
+    addItem(itemId){
+        this.item.push(itemId);
     }
+
+    addScore(score){
+        this.score += score;
+    }
+
+    updatePosition(diceRoll){
+        this.position += diceRoll;
+    }
+
+    deleteCard(cardId){
+        this.card = this.card.filter(function(value){
+            return value != cardId;
+        });
+    }
+
+    deleteItem(itemId){
+        this.item = this.item.filter(function(value){
+            return value != itemId;
+        });
+    }
+
+    
 }

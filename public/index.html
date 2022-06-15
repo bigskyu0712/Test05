@@ -21,7 +21,6 @@
                 name:null
             };
 
-
             var socket = io();
 
             socket.on('displayToClient',function (data){
@@ -30,6 +29,10 @@
                 li.innerHTML = data;
                 list.insertBefore(li, list.firstChild);
             });
+
+            function sendPing(){
+                socket.emit('ping');
+            }
 
             socket.on("sendToken",function (data){
                 myData.token = data.token;
