@@ -60,7 +60,8 @@ module.exports = class Borad{
 
     //アイテムを消去(ランダム)
     addItemRandom(player){
-        player.deleteItem(item.pop());
+        let ItemId = player.getItem[Math.random()*player.getItem.length];
+        player.deleteItem(ItemId);
     }
 
     //マスの変更(マスカードの設置等)
