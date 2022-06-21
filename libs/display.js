@@ -8,6 +8,8 @@ exports.test = function(){
         console.log("そーしんてすと");
 }
 
+
+//cardIdを投げる
 exports.makeWindow = function(cardId,userId){
     server.io.to(userId).emit("makeWindow",cardId);
 }
@@ -16,7 +18,10 @@ exports.refreshHands = function(hand,userId){
     server.io.to(userId).emit("refreshHands",hand);
 }
 
-exports.selectCard = function(hand,userId){
-    server.io.to(userId).emit("selectCard",hand);
+exports.selectCardFromHand = function(userId){
+    server.io.to(userId).emit("selectCard");
 }
 
+exports.draw = function(userId){
+    
+}

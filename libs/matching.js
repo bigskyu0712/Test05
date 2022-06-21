@@ -20,6 +20,8 @@ module.exports = class Matching{
 
         let rooms = new Array();
 
+        let roomIds = new Array();
+
         let latestRoomNum = 0;
 
         io.on('connection', function(socket) {
@@ -74,7 +76,7 @@ module.exports = class Matching{
             //待ち人数が6人以下の場合
                 if( waitUserList.length > 0) {
                     //ゲーム開始時にtempRoomIdをそのままルームidに
-                    socket.join(latestRoomNum);
+                    socket.join(tempRoomId);
                     console.log("rooms!!" + Array.from(socket.rooms));
                     
                     //waitUserListを更
@@ -91,21 +93,20 @@ module.exports = class Matching{
                         const userList = waitUserList;
 
                         //ゲームのインスタンスを作成
-                        const game = new Game(latestRoomNum,userList);
-                        rooms.push(game);
+                        const game = new Game(tempRoomId,userList);
+                        rooms[tempRoomId] = game;
 
-                        rooms[latestRoomNum].startGame();
+                        rooms[tempRoomId].startGame();
 
-                        //現在の部屋数を更新
-                        latestRoomNum++;
+                        roomIds.push(tempRoomId);
 
 
                     }
                     //待機中プレイヤーがいない場合
                 }else{
-                    
+                    tempRoomId = matching.createRoomId(rooms,server.MAXROOMIDNUMBER);
                     //部屋に入室
-                    socket.join(latestRoomNum);
+                    socket.join(tempRoomId);
 
                     console.log("rooms!!" + Array.from(socket.rooms));
 
@@ -113,14 +114,21 @@ module.exports = class Matching{
                     waitUserList.push(userData);
 
                     io.emit("displayToClient",waitUserList);
-                    console.log("new::" + userName + ",RoomId::" + latestRoomNum);
+                    console.log("new::" + userName + ",RoomId::" + tempRoomId);
                     console.log(waitUserList);
 
                 }
 
+                setInterval(() => {
+                    roomIds.forEach(function(id){
+                        rooms[id].wait();
+                    })
+                }, 1000/30);
+
             });
 
         });
+
 
         
     }

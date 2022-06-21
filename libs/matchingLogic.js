@@ -3,15 +3,18 @@
 const crypto = require('crypto');
 
 
-//RoomIdについてもハッシュ化する関数自体はありますがあくまでサーバ側のみの概念(クライアントは自身が所属しているルームIdを知ることができない)ため現在は使っていません．
-exports.createRoomId = function(nowRooms,maxIdNumber){
+exports.createRoomId = function(rooms,maxIdNumber){
     //RoomIdを作成
-    if(nowRooms + 1 == maxIdNumber){
-        console.log("room is full!!");
+    let id;
+    if(rooms.length >= maxIdNumber){
+        console.log("room is full");
         return -1;
-    }else{
-    const str = "1B5hankoudo" + nowRooms + 1;
-    return(crypto.createHash("sha1")).update(str).digest("hex");
+    }
+    while(1){
+        id = Math.floor(Math.random()*maxIdNumber);
+        if(rooms[id] == null){
+            return id;
+        }
     }
     
 }

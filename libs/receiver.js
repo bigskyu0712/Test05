@@ -4,12 +4,21 @@ const server = require('../server.js');
 
 exports.startReceive = function(io,socket,rooms){
     socket.on('ping', function(){
-        console.log("pong!! id:" + socket.id + " room:" + JSON.stringify(socket.rooms));
+        console.log("pong!! id:" + socket.id + " room:" + Array.from(socket.rooms));
+    });
+    
+    socket.on('processed', function(){
+        const roomId = Array.from(socket.rooms)[1];
+        console.log("processed");
+        rooms[roomId].next();
     });
 
-    socket.on('drawed', function(){
-        rooms[Array.from(socket.rooms[1])].next();
-        console.log("drawed!!");
+    socket.on('reply',function(data){
+        const roomId = Array.from(socket.rooms)[1];
+        rooms[roomId].receive(data);
+        console.log("received");
     });
+
+    
 
 }
