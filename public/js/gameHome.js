@@ -1,15 +1,16 @@
 /*******************************************************************
-***  File Name		: w4.js
-***  Version      : V1.0
+***  File Name		: gameHome.js
+***  Version      : V1.1
 ***  Designer		  : 岩上 雄飛
-***  Date			    : 2022.06.13
+***  Date			    : 2022.06.21
 ***  Purpose      : W4の画面
 ***
 *******************************************************************/
 
 /*
 *** Revision :
-*** V1.0 : 岩上 雄飛, 2022.06.13
+*** V1.0 : 岩上 雄飛, 2022.06.14
+*** V1.1 : 岩上 雄飛, 2022.06.21 C1
 */
 
 onload = function() {
@@ -31,20 +32,23 @@ var isHoveringOnCard = false
 *** Return              : なし
 ****************************************************************************/
 function main() {
-  var canvas = document.querySelector('#canvas');
+  var canvas = document.querySelector('#cvs');
   var ctx = canvas.getContext('2d');
-  let gridSize = 60;
+  let gridSize = canvas.height/10;
   
   if (!ctx) {
     alert('エラー.');
     return;
   }
 
-  drawGrid(ctx, canvas, gridSize);  
-  drawMessage(ctx);
+  drawGrid(ctx, canvas, gridSize);
+
+  //ユーザ情報を取得（今後追加予定）
+  // rgba(48,211,59,1)  rgba(255,149,0,1)
+  drawMessage(canvas, "rgba(48,211,59,1)");
 
   //カードの読み込み
-  let cardData = ["OrangeCard1", "OrangeCard2", "OrangeCard3"];
+  let cardData = ["OrangeCard1", "OrangeCard2", "OrangeCard3", "OrangeCard1", "OrangeCard2", "OrangeCard3", "OrangeCard1", "OrangeCard2", "OrangeCard3"];
   showCards(ctx, canvas, cardData);
 
   canvas.addEventListener("click", e => {
@@ -54,45 +58,51 @@ function main() {
         y: e.clientY - rect.top
     };
 
-    gridClicked(ctx, canvas, clickPoint, gridSize);
+    // gridClicked(ctx, canvas, clickPoint, gridSize);
   });
 
+  // マウスの位置を取得
   canvas.addEventListener("mousemove", (point) => {
     const hoverPoint = {
       x: point.clientX,
       y: point.clientY
     };
     gridClicked(ctx, canvas, hoverPoint, gridSize)
-    let hoverCardWidth = 250
-    if (isHoveringCard(canvas, hoverPoint) > -1){
+
+    var hoverCardHeight = canvas.height*0.8 // 拡大表示されるカードのサイズ
+    if (hoverCardHeight > 380){
+      hoverCardHeight = 380
+    }
+
+    if (isHoveringCard(canvas, hoverPoint) > -1){ // カードの上にマウスがある場合
       if (isHoveringOnCard == false){
         isHoveringOnCard = true
         console.log("hover", isHoveringCard(canvas, hoverPoint))
-        let sqr = ctx
-        sqr.fillRect((canvas.width-240)/2, 
-                      (canvas.height-88/63*240)/2, 
-                      240, 
-                      88/63*240);
+
         let hoverCard = cards[isHoveringCard(canvas, hoverPoint)]
         hoverCard.src = hoverCard.src
         hoverCard.onload = function(){
           ctx.fillStyle = "clear"
           ctx.drawImage(hoverCard, 
-                        (canvas.width-hoverCardWidth)/2, 
-                        (canvas.height-88/63*hoverCardWidth)/2, 
-                        hoverCardWidth, 
-                        88/63*hoverCardWidth); 
+                        (canvas.width  - hoverCardHeight / 88*63 )/2, 
+                        (canvas.height - hoverCardHeight         )/2, 
+                        hoverCardHeight /88*63, 
+                        hoverCardHeight); 
         }
       }
-    } else {
+    } else { // カードの上にマウスがない場合
       if (isHoveringOnCard == true){
         console.log("no hover")
         isHoveringOnCard = false
-        ctx.clearRect((canvas.width-hoverCardWidth)/2, 
-                        (canvas.height-88/63*hoverCardWidth)/2, 
-                        hoverCardWidth, 
-                        88/63*hoverCardWidth);
-        drawGrid(ctx, canvas, gridSize);  
+        
+        //拡大表示されたカードの部分を再描画
+        ctx.clearRect((canvas.width  - hoverCardHeight / 88*63 )/2, 
+                     (canvas.height - hoverCardHeight         )/2, 
+                     hoverCardHeight * 88/63, 
+                     hoverCardHeight);
+        drawGrid(ctx, canvas, gridSize);
+        showCards(ctx,canvas,cardData)
+        drawMessage(canvas, "rgba(48,211,59,1)")
       }
     }
   });
@@ -113,10 +123,10 @@ function isHoveringCard(canvas,     //canvas
   for (var i = 0; i < cards.length; i++){
     let card = cards[i]
     let cardMinY = hoverPoint.y
-    let cardMinX = (cardCenteredAxis + 140*i + 20*i)
-    let cardMaxX = (cardCenteredAxis + 140*(i+1) + 20*i)
+    let cardMinX = (cardCenteredAxis + cardWidth*i + cardSpacing*i)
+    let cardMaxX = (cardCenteredAxis + cardWidth*(i+1) + cardSpacing*i)
     
-    if (cardMinY > (canvas.height-100) && cardMinX <= hoverPoint.x && cardMaxX >= hoverPoint.x){
+    if (cardMinY > (canvas.height/6*5) && cardMinX <= hoverPoint.x && cardMaxX >= hoverPoint.x){
       return i
     }
   }
@@ -136,20 +146,46 @@ function drawGrid(ctx,    //canvasのcontext
 {
   for (var i = 0; i < 6; i++) {
     for (var j = 0; j < 6; j++) {
-      if (0<i && i<5 && 0<j && j<5){
-
-      } else {
+      if ((0<=i && i<6 && 0<=j  && j<6) && (i==0 || i==5 || j==0 || j==5)){
         ctx.beginPath();
         ctx.rect(i*width + canvas.width/2 - width*3, 
                  j*width + canvas.height/2 - width*3,
                  width, width);
 
+
+        let gridNumber = getGridNumber(i,j)
         ctx.fillStyle = "white"
+        // if (他のユーザがいるマスだったら){
+          // ctx.fillStyle = "rgba(200,200,200,1)"
+        // }
         ctx.fill()
         ctx.stroke();
       }
     }
   }
+}
+
+
+/****************************************************************************
+*** Function Name       : getGridNumber()
+*** Designer            : 岩上 雄飛
+*** Date                : 2022.6.21
+*** Function            : 左上を(0,0)と仮定したx,yからマスの番号を計算し返す
+*** Return              : 右下を0で時計回りに1ずつ増える時の番号
+****************************************************************************/
+function getGridNumber(x, //左上を(0,0)と仮定したx座標
+                       y) //左上を(0,0)と仮定したy座標
+{
+  if (y==5){
+    return 5 - x
+  } else if (y==1){
+    return x + 10
+  } else if (x==0){
+    return (5-y) + 5
+  } else if (x==5){
+    return y + 15
+  }
+  return 0
 }
 
 
@@ -172,7 +208,7 @@ function gridClicked(ctx,     //canvasのcontext
   if ((0<=x && x<6 && 0<=y  && y<6) && (x==0 || x==5 || y==0 || y==5)){
     drawGrid(ctx, canvas, width)
     ctx.beginPath();
-    ctx.fillStyle = "rgba(255,149,0,1)"
+    ctx.fillStyle = "rgba(204, 204, 204, 0.4)"
     ctx.rect(x*width + canvas.width/2  - width*3,
               y*width + canvas.height/2 - width*3, 
               width, width);
@@ -193,11 +229,16 @@ function showCards(ctx,       //canvasのcontext
                    canvas,    //canvas
                    cardData)  //表示するカード情報
 {
+  cardWidth = (canvas.width - 10*cardData.length) / cardData.length //カードの幅
+  if (cardWidth > 140){
+    cardWidth = 140
+  }
+  cardSpacing = cardWidth/8 //カードの間隔
+
   for (let index = 0; index < cardData.length; index++) {
     const element = cardData[index];
     const image = new Image();
-    cardSpacing = 20; //カードの感覚
-    cardWidth = 140; //カードの幅
+    
     cardCenteredAxis = (canvas.width - (cardWidth*cardData.length + cardSpacing*(cardData.length-1)))/2
 
     image.src = element + ".png";
@@ -205,7 +246,7 @@ function showCards(ctx,       //canvasのcontext
     image.onload = function(){
       ctx.drawImage(image, 
                     cardCenteredAxis + (cardSpacing+cardWidth)*(index), 
-                    canvas.height-100, 
+                    canvas.height/6*5, 
                     cardWidth, 
                     88/63*cardWidth); 
     }
@@ -221,17 +262,32 @@ function showCards(ctx,       //canvasのcontext
                           一部文字を異なる色で表示もする。
 *** Return              : なし
 ****************************************************************************/
-function drawMessage(ctx){
-  var text = ctx;
-  text.font = "40px Arial";
+function drawMessage(canvas,      //canvas
+                     color)       //現在のユーザを表示する色
+{
+  let currentUser = "test user" //現在操作しているユーザ名
+  let nextUser    = "next user" //次に操作する　　ユーザ名
 
+  let ctx = canvas.getContext('2d');
+  var text = ctx;
+  text.font = canvas.height/15 + "px Arial";
+
+  var textWidth = ctx.measureText(currentUser).width + ctx.measureText(" の操作").width
   //表示するメッセージを画面中央に表示
-  text.fillStyle = "rgba(255,149,0,1)"
-  text.fillText("マスカード",
-                (canvas.width - ctx.measureText("マスカードを配置する場所を選択").width)/2,
-                80);
+  text.fillStyle = color
+  text.fillText(currentUser,
+                (canvas.width - textWidth)/2,
+                canvas.height/10);
   text.fillStyle = "black"
-  text.fillText("を配置する場所を選択",
-                (canvas.width - ctx.measureText("マスカードを配置する場所を選択").width)/2 + ctx.measureText("マスカード").width,
-                80);
+  text.fillText(" の操作",
+                (canvas.width - textWidth)/2 + ctx.measureText(currentUser).width,
+                canvas.height/10);
+
+  //次のユーザを表示
+  text.font = canvas.height/30 + "px Arial";
+  textWidth = ctx.measureText("次のユーザ：").width + ctx.measureText(nextUser).width
+  text.fillStyle = "rgba(127.5, 127.5, 127.5, 1)"
+  text.fillText("次のユーザ：" + nextUser,
+                (canvas.width - textWidth)/2,
+                canvas.height/20*3);
 }

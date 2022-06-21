@@ -1,15 +1,16 @@
 /*******************************************************************
-***  File Name		: w10.js
-***  Version      : V1.0
+***  File Name		: quitGame.js
+***  Version      : V1.1
 ***  Designer		  : 岩上 雄飛
-***  Date			    : 2022.06.13
+***  Date			    : 2022.06.21
 ***  Purpose      : W10の画面
 ***
 *******************************************************************/
 
 /*
 *** Revision :
-*** V1.0 : 岩上 雄飛, 2022.06.13
+*** V1.0 : 岩上 雄飛, 2022.06.14
+*** V1.1 : 岩上 雄飛, 2022.06.21 C1
 */
 
 onload = function() {
@@ -35,7 +36,7 @@ var exitPosition = {
 *** Return              : なし
 ****************************************************************************/
 function main() {
-  var canvas = document.querySelector('#canvas');
+  var canvas = document.querySelector('#cvs');
   var ctx = canvas.getContext('2d');
   let width = 60;
   
@@ -43,10 +44,11 @@ function main() {
     alert('エラー.');
     return;
   }
-  drawMessageBackground(ctx)
-  drawMessage(ctx, "退出しますか")
-  drawButton(ctx)
+  drawMessageBackground(canvas)
+  drawMessage(canvas, "退出しますか")
+  drawButton(canvas)
 
+  // 画面のクリックした場所の処理
   canvas.addEventListener("click", e => {
     const rect = canvas.getBoundingClientRect();
     const clickPoint = {
@@ -54,12 +56,14 @@ function main() {
         y: e.clientY - rect.top
     };
     
+    // 退出ボタンを押した際の処理
     if (exitPosition.x <= clickPoint.x && clickPoint.x <= exitPosition.x + exitPosition.width){
       if (exitPosition.y <= clickPoint.y && clickPoint.y <= exitPosition.y + exitPosition.height){
         console.log("exit pressed")
       }
     }
 
+    // 再戦ボタンを押した際の処理
     if (rematchPosition.x <= clickPoint.x && clickPoint.x <= rematchPosition.x + exitPosition.width){
       if (rematchPosition.y <= clickPoint.y && clickPoint.y <= rematchPosition.y + exitPosition.height){
         console.log("rematch pressed")
@@ -77,9 +81,10 @@ function main() {
 *** Function            : 画面上部に入力された文字を表示する処理を行う。
 *** Return              : なし
 ****************************************************************************/
-function drawMessage(ctx,   //canvasのcontext
+function drawMessage(canvas,   //描画をするcanvas
                      input) //入力文字
 {
+  let ctx = canvas.getContext('2d');
   var text = ctx;
   text.fillStyle = "black"
   text.font = "40px Arial"
@@ -90,11 +95,19 @@ function drawMessage(ctx,   //canvasのcontext
                 canvas.height / 4)
 }
 
-function drawButtonText(ctx,    //canvasのcontext
+/****************************************************************************
+*** Function Name       : drawButtonText(ctx)
+*** Designer            : 岩上 雄飛
+*** Date                : 2022.6.14
+*** Function            : 引数で指定された文字を指定された場所に描く
+*** Return              : なし
+****************************************************************************/
+function drawButtonText(canvas, //描画をするcanvas
                         input,  //ボタンに表示する文字
                         x,      //ボタンのx座標
                         y)      //ボタンのy座標
 {
+  let ctx = canvas.getContext('2d');
   var txt = ctx;
   txt.fillStyle = "white"
   txt.font = "30px Arial";
@@ -110,12 +123,15 @@ function drawButtonText(ctx,    //canvasのcontext
                           四角の上に文字を書く関数を呼ぶ
 *** Return              : なし
 ****************************************************************************/
-function drawButton(ctx){
+function drawButton(canvas) //描画をするcanvas
+{
+  let ctx = canvas.getContext('2d');
   let buttonWidth = canvas.width / 3
   let buttonHeight = canvas.height / 6
   let buttonSpacing = 40
   let originX = (canvas.width - buttonWidth*2 - buttonSpacing)/2
 
+  //退出ボタンの枠の作成
   var exitButton = ctx;
   exitButton.fillStyle = "gray";
   exitButton.fillRect(originX,
@@ -127,6 +143,7 @@ function drawButton(ctx){
   exitPosition.height = buttonHeight
   exitButton.fill()
                     
+  //再戦ボタンの枠の作成
   var rematchButton = ctx;
   rematchButton.fillStyle = "gray";
   rematchButton.fillRect(originX + buttonSpacing + buttonWidth,
@@ -138,12 +155,13 @@ function drawButton(ctx){
   rematchPosition.width = buttonWidth
   rematchPosition.height = buttonHeight
 
+  // 作成したボタンの上に文字を表示する
   ctx.font = "30px Arial";
-  drawButtonText(ctx, "退出する",
+  drawButtonText(canvas, "退出する",
                  originX + (buttonWidth - ctx.measureText("退出する").width)/2,
                  canvas.height*4/5 - (buttonHeight - 30)/2)
 
-  drawButtonText(ctx, "再戦する",
+  drawButtonText(canvas, "再戦する",
                  originX + buttonSpacing + buttonWidth + (buttonWidth - ctx.measureText("再戦する").width)/2,
                  canvas.height*4/5 - (buttonHeight - 30)/2)
 }
@@ -155,7 +173,9 @@ function drawButton(ctx){
 *** Function            : 画面上にゲーム画面との区別ができるよう背景を描画する
 *** Return              : なし
 ****************************************************************************/
-function drawMessageBackground(ctx){
+function drawMessageBackground(canvas)  //描画をするcanvas
+{
+  let ctx = canvas.getContext('2d');
   var background = ctx
   let spacing = canvas.width / 20
   background.fillStyle = "rgba(230,230,230,1)"
