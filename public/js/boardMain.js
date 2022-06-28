@@ -8,7 +8,6 @@
 
       function init() {
 
-        DrawPlayerName();
 
         let cameraInitZ = 1200;      //cameraのz座標,初期値
 
