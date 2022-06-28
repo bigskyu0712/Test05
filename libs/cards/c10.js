@@ -1,22 +1,28 @@
-const Card = require('./card.js');
-//ƒJ[ƒh‚Ì2”Ô–ÚCƒAƒCƒeƒ€‚Ìæ“¾‚É‚È‚è‚Ü‚·B
 
+const Card = require("./card.js");
+
+//ã‚«ãƒ¼ãƒ‰ã®10ç•ªç›®ï¼Œå…¨å“¡ã®æ‰‹æœ­ã®ã‚«ãƒ¼ãƒ‰ã‚’ã™ã¹ã¦å±±æœ­ã«æˆ»ã—ã€1äºº3æšãšã¤ãƒ©ãƒ³ãƒ€ãƒ ã«é…å¸ƒã™ã‚‹
 
 module.exports = class c10 extends Card {
 
-    //ƒJ[ƒhƒ^ƒCƒvİ’èC
+    //ã‚«ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ—è¨­å®šï¼Œ
     static cardType = 1;
 
-    //ƒRƒ“ƒXƒgƒ‰ƒNƒ^C•K—v‚ª‚È‚¯‚ê‚Î‚¢‚¶‚ç‚È‚­‚Ä‘åä•v‚Å‚·D
-    constructor(board,player) {
-        super(board,player);
+    //ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼Œå¿…è¦ãŒãªã‘ã‚Œã°ã„ã˜ã‚‰ãªãã¦å¤§ä¸ˆå¤«ã§ã™ï¼
+    constructor(board) {
+        this.board = board;
     }
 
-    //ˆ—‚ğ‹Lq
+    //å‡¦ç†ã‚’è¨˜è¿°
     effect(){
-        board.addItemRandom(player);
-        console.log('10');
+        board.everyoneDeleteAllCard(); //c9ã¨åŒã˜
+        //å…¨å“¡3æšã‚‚ã‚‰ã†
+        let i, j;
+        for (i=0; i<board.players.length; ++i){
+            for (j=0; j<3; ++j){
+                board.addCardRandom(board.players[i]);
+            }
+        }
     }
-
 
 }
