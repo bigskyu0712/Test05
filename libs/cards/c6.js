@@ -1,5 +1,7 @@
-const Card = require('./card.js');
-//カードの2番目，アイテムの取得になります。
+
+const Card = require("./card.js");
+
+//カードの6番目，自分のアイテムカードをすべて捨てる
 
 
 module.exports = class c6 extends Card {
@@ -14,9 +16,14 @@ module.exports = class c6 extends Card {
 
     //処理を記述
     effect(){
-        board.addItemRandom(player);
-        console.log('6');
+        board.deleteAllItem(player); //deleteItemRandomを所持数分回す
     }
 
+    //board
+    deleteAllItem(player){
+        for (let i=0; i<player.item.length; ++i){
+            this.deleteItemRandom(player);
+        }
+    }
 
 }
