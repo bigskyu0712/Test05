@@ -1,7 +1,7 @@
 
 const Card = require("./card.js");
 
-//カードの2番目，アイテムの取得になります。
+//カードの4番目，山札からカードを1枚ランダムに入手する
 
 
 module.exports = class c4 extends Card {
@@ -16,10 +16,7 @@ module.exports = class c4 extends Card {
 
     //処理を記述
     effect(){
-        board.addItemRandom(player);
-        console.log("4");
+        board.addCardRandom(player); //addItemRandomを元に作る
     }
-
-    
 
 }
