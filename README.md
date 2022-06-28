@@ -1,38 +1,5 @@
 # ゲームのタイトル募集中
 以下にファイルの構造のうち私たちが編集する部分を示します．(変更した場合はここを更新してください．)
-```bash
-Test05
-├── public
-│   ├── index.html
-│   └── js
-│       ├── cardEffect.js
-│       ├── client.js
-│       ├── display.js
-│       ├── gameHome.js
-│       ├── quitGame.js
-│       └── square.js
-├── libs
-│   ├── board.js
-│   ├── cards
-│   │   ├── c0.js
-│   │   ├── c1.js
-│   │   ├── c2.js
-│   │   ├── card.js
-│   │   ├── cardTypes.txt
-│   │   └── squareCards.js
-│   ├── cardsFactory.js
-│   ├── cardsReader.js
-│   ├── display.js
-│   ├── game.js
-│   ├── hoge.js
-│   ├── matching.js
-│   ├── matchingLogic.js
-│   ├── player.js
-│   ├── receiver.js
-│   ├── room.js
-│   └── serverSettings.js
-└── server.js
-```
 
 ## 概要
 
