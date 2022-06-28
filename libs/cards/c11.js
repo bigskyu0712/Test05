@@ -1,22 +1,33 @@
-const Card = require('./card.js');
-//ƒJ[ƒh‚Ì2”Ô–ÚCƒAƒCƒeƒ€‚Ìæ“¾‚É‚È‚è‚Ü‚·B
+
+const Card = require("./card.js");
+//c11.js
+//ã‚«ãƒ¼ãƒ‰ã®11ç•ªç›®ï¼Œå±±æœ­ã‹ã‚‰ã‚«ãƒ¼ãƒ‰ã‚’1æšé¸ã‚“ã§å…¥æ‰‹ã™ã‚‹
 
 
 module.exports = class c11 extends Card {
 
-    //ƒJ[ƒhƒ^ƒCƒvİ’èC
+    //ã‚«ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ—è¨­å®šï¼Œ
     static cardType = 1;
 
-    //ƒRƒ“ƒXƒgƒ‰ƒNƒ^C•K—v‚ª‚È‚¯‚ê‚Î‚¢‚¶‚ç‚È‚­‚Ä‘åä•v‚Å‚·D
-    constructor(board,player) {
+    //ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼Œå¿…è¦ãŒãªã‘ã‚Œã°ã„ã˜ã‚‰ãªãã¦å¤§ä¸ˆå¤«ã§ã™ï¼
+    constructor(board,player,cardId) {
         super(board,player);
+        this.cardId = cardId;
     }
 
-    //ˆ—‚ğ‹Lq
+    //å‡¦ç†ã‚’è¨˜è¿°
     effect(){
-        board.addItemRandom(player);
-        console.log('11');
+        board.addCard(player, cardId); 
     }
 
+    //board
+    addCard(player, cardId){
+        player.addCard(cardId);
+    }
+
+    //ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰é€ä¿¡å¾Œãƒ‡ãƒ¼ã‚¿ã‚’å—ã‘å–ã£ãŸæ™‚
+    afterEffect(){
+        console.log("after");
+    }
 
 }
