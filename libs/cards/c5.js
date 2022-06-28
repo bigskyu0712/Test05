@@ -19,7 +19,7 @@ module.exports = class c5 extends Card {
         board.deleteCardRandom(player); //deleteItemRandomを元に作る
     }
 
-    //board
+    //boardの中の処理
     deleteCardRandom(player){
         let hand = player.getHand();
         let cardId = hand[Math.random() % hand.length];
