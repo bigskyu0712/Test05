@@ -1,5 +1,5 @@
 /*******************************************************************
-***  File Name          : w6.js
+***  File Name          : w8.js
 ***  Version            : V1.0
 ***  Designer           : 武田 和大
 ***  Date               : 2022.06.21
@@ -38,9 +38,8 @@ function draw() {
     var cvs = canvas.getContext('2d');
 
     let w = canvas.width;
-    let h = canvas.height;
     let cardNumber;   //カード番号(これでルールカードかマスカードか分類)
-    let cardName;    //カードの名前
+    let cardName;     //カードの名前
     let leftTextLength;   //文字の左側の長さ
     let rightTextLength;  //文字の右側の長さ 色を変えるときに使用
     let allTextLength;    //文字全体の長さ
@@ -56,36 +55,36 @@ function draw() {
         x: [],   //一番左のplayer選択ボタンの左上のx座標
         y: []    //一番左のplayer選択ボタンの左上のy座標
     }
-    let player = ["[player1]", "[player2]", "[player3]", "[player4]", "[player5]", "[player6]"];
+    let player = ["[player1]", "[player2]", "[player3]", "[player4]"]; //仮置き
     let turn;   //何番目の人のターンか
     let i;      //for文で使用
     let j=0;    //playerボタンの番号
 
-    for (i=0; i<5; ++i){   //player指名ボタンの座標決定
-        playerButton.x[i] = w / 2 - 200 + i * 75;
-        playerButton.y[i] = 430 + (i % 2) * 60;
+    for (i=0; i<3; ++i){   //player指名ボタンの座標決定
+        playerButton.x[i] = w / 2 - 200 + i * 150;
+        playerButton.y[i] = 430;
     }
 
     cvs.textAlign = 'center';
     cvs.Baseline = 'center';
     cvs.font = '25px serif';
   
-    cardNumber = 8;   //仮置き
+    cardNumber = 32;   //仮置き
     turn = 2;          //仮置き
     
     //cardNumberの分類は仮置き
-    if(cardNumber<5){   //ルールカードのマスに止まった時
+    if(cardNumber>30){   //ルールカードのマスに止まった時
         //上の文字表示
         leftTextLength = cvs.measureText("ルールカード").width;
         rightTextLength = cvs.measureText("が変更されました").width;
         allTextLength = cvs.measureText("ルールカードが変更されました").width;
         cvs.fillStyle = 'rgb(0, 255, 0)';
         cvs.fillText("ルールカード", w / 2 - allTextLength / 2 + leftTextLength / 2, 25);
-        cvs.fillStyle = 'black';
+        cvs.fillStyle = 'white';
         cvs.fillText("が変更されました", w / 2 + allTextLength / 2 - rightTextLength / 2, 25);
 
         //実際のカードの入力に対応させる
-        cardName = "GreenCard.png";   //仮置き
+        cardName = "ルールカード-0" + (cardNumber-30) + ".svg";   //仮置き
         cardDraw(cvs, cardName, w);
         checkButtonDraw(cvs, checkButton, buttonSize, w);
     }
@@ -95,13 +94,13 @@ function draw() {
         allTextLength = cvs.measureText("マスカードの効果が発動します").width;
         cvs.fillStyle = 'orange';
         cvs.fillText("マスカード", w / 2 - allTextLength / 2 + leftTextLength / 2, 25);
-        cvs.fillStyle = 'black';
+        cvs.fillStyle = 'white';
         cvs.fillText("の効果が発動します", w / 2 + allTextLength / 2 - rightTextLength / 2, 25);
         
-        if(cardNumber>10){   //playerを指名する場合
+        if(cardNumber>=23){   //playerを指名する場合
             cvs.fillText("どのプレイヤーを指名しますか？", w / 2, 400);
             cvs.font = '15px serif';
-            for (let i=0; i<6; ++i){
+            for (let i=0; i<4; ++i){
                 if(i==turn) { //自分は指名しない
                     continue;
                 }
@@ -112,18 +111,18 @@ function draw() {
                 j++;
             }
             //実際のカードの入力に対応させる
-            cardName = "カードデザイン-03.png";   //仮置き
+            cardName = "マスカード_c" + cardNumber + ".svg";   //仮置き
             cardDraw(cvs, cardName, w);
         }
         else {
             //実際のカードの入力に対応させる
-            cardName = "カードデザイン-04.png";   //仮置き
+            cardName = "マスカード_c" + cardNumber + ".svg";   //仮置き
             cardDraw(cvs, cardName, w);
             checkButtonDraw(cvs, checkButton, buttonSize, w);
         }
     }
 
-    cvs.fillStyle = 'black';
+    cvs.fillStyle = 'white';
     cvs.font = '20px serif';
     cvs.fillText(player[turn], w/2, 60); //カードの上にその番の人の名前表示
 
@@ -137,7 +136,7 @@ function draw() {
 
         if(cardNumber>10){   //playerを指名する場合
             j = 0;
-            for (i=0; i<6; ++i){
+            for (i=0; i<4; ++i){
                 if(i==turn){ //自分は指名しない
                     continue;
                 }
