@@ -1,7 +1,7 @@
 
 const Card = require("./card.js");
-
-//カードの2番目，アイテムの取得になります。
+//c3.js
+//カードの3番目，アイテムカードを1枚選んで入手する
 
 
 module.exports = class c3 extends Card {
@@ -10,16 +10,19 @@ module.exports = class c3 extends Card {
     static cardType = 1;
 
     //コンストラクタ，必要がなければいじらなくて大丈夫です．
-    constructor(board,player) {
+    constructor(board,player,itemId) {
         super(board,player);
+        this.itemId = itemId;
     }
 
     //処理を記述
     effect(){
-        board.addItemRandom(player);
-        console.log("3");
+        board.addItem(player, itemId);
     }
 
-
+    //クライアントから送信後データを受け取った時
+    afterEffect(){
+        console.log("after");
+    }
 
 }
