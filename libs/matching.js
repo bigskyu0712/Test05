@@ -69,7 +69,8 @@ module.exports = class Matching{
                 //userDataオブジェクトはmatching.js以外では操作しないでください．
                 userData={
                     userName:userName,
-                    id:token,
+                    id:socket.id,
+                    token:token,
                     isPlayingGame:0
                 };
 
@@ -88,7 +89,7 @@ module.exports = class Matching{
                     console.log("userList::"+ waitUserList);
 
 
-                    if(waitUserList.length == 2){
+                    if(waitUserList.length == 4){
                         //待機中プレイヤーのリストを初期化
                         const userList = waitUserList;
 
@@ -99,6 +100,8 @@ module.exports = class Matching{
                         rooms[tempRoomId].startGame();
 
                         roomIds.push(tempRoomId);
+
+                        waitUserList = [];
 
 
                     }

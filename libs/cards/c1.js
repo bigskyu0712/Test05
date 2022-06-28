@@ -16,7 +16,8 @@ module.exports = class c1 extends Card {
 
     //処理を記述
     effect(){
-        board.extraWin(player);
+        //board.extraWin(player);
+        console.log("win");
     }
 
 

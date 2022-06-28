@@ -20,6 +20,10 @@ module.exports = class Card {
 
     }
 
+    afterEffect(){
+        
+    }
+
     addRule(){
 
     }
