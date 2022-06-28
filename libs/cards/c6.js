@@ -1,22 +1,22 @@
 
 const Card = require("./card.js");
 
-//ƒJ[ƒh‚Ì6”Ô–ÚC©•ª‚ÌƒAƒCƒeƒ€ƒJ[ƒh‚ğ‚·‚×‚ÄÌ‚Ä‚é
+//ã‚«ãƒ¼ãƒ‰ã®6ç•ªç›®ï¼Œè‡ªåˆ†ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚«ãƒ¼ãƒ‰ã‚’ã™ã¹ã¦æ¨ã¦ã‚‹
 
 
 module.exports = class c6 extends Card {
 
-    //ƒJ[ƒhƒ^ƒCƒvİ’èC
+    //ã‚«ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ—è¨­å®šï¼Œ
     static cardType = 1;
 
-    //ƒRƒ“ƒXƒgƒ‰ƒNƒ^C•K—v‚ª‚È‚¯‚ê‚Î‚¢‚¶‚ç‚È‚­‚Ä‘åä•v‚Å‚·D
+    //ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼Œå¿…è¦ãŒãªã‘ã‚Œã°ã„ã˜ã‚‰ãªãã¦å¤§ä¸ˆå¤«ã§ã™ï¼
     constructor(board,player) {
         super(board,player);
     }
 
-    //ˆ—‚ğ‹Lq
+    //å‡¦ç†ã‚’è¨˜è¿°
     effect(){
-        board.deleteAllItem(player); //deleteItemRandom‚ğŠ”•ª‰ñ‚·
+        board.deleteAllItem(player); //deleteItemRandomã‚’æ‰€æŒæ•°åˆ†å›ã™
     }
 
     //board
