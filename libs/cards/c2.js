@@ -17,6 +17,7 @@ module.exports = class c2 extends Card {
     //処理を記述
     effect(){
         board.addItemRandom(player);
+        console.log("2");
     }
 
 

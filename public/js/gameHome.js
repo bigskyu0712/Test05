@@ -23,6 +23,10 @@ var cardWidth = 0
 var cardCenteredAxis = 0
 var isHoveringOnCard = false
 
+let cardData = [];
+let isUpdate = false;
+
+
 /****************************************************************************
 *** Function Name       : main()
 *** Designer            : 岩上 雄飛
@@ -32,24 +36,26 @@ var isHoveringOnCard = false
 *** Return              : なし
 ****************************************************************************/
 function main() {
-  var canvas = document.querySelector('#cvs');
+  var canvas = document.querySelector('#underBar');
   var ctx = canvas.getContext('2d');
   let gridSize = canvas.height/10;
+  let tmp;
+
+  let hoverCard = -1;
   
   if (!ctx) {
     alert('エラー.');
     return;
   }
 
-  drawGrid(ctx, canvas, gridSize);
+  //drawGrid(ctx, canvas, gridSize);
 
   //ユーザ情報を取得（今後追加予定）
   // rgba(48,211,59,1)  rgba(255,149,0,1)
-  drawMessage(canvas, "rgba(48,211,59,1)");
+  //drawMessage(canvas, "rgba(48,211,59,1)");
 
   //カードの読み込み
-  let cardData = ["OrangeCard1", "OrangeCard2", "OrangeCard3", "OrangeCard1", "OrangeCard2", "OrangeCard3", "OrangeCard1", "OrangeCard2", "OrangeCard3"];
-  showCards(ctx, canvas, cardData);
+  showCards(ctx, canvas, cardData,-1);
 
   canvas.addEventListener("click", e => {
     const rect = canvas.getBoundingClientRect();
@@ -57,6 +63,18 @@ function main() {
         x: e.clientX - rect.left,
         y: e.clientY - rect.top
     };
+
+    if(gameState == 2){
+      console.log(sendData);
+      sendData.cardNum = tmp;
+      if(sendData.position != -1 && sendData.position != null){
+        socket.emit("reply", sendData);
+        gameState = 0;
+        cardData = cardData.splice(tmp, 1);
+        gameData.hand = gameData.hand.splice(tmp,1);
+        isUpdate = true;
+      }
+    }
 
     // gridClicked(ctx, canvas, clickPoint, gridSize);
   });
@@ -67,7 +85,7 @@ function main() {
       x: point.clientX,
       y: point.clientY
     };
-    gridClicked(ctx, canvas, hoverPoint, gridSize)
+    //gridClicked(ctx, canvas, hoverPoint, gridSize)
 
     var hoverCardHeight = canvas.height*0.8 // 拡大表示されるカードのサイズ
     if (hoverCardHeight > 380){
@@ -76,10 +94,10 @@ function main() {
 
     if (isHoveringCard(canvas, hoverPoint) > -1){ // カードの上にマウスがある場合
       if (isHoveringOnCard == false){
-        isHoveringOnCard = true
-        console.log("hover", isHoveringCard(canvas, hoverPoint))
-
-        let hoverCard = cards[isHoveringCard(canvas, hoverPoint)]
+        isHoveringOnCard = true;
+        tmp = isHoveringCard(canvas, hoverPoint);
+        console.log("hover", isHoveringCard(canvas, hoverPoint));
+        /*let hoverCard = cards[isHoveringCard(canvas, hoverPoint)]
         hoverCard.src = hoverCard.src
         hoverCard.onload = function(){
           ctx.fillStyle = "clear"
@@ -89,6 +107,15 @@ function main() {
                         hoverCardHeight /88*63, 
                         hoverCardHeight); 
         }
+      */
+        
+       if(hoverCard != isHoveringCard(canvas,hoverPoint)){
+        isUpdate = true;
+       }else{
+        isUpdate = false;
+       }
+       hoverCard = isHoveringCard(canvas, hoverPoint);
+
       }
     } else { // カードの上にマウスがない場合
       if (isHoveringOnCard == true){
@@ -96,17 +123,34 @@ function main() {
         isHoveringOnCard = false
         
         //拡大表示されたカードの部分を再描画
-        ctx.clearRect((canvas.width  - hoverCardHeight / 88*63 )/2, 
+        /*ctx.clearRect((canvas.width  - hoverCardHeight / 88*63 )/2, 
                      (canvas.height - hoverCardHeight         )/2, 
                      hoverCardHeight * 88/63, 
                      hoverCardHeight);
-        drawGrid(ctx, canvas, gridSize);
-        showCards(ctx,canvas,cardData)
-        drawMessage(canvas, "rgba(48,211,59,1)")
+                     */
+
+        //drawGrid(ctx, canvas, gridSize);
+        //drawMessage(canvas, "rgba(48,211,59,1)")
       }
     }
   });
+  setInterval(function() {
+    if(isHoveringOnCard == false){
+      hoverCard = -1;
+    }
+    if(isUpdate == true) {
+      ctx.clearRect(cardCenteredAxis,
+      0, 
+      (cardWidth + cardSpacing) * cards.length, 
+      canvas.height);
+      cards = [];
+      showCards(ctx,canvas,cardData,hoverCard)
+      isUpdate = false;
+      console.log(isUpdate);
+    }
+  },1000 / 60);
 }
+
 
 
 /****************************************************************************
@@ -121,16 +165,16 @@ function isHoveringCard(canvas,     //canvas
                         hoverPoint) //マウスの座標
 {
   for (var i = 0; i < cards.length; i++){
-    let card = cards[i]
-    let cardMinY = hoverPoint.y
-    let cardMinX = (cardCenteredAxis + cardWidth*i + cardSpacing*i)
-    let cardMaxX = (cardCenteredAxis + cardWidth*(i+1) + cardSpacing*i)
+    let card = cards[i];
+    let cardMinY = hoverPoint.y;
+    let cardMinX = (cardCenteredAxis + cardWidth*i + cardSpacing*i);
+    let cardMaxX = (cardCenteredAxis + cardWidth*(i+1) + cardSpacing*i);
     
-    if (cardMinY > (canvas.height/6*5) && cardMinX <= hoverPoint.x && cardMaxX >= hoverPoint.x){
-      return i
+    if (cardMinY > (canvas.height/5) && cardMinX <= hoverPoint.x*2 && cardMaxX >= hoverPoint.x*2){
+      return i;
     }
   }
-  return -1
+  return -1;
 }
 
 /****************************************************************************
@@ -227,12 +271,14 @@ function gridClicked(ctx,     //canvasのcontext
 ****************************************************************************/
 function showCards(ctx,       //canvasのcontext
                    canvas,    //canvas
-                   cardData)  //表示するカード情報
+                   cardData,  //表示するカード情報
+                   hovercard) //マウスオーバーされたカード
 {
-  cardWidth = (canvas.width - 10*cardData.length) / cardData.length //カードの幅
-  if (cardWidth > 140){
-    cardWidth = 140
-  }
+  //cardWidth = (canvas.width / 2 - 10*cardData.length) / cardData.length //カードの幅
+  cardWidth = (canvas.width / 2 - 10*4) / 4 //カードの幅
+  //if (cardWidth > 140){
+  //  cardWidth = 140
+  //}
   cardSpacing = cardWidth/8 //カードの間隔
 
   for (let index = 0; index < cardData.length; index++) {
@@ -241,14 +287,25 @@ function showCards(ctx,       //canvasのcontext
     
     cardCenteredAxis = (canvas.width - (cardWidth*cardData.length + cardSpacing*(cardData.length-1)))/2
 
-    image.src = element + ".png";
+    //パスを変更
+    image.src = "../img/cards/svg/" + "c" + element + ".svg";
     cards.push(image);
-    image.onload = function(){
-      ctx.drawImage(image, 
-                    cardCenteredAxis + (cardSpacing+cardWidth)*(index), 
-                    canvas.height/6*5, 
-                    cardWidth, 
-                    88/63*cardWidth); 
+    if(index == hovercard){
+      image.onload = function(){
+        ctx.drawImage(image, 
+        cardCenteredAxis + (cardSpacing+cardWidth)*(index), 
+        canvas.height/5 - canvas.height / 10, 
+        cardWidth, 
+        88/63 * cardWidth); 
+      }
+    }else{
+      image.onload = function(){
+        ctx.drawImage(image, 
+                     cardCenteredAxis + (cardSpacing+cardWidth)*(index), 
+                     canvas.height/5, 
+                     cardWidth, 
+                      88/63 * cardWidth); 
+      }
     }
   }
 }
