@@ -1,3 +1,12 @@
+/*******************************************************************
+***  File Name    : overlay.js
+***  Version      : V1.0
+***  Designer     : 岩上 雄飛
+***  Date         : 2022.06.28
+***  Purpose      : マスの上にマウスを当てた際、置いてあるカードの詳細を表示する
+***
+*******************************************************************/
+
 var canvas = document.getElementById("canvas2d");
 var element = document.getElementById("hoverElement");
 let title = document.getElementById("hoverTitle");
@@ -32,14 +41,16 @@ canvas.addEventListener("mousemove", (point) => {
 ****************************************************************************/
 function updatePopover(){
     var style = "background-color: white; "
-    // 角の丸みの設定
-    style += "border-radius: " + (element.offsetHeight/12.8) + "px; "
-    // 余白の設定
-    style += "padding: 12px 12px 12px 12px; "
-    // 枠の設定
-    style += "border-style: solid; border-color: rgb(255, 179, 64); border-width: 4px; "
 
     if (cardInfo > 0) { // 表示する状況の場合
+        setCardData()
+        // 角の丸みの設定
+        style += "border-radius: " + (element.offsetHeight/12.8) + "px; "
+        // 余白の設定
+        style += "padding: 12px 12px 12px 12px; "
+        // 枠の設定
+        style += "border-style: solid; border-color: rgb(255, 179, 64); border-width: 4px; "
+        // htmlの要素を表示する
         style += "display: block; position: absolute;"
         
         // 表示するブロックのy座標がcanvasの外に出るか判別
@@ -65,6 +76,22 @@ function updatePopover(){
     }
     element.style = style
     requestAnimationFrame(updatePopover);
+}
+
+/****************************************************************************
+*** Function Name       : setCardData()
+*** Designer            : 岩上 雄飛
+*** Date                : 2022.6.25
+*** Function            : カードのhtmlのhoverElementの中のそれぞれの
+                          要素に入れる
+*** Return              : なし
+****************************************************************************/
+function setCardData(){
+    let squareCards = cardTexts.filter(card => card.cardType == 1)
+    let card = squareCards.find(card => card.cardId == 1)
+
+    title.textContent = card.cardName
+    text.textContent  = card.cardText
 }
 
 updatePopover()
