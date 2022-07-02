@@ -14,7 +14,7 @@ exports.io = io;
 
 
 //serverを生成
-var server = http.listen(8000, "127.0.0.1", function() {
+var server = http.listen(8080, "127.0.0.1", function() {
         console.log('%s: Node server started on %s:%d ...',Date(Date.now()),8080);
         });
 

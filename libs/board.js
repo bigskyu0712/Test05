@@ -198,18 +198,17 @@ module.exports = class Borad{
 
 
 
-
     //サイコロを振る
     dice(turn,received){
         if(received == 0){
-
-            display.dice(this.players[turn].getUserId());
+            this.diceNum = Math.floor(Math.random() * 7) + 1
+            display.dice(this.players[turn].getUserId(),this.diceNum);
 
             return 0;
 
         } else if(received == 1){
 
-            return Math.floor(Math.random() * 7) + 1;
+            return this.diceNum;
         }
 
     }

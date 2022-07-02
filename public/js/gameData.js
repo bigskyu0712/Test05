@@ -1,19 +1,12 @@
+diceNum = 0;
+isMyturn = false;
+
 gameData = {
     myPlayerNum:-1,
     playerName:[],
     positions:[0,0,0,0],
-    item:{
-        player1:[],
-        player2:[],
-        player3:[],
-        player4:[]
-    },
-    score:{
-        player1:0,
-        player2:0,
-        player3:0,
-        player4:0
-    },
+    item:[[],[],[],[]],
+    score:[[],[],[],[]],
     hand:[],
     direction:[]
 }
@@ -25,7 +18,9 @@ sendData = {
     position:-1,
     playerNum:-1,
     selectPlayer:-1,
-    itemNum:-1
+    itemNum:-1,
+    cardId:-1,
+    itemId:-1
 }
 
 //0...自分自身,1...左,2...中央,3...右

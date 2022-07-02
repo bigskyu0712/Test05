@@ -20,6 +20,9 @@ module.exports = class c1 extends Card {
         console.log("win");
     }
 
+    afterEffect(){
+        
+    }
 
 
 }

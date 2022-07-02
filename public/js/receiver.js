@@ -1,4 +1,3 @@
-var socket = io();
 
 socket.on("sendPlayerNum",function(playerNum){
     console.log(playerNum);
@@ -18,6 +17,7 @@ socket.on("draw",function (drawCards){
 
 socket.on("selectCardFromHand",function (){
     console.log("select");
+    isMyturn = true;
     initSendData();
     gameState = 2;
     drawTopText();
@@ -32,4 +32,8 @@ socket.on("changeSquare",function (data){
 socket.on("upDatePosition",function (data){
     console.log(data);
     gameData.positions[data[0]] = data[1];
+});
+
+socket.on("dice",function (data){
+    diceNum = data;
 });

@@ -23,20 +23,24 @@ class DrawCard extends THREE.Mesh {
     }
 
     draw(time){
-            if(this.position.z <= 900){
+            
+            if(this.t <= 900){
                 this.position.x = this.t * 0.6;
                 this.position.z = this.t;
                 this.t += 50;
             }else{
-                this.counter++;
+                this.counter += 1;
                 if(this.counter==time){
+                    this.counter = 0;
                     return 1;
                 }else{
                     this.t = 0;
+                    console.log(this.t);
                     this.position.set(0,21,5);
                     return 1;
                 }
             }
             return 0;
     }
+
 }

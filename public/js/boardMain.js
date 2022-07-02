@@ -1,6 +1,4 @@
 
-      
-
       gameState = 0;
       isDrawed = 0;
       receiveCardDatas = [];
@@ -8,7 +6,7 @@
 
       function init() {
 
-
+        setDirection(gameData.myPlayerNum);
         let cameraInitZ = 1200;      //cameraのz座標,初期値
 
         let cameraX = 0;  //cameraのx座標
@@ -78,6 +76,7 @@
   
         } );
 
+
         let drawCard = new DrawCard();
         drawCard.position.set(0,21,5);
         scene.add(drawCard);
@@ -122,30 +121,45 @@
           });
         }
 
+        //gamestate
+
         function handleClick(event){
+          if(isMyturn === true){
           switch (gameState){
             case 2:
               sendData.position = clickSquare;
               console.log(sendData);
               if(sendData.cardNum != -1){
+                console.log("socket send");
                 socket.emit("reply", sendData);
                 cardData.splice(sendData.cardNum, 1);
                 gameData.hand.splice(sendData.cardNum,1);
                 isUpdate = true;
-                gameState = 0;
+                gameState = 3;
               }
               break;
             
-            case 3:
-              socket.emit("reply", "clicked");
+            case 6:
+              dice.throw(diceNum);
+              gameState = 7;
+              break;
             
+            case 7:
+
+            case 8:
+                const itemCard = new ItemCard('./img/cards/png/i'+ 1 +'.png');
+                let ran = Math.floor(Math.random() * 4);
+                itemCard.setPosition(ran);
+                gameData.item[ran].push(1);
+                scene.add(itemCard);
+                break;
             default:
               break;
+          }
           }
         }
 
         function installationCard(id,squareNum){
-          if(squareNum != null){
             const card = new Card('./img/cards/png/c'+ id +'.png');
             card.position.x = square.getPosition(squareNum).x;
             card.position.y = square.getPosition(squareNum).y + 42;
@@ -154,22 +168,24 @@
             cardList.push(card);
             scene.add(card);
             square.setId(squareNum,0);
-
-          }
-          gameState = 0; //待機状態
         }
 
         function draw(){
           isDrawed = 0;
-          p = drawCard.draw(receiveCardDatas.length)
+          p = drawCard.draw(receiveCardDatas.length);
           if(p == 1){
-            cardData.push(receiveCardDatas[drawCard.counter - 1]);
+            if(drawCard.counter != 0){
+              cardData.push(receiveCardDatas[drawCard.counter - 1]);
+            }else{
+              cardData.push(receiveCardDatas[receiveCardDatas.length - 1]);
+            }
             isUpdate = true;
-          }
-          if(drawCard.counter>= receiveCardDatas.length){
-            isDrawed = 1;
-            receiveCardDatas = [];
-            socket.emit("reply","drawed");
+            if(drawCard.counter == 0){
+              isDrawed = 1;
+              receiveCardDatas = [];
+              console.log("socket send");
+              socket.emit("reply","drawed");
+            }
           }
         }
 
@@ -181,19 +197,25 @@
               cameraZ -= 20;
             }
           }
-          else if(gameState==0){
+          else if(gameState==4){
             if(cameraZ<cameraInitZ){   //画角を初期値まで戻す
               cameraY -= 20;
               cameraZ += 20;
             }
             else {
-              gameState = 0;
+              gameState = 6;
             }
           }
           camera.position.set(cameraX, cameraY, cameraZ);
           camera.lookAt(new THREE.Vector3(0, 0, 0));
         }
 
+        let dice = new Dice();
+        function createDice(){
+          dice.position.set(0,200,300);
+          scene.add( dice );
+          dice.isVisible = true;
+        }
         // 毎フレーム時に実行されるループイベントです
         function tick() {
           // レイキャスト = マウス位置からまっすぐに伸びる光線ベクトルを生成
@@ -202,10 +224,16 @@
           clickSquare = square.onMouse(raycaster);
           cardInfo = square.getCardId(clickSquare);
           cardLanding();
-          if(gameState == 3){
-            installationCard(createCard[0],createCard[1]);
-            gameState = 0;
+
+
+          if(gameData.hand.length != cardData.length){
+            if(receiveCardDatas.length == 0){
+              receiveCardDatas = gameData.hand;
+            }
+            draw();
           }
+
+
           let positionList = [];
           pieces.forEach(function(piece) {
             if(piece.isRun == 0) {
@@ -216,21 +244,48 @@
               }
             }
           });
+
           pieces.forEach(function(piece) {
             piece.setPosition(positionList);
           });
 
-          for(i = 0; i < 4; i++){
-            pieces[i].moveTo(gameData.positions[i]);
-          }
 
-          if(gameData.hand.length != cardData.length){
-            if(receiveCardDatas.length == 0){
-              receiveCardDatas = gameData.hand;
-            }
-            draw();
-          }
 
+
+          switch(gameState){
+            case 3:
+              installationCard(createCard[0],createCard[1]);
+              gameState = 4;
+              break;
+            case 6:
+              if(dice.isVisible == false){
+                createDice();
+              }else{
+                dice.rotate();
+              }
+              break;
+            case 7:
+              dice.dice();
+              if(dice.t > 300){
+                scene.remove( dice );
+                dice.geometry.dispose();
+                dice.isVisible = false;
+                gameState = 8;
+              }
+              break;
+            case 8:
+              let isMoved = 1;
+              for(i = 0; i < 4; i++){
+                pieces[i].moveTo(gameData.positions[i]);
+                isMoved *= pieces.isRun;
+              }
+              if(isMoved == 0){
+                gameState = 9;
+              }
+              break;
+            default:
+              break;
+          }
           cameraMove();
           // レンダリング
           renderer.render(scene, camera);
