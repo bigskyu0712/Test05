@@ -1,25 +1,25 @@
 /*******************************************************************
-***  File Name      : ItemCard.js
+***  File Name      : squareCard.js
 ***  Version        : V1.0
 ***  Designer       : 
 ***  Date           : 2022.07.02
-***  Purpose        : アイテムカードのオブジェクト
+***  Purpose        : マスカードのオブジェクト
 ***
 *******************************************************************/
 
 /*
 *** Revision :
-*** V1.0 : 名前書いて, 2022.06.14
-*** V1.1 : 名前書いて, 2022.07.02 場所を更新できるよう変更
+*** V1.0 : 名前書いて, 2022.07.02
 */
 
 
-class ItemCard extends Card {
+class SquareCard extends Card {
 
     cardSize = 1.3;
     cardId;
     t;
     
+
     /****************************************************************************
     *** Function Name       : constructor()
     *** Designer            : 
@@ -42,21 +42,15 @@ class ItemCard extends Card {
     *** Function            : アイテムカードの位置を設定・更新する
     *** Return              : なし
     ****************************************************************************/
-    setPosition(playerNum)  // ユーザの番号
+    setPosition(playerNum, index)  // ユーザの番号
     {
         console.log("Player direction:", gameData.direction[playerNum]);
-
-        // カードが何番目か取得
-        let index = gameData.item[playerNum].indexOf(this);
-        if (index == -1) {
-            index = gameData.item[playerNum].length
-        }
 
         // プレイヤー位置によって座標を設定
         switch(gameData.direction[playerNum]){
             // 左側のユーザの場合
             case 1:
-                this.position.x = -420;
+                this.position.x = -420 - (88*1.3 + 20);
                 this.position.y = 2;
                 this.position.z = -165 + (index * 110);
 
@@ -67,14 +61,14 @@ class ItemCard extends Card {
             case 2:
                 this.position.x = 165 - (index * 110);
                 this.position.y = 2;
-                this.position.z = -420;
+                this.position.z = -420 - (88*1.3 + 20);
                 
                 this.rotation.y = Math.PI  * -1;
                 break;
 
             // 右側のユーザの場合
             case 3:
-                this.position.x = 420;
+                this.position.x = 420 + (88*1.3 + 20);
                 this.position.y = 2;
                 this.position.z = 165 - (index * 110);
 

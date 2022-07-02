@@ -1,18 +1,20 @@
 /*******************************************************************
 ***  File Name    : cardText.js
-***  Version      : V1.0
-<<<<<<< Updated upstream
-***  Designer     : 岩上 雄飛
-=======
+***  Version      : V1.1
 ***  Designer     : 
->>>>>>> Stashed changes
-***  Date         : 2022.06.28
+***  Date         : 2022.07.02
 ***  Purpose      : カードのデータを保管
 ***
 *******************************************************************/
 
 /*
-cardId  : カードのID
+*** Revision :
+*** V1.0 : 岩上雄飛, 2022.06.28
+*** V1.1 : 岩上雄飛, 2022.07.02 アイテムカードの情報を追加
+*/
+
+/*
+cardId  : カードの番号
 cardType: カードの種類
             0: アイテムカード 
             1: マスカード
@@ -22,6 +24,70 @@ cardText: カードの詳細
 */
 
 cardTexts = [
+    // アイテムカード
+    {
+        cardId:1,
+        cardType = 0,
+        cardName:"星",
+        cardText:""
+    },
+    {
+        cardId:2,
+        cardType = 0,
+        cardName:"愛",
+        cardText:"ハート"
+    }
+    ,
+    {
+        cardId:3,
+        cardType = 0,
+        cardName:"コイン",
+        cardText:""
+    },
+    {
+        cardId:4,
+        cardType = 0,
+        cardName:"太陽",
+        cardText:"惑星"
+    },
+    {
+        cardId:5,
+        cardType = 0,
+        cardName:"コップ",
+        cardText:""
+    },
+    {
+        cardId:6,
+        cardType = 0,
+        cardName:"色鉛筆",
+        cardText:""
+    },
+    {
+        cardId:7,
+        cardType = 0,
+        cardName:"音楽",
+        cardText:""
+    },
+    {
+        cardId:8,
+        cardType = 0,
+        cardName:"",
+        cardText:""
+    },
+    {
+        cardId:9,
+        cardType = 0,
+        cardName:"",
+        cardText:""
+    },
+    {
+        cardId:10,
+        cardType = 0,
+        cardName:"",
+        cardText:""
+    },
+
+    // マスカード
     {
         cardId:1,
         cardType = 1,
@@ -202,6 +268,8 @@ cardTexts = [
         cardName:"プレイヤーと位置を入れ替え",
         cardText:"他のプレイヤーを指定し、そのプレイヤーと位置を交換する"
     },
+
+    // ルールカード
     {
         cardId:1,
         cardType = 2,
@@ -213,5 +281,5 @@ cardTexts = [
         cardType = 2,
         cardName:"カードを２回使用",
         cardText:"このルールが設定されている間、\nカードを２回 使用することができる"
-    },
+    }
 ];

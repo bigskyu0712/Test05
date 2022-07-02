@@ -8,6 +8,7 @@ gameData = {
     item:[[],[],[],[]],
     score:[[],[],[],[]],
     hand:[],
+    playerHandNumber:[0,0,0,0],
     direction:[]
 }
 
