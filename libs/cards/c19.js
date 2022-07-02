@@ -1,10 +1,9 @@
 
 const Card = require("./card.js");
 
-//カードの1番目，エクストラウィンになります。
+//カードの19番目，自分とランダムに選ばれたプレイヤーとの位置を入れ替える
 
-
-module.exports = class c1 extends Card {
+module.exports = class c19 extends Card {
 
     //カードタイプ設定，
     static cardType = 1;
@@ -16,13 +15,12 @@ module.exports = class c1 extends Card {
 
     //処理を記述
     effect(){
-        //board.extraWin(player);
-        console.log("win");
+        board.changPositioneRandom(player);
     }
 
-    afterEffect(){
+    //board
+    changPositioneRandom(player){
         
     }
-
 
 }

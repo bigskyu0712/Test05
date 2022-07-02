@@ -49,6 +49,11 @@ exports.updatePosition = function(roomId,playerNum,position){
     server.io.to(roomId).emit("upDatePosition",data);
 }
 
-exports.dice = function(userId){
-    server.io.to(userId).emit("dice");
+exports.dice = function(userId,data){
+    //一回目の通信では0が送られる
+    server.io.to(userId).emit("dice",data);
+}
+
+exports.cardEffect = function(roomId,data){
+    server.io.to(roomId).emit("cardData",data);
 }

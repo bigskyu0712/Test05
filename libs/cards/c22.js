@@ -1,10 +1,11 @@
 
 const Card = require("./card.js");
 
-//カードの1番目，エクストラウィンになります。
+//カードの22番目，もう1度サイコロを振り、出た目が奇数ならその分戻り、偶数ならその分進む
 
 
-module.exports = class c1 extends Card {
+
+module.exports = class c22 extends Card {
 
     //カードタイプ設定，
     static cardType = 1;
@@ -16,13 +17,7 @@ module.exports = class c1 extends Card {
 
     //処理を記述
     effect(){
-        //board.extraWin(player);
-        console.log("win");
+        //サイコロ振る
     }
-
-    afterEffect(){
-        
-    }
-
 
 }
