@@ -1,7 +1,15 @@
+/*******************************************************************
+***  File Name          : c21.js
+***  Version            : V1.0
+***  Designer           : 武田 和大
+***  Date               : 2022.07.02
+***  Purpose            : もう1度サイコロを振り、出た目が奇数ならその分進み、偶数ならその分戻る
+***
+*******************************************************************/
 
 const Card = require("./card.js");
+//const display = require('../display.js');
 
-//カードの21番目，もう1度サイコロを振り、出た目が奇数ならその分進み、偶数ならその分戻る
 
 module.exports = class c21 extends Card {
 
@@ -15,8 +23,11 @@ module.exports = class c21 extends Card {
 
     //処理を記述
     effect(){
-        //サイコロの出目はもらってる？
-        //ここでサイコロ振る？
+        let dice = this.board.diceDueToCard(this.player);
+        if(dice % 2 == 0){
+            dice = -1 * dice;
+        }
+        this.board.moveDueToCard(this.player, dice); 
 
     }
 
