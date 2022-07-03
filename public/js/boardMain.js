@@ -149,7 +149,7 @@ function init() {
         case 8:
           // カードを作成
           const itemCard = new ItemCard('./img/cards/png/i'+ 1 +'.png');
-          // ユーザの番号
+          // ユーザの番号（ランダムだから後で変更）
           let ran = Math.floor(Math.random() * 4);
           // カードの場所を設定
           itemCard.setPosition(ran);

@@ -1,9 +1,9 @@
 /*******************************************************************
 ***  File Name    : cardText.js
 ***  Version      : V1.1
-***  Designer     : 
+***  Designer     : 岩上雄飛
 ***  Date         : 2022.07.02
-***  Purpose      : カードのデータを保管
+***  Purpose      : hover.jsで表示するカードのデータを保管
 ***
 *******************************************************************/
 
@@ -29,7 +29,7 @@ cardTexts = [
         cardId:1,
         cardType = 0,
         cardName:"星",
-        cardText:""
+        cardText:"宇宙にたくさん存在する"
     },
     {
         cardId:2,
@@ -42,37 +42,37 @@ cardTexts = [
         cardId:3,
         cardType = 0,
         cardName:"コイン",
-        cardText:""
+        cardText:"薄い円型の金属"
     },
     {
         cardId:4,
         cardType = 0,
         cardName:"太陽",
-        cardText:"惑星"
+        cardText:"表面温度 約6000°C の惑星"
     },
     {
         cardId:5,
         cardType = 0,
         cardName:"コップ",
-        cardText:""
+        cardText:"植木鉢じゃないよ"
     },
     {
         cardId:6,
         cardType = 0,
         cardName:"色鉛筆",
-        cardText:""
+        cardText:"赤い色の線が描ける鉛筆"
     },
     {
         cardId:7,
         cardType = 0,
         cardName:"音楽",
-        cardText:""
+        cardText:"楽譜と音符"
     },
     {
         cardId:8,
         cardType = 0,
-        cardName:"",
-        cardText:""
+        cardName:"ケーキ",
+        cardText:"スイカ味のケーキ"
     },
     {
         cardId:9,
