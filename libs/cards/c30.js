@@ -1,7 +1,14 @@
+/*******************************************************************
+***  File Name          : c30.js
+***  Version            : V1.0
+***  Designer           : 武田 和大
+***  Date               : 2022.07.02
+***  Purpose            : 他のプレイヤー1人を指定し、そのプレイヤーと位置を入れ替える。
+***
+*******************************************************************/
 
 const Card = require("./card.js");
 
-//カードの30番目，他のプレイヤー1人を指定し、そのプレイヤーと位置を入れ替える。
 
 module.exports = class c30 extends Card {
 
@@ -9,22 +16,27 @@ module.exports = class c30 extends Card {
     static cardType = 1;
 
     //コンストラクタ，必要がなければいじらなくて大丈夫です．
-    constructor(board,player,target) {
+    constructor(board,player) {
         super(board,player);
-        this.target = target;
     }
 
     //処理を記述
     effect(){
-        board.changePosition(player, target);
+        this.board.selectPlayer(this.player, 1);
     }
 
+    afterEffect(data){
+        console.log("30");
+        this.board.changePosition(this.player, data.selectPlayer);
+    }
+
+    //位置を入れ替え
     //board
-    changePosition(player, target){
+    /*changePosition(player, selectPlayer){
         let temp;
         temp = player.position;
-        player.position = target.position;
-        target.position = temp;
-    }
+        player.position = selectPlayer.position;
+        selectPlayer.position = temp;
+    }*/
 
 }
