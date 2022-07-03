@@ -1,7 +1,16 @@
+/*******************************************************************
+***  File Name          : c16.js
+***  Version            : V1.0
+***  Designer           : 武田 和大
+***  Date               : 2022.07.02
+***  Purpose            : 山札からカードを1枚ランダムに入手する
+***
+*******************************************************************/
+
+//c4と同じ
 
 const Card = require("./card.js");
 
-//カードの16番目，自分が最下位の時、もう1度行動できる(ドローから)
 
 module.exports = class c16 extends Card {
 
@@ -11,13 +20,12 @@ module.exports = class c16 extends Card {
     //コンストラクタ，必要がなければいじらなくて大丈夫です．
     constructor(board,player) {
         super(board,player);
-        //現在の順位も入れる？
     }
 
     //処理を記述
     effect(){
-        //if(最下位ならば)
-        //行動出来る
+        this.board.addCardRandom(player); //addItemRandomを元に作る
     }
+
 
 }
