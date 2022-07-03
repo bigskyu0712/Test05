@@ -1,7 +1,14 @@
+/*******************************************************************
+***  File Name          : c23.js
+***  Version            : V1.0
+***  Designer           : 武田 和大
+***  Date               : 2022.07.02
+***  Purpose            : 他のプレイヤー1人を指定し、そのプレイヤーのカードを1枚ランダムに捨てる
+***
+*******************************************************************/
 
 const Card = require("./card.js");
 
-//カードの23番目，他のプレイヤー1人を指定し、そのプレイヤーのカードを1枚ランダムに捨てる
 
 module.exports = class c23 extends Card {
 
@@ -10,12 +17,18 @@ module.exports = class c23 extends Card {
 
     //コンストラクタ，必要がなければいじらなくて大丈夫です．
     constructor(board,player) {
-        super(board,player); //このプレイヤーは指名された側
+        super(board,player);
     }
 
     //処理を記述
     effect(){
-        board.deleteCardRandom(player); //c5と同じ
+        this.board.selectPlayer(this.player, 1);
+    }
+
+    //クライアントから送信後データを受け取った時
+    afterEffect(data){
+        console.log("23");
+        this.board.deleteCardRandom(data.selectPlayer); //c5と同じ
     }
 
 }
