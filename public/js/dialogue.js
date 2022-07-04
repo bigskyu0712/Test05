@@ -57,6 +57,7 @@ function dialogueHide(){
 
 
 function showResult(){
+    usingRemove();
     using.style.display = 'block';
     using.style.pointerEvents ='auto';
     usingContext.clearRect(0, 0,800,600);
@@ -89,6 +90,7 @@ function displayAvater(i){
 }
 
 function showNext(){
+    usingContext.clearRect(0,0,800,600);
     makeDialog();
     usingContext.fill();
     dialogW = using.width;
@@ -130,9 +132,11 @@ function onClickEvent(){
     if(
         (dialogueCursor.x > 200 && dialogueCursor.x  < 350) && (dialogueCursor.y > 300 && dialogueCursor.y  < 380)
     ){
+        initGameData();
         socket.connect();
         socket.emit('login',userName.value);
         formLogin();
+        using.removeEventListener("click",onClickEvent,false);
     }
     if(
         (dialogueCursor.x > 450 && dialogueCursor.x  < 600) && (dialogueCursor.y > 300 && dialogueCursor.y  < 380)

@@ -52,7 +52,7 @@ module.exports = class Board{
     }
 
     initItem(){
-        this.item = [1,2,3,4,5,6,7,8,9,10,11,12];
+        this.item = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
     }
 
     //idからplayerを取得
@@ -344,6 +344,8 @@ module.exports = class Board{
             if(this.players[next].state == 1){
                 this.players[next].state = 0;
             }
+            i++;
+            next = (turn + i) % this.players.length;
         }
         display.getNextUser(this.roomId);
         
@@ -351,7 +353,6 @@ module.exports = class Board{
     }
 
     checkWinTerm(){
-
         for(i=0;i<4; i++){
             const isWin = this.players[i].hasItem(this.winTerm[0]) * this.players[i].hasItem(this.winTerm[1]);
             if(isWin){

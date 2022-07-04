@@ -1,7 +1,7 @@
-diceNum = 0;
-isMyturn = false;
+let diceNum = 0;
+let isMyturn = false;
 
-gameData = {
+let gameData = {
     myPlayerNum:-1,
     playerName:[],
     positions:[0,0,0,0],
@@ -15,18 +15,18 @@ gameData = {
     term:-1
 }
 
-cardInfo = {
+let cardInfo = {
     type:"none",
     id:-1
 };
 
-hoverCard = {
+let hoverCard = {
     playerNum:-1,
     cardNum:-1,
     type:"none"
 }
 
-sendData = {
+let sendData = {
     cardNum:-1,
     position:-1,
     playerNum:-1,
@@ -37,9 +37,9 @@ sendData = {
 }
 
 //デッキ一覧
-deck = [1,2,3,4,5,6,7,8,9];
+let deck = [1,2,3,4,5,6,7,8,9];
 //アイテム一覧
-item = [0,0,0,0,0];
+let item = [0,0,0,0,0];
 //0...自分自身,1...左,2...中央,3...右
 function setDirection(myplayerNum){
     switch(myplayerNum){

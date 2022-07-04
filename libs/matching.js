@@ -141,7 +141,7 @@ module.exports = class Matching{
                 setInterval(function(){
                     rooms.forEach(function(room,index){
                         if(room != null){
-                            if(room.gamestate == 10){
+                            if(room.gameState == 10){
                                 rooms[index] = null;
                                 console.log("DELETE ROOM!!!!");
                             }

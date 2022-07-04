@@ -63,6 +63,7 @@ module.exports = class Game{
         console.log("alive!! ====" + this.alive);
         if(this.alive == 0){
             this.gameState = 10;
+            console.log(this.gameState);
             return 0;
         }
         if(this.board.getPlayer(socketid).getUserNum() == this.turn){

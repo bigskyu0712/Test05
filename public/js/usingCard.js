@@ -26,9 +26,12 @@ var expFlag = [false, false, false, false]; //マウスオーバー処理用
 var expRect = null;
 var select;
 var s = 1.6;
-let cardList = [];
+let usingCardList = [];
 
 function makeCardList(deck,kind){
+    usingCardList = [];
+    select = -1;
+    page = 1;
     let prefix;
     if(kind == "card"){
         prefix = "c";
@@ -36,9 +39,9 @@ function makeCardList(deck,kind){
         prefix = "i";
     }
     deck.forEach(function(data){
-        cardList.push("../img/cards/svg/" + prefix + data + ".svg");
+        usingCardList.push("../img/cards/svg/" + prefix + data + ".svg");
     });
-    maxPage = Math.trunc( ( cardList.length - 1) / 4) + 1;
+    maxPage = Math.trunc( ( usingCardList.length - 1) / 4) + 1;
     using.style.display = 'block';
     using.style.pointerEvents ='auto';
     using.addEventListener('mouseover', onMouseOver, false);
@@ -56,8 +59,14 @@ function invisible() {
     using.removeEventListener('click', onClick, false);
 }
 
-//cardListは単体実行用に代入、実際には外部から与えられる
-/*var cardList = [
+function usingRemove(){
+    using.removeEventListener('mouseover', onMouseOver, false);
+    using.removeEventListener('mouseout', onMouseOut, false);
+    using.removeEventListener('click', onClick, false);  
+}
+
+//usingCardListは単体実行用に代入、実際には外部から与えられる
+/*var usingCardList = [
     'rc1.svg',
     'rc2.svg',
     'ic1.svg',
@@ -72,7 +81,7 @@ function invisible() {
     'mc11.svg',
     'mc12.svg'
 ];*/
-var numOfCard = cardList.length;
+var numOfCard = usingCardList.length;
 var page = 1; 
 var maxPage;
 
@@ -179,22 +188,22 @@ function usingDrawRect(color) {
     
     clearExp ();
     for (let i = 1; i <= 4; i++) {
-        if(cardList[(page - 1) * 4 + i - 1] == undefined){
+        if(usingCardList[(page - 1) * 4 + i - 1] == undefined){
             break;
         }
-        cardDisp(cardList[(page - 1) * 4 + i - 1], i); 
+        cardDisp(usingCardList[(page - 1) * 4 + i - 1], i); 
     }
 }
 function usingDrawRectIsHover() {
     // マウスが要素に乗った時の描画処理
     if (expFlag[0]) {
-        expDisp(cardList[page * 4 - 4]);
+        expDisp(usingCardList[page * 4 - 4]);
     } else if (expFlag[1]) {
-        expDisp(cardList[page * 4 - 3]);
+        expDisp(usingCardList[page * 4 - 3]);
     } else if (expFlag[2]) {
-        expDisp(cardList[page * 4 - 2]);
+        expDisp(usingCardList[page * 4 - 2]);
     } else { //expFlag[3]
-        expDisp(cardList[page * 4 - 1]);
+        expDisp(usingCardList[page * 4 - 1]);
     }
 }
 
@@ -244,10 +253,10 @@ function prevPage() {
     }
     clearCard();
     for (let i = 1; i <= 4; i++) {
-        if(cardList[(page - 1) * 4 + i - 1] == undefined){
+        if(usingCardList[(page - 1) * 4 + i - 1] == undefined){
             break;
         }
-        cardDisp(cardList[(page - 1) * 4 + i - 1], i); 
+        cardDisp(usingCardList[(page - 1) * 4 + i - 1], i); 
     }
 
 }
@@ -260,10 +269,10 @@ function nextPage() {
     }
     clearCard();
     for (let i = 1; i <= 4; i++) {
-        if(cardList[(page - 1) * 4 + i - 1] == undefined){
+        if(usingCardList[(page - 1) * 4 + i - 1] == undefined){
             break;
         }
-        cardDisp(cardList[(page - 1) * 4 + i - 1], i); 
+        cardDisp(usingCardList[(page - 1) * 4 + i - 1], i); 
     }
 }
 

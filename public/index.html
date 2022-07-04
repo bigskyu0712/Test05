@@ -61,6 +61,7 @@
                     return false;
                 }
                 myData.name = userName.value;
+                initGameData();
                 socket.emit('login',userName.value);
                 formLogin();
             });

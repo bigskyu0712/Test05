@@ -5,6 +5,9 @@ socket.on("sendPlayerNum",function(playerNum){
 });
 
 socket.on("startGame",function(data){
+    
+    initcanvas();
+    initGameHome();
     dialogueHide();
     updatePopover();
     console.log(data);

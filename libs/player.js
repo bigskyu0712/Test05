@@ -1,4 +1,4 @@
-const itemScore = require('./itemScore.js')
+const itemScoreList = require('./itemScore.js')
  
 //プレイヤーのクラス
 module.exports = class Player
@@ -76,9 +76,12 @@ module.exports = class Player
 
     updateScore(){
         this.score = 0;
+        let sum = 0;
         this.item.forEach(function(itemId){
-            this.score += itemScore[itemId];
+            console.log("item!!!" + itemScoreList.itemScore[itemId]);
+            sum += itemScoreList.itemScore[itemId];
         });
+        this.score = sum;
     }
 
     //ポジションの更新
