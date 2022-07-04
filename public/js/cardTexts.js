@@ -81,7 +81,7 @@ cardTexts = [
     {
         cardId:11,
         cardType:1,
-        cardName:"踏むと勝利",
+        cardName:"アイテムを入手",
         cardText:"アイテムカードからランダムに１枚入手する"
     },
     {
@@ -96,12 +96,12 @@ cardTexts = [
         cardName:"アイテムを１枚選ぶ",
         cardText:"アイテムカードから１枚選び、入手する"
     },
-    {
+    /*{
         cardId:14,
         cardType:1,
         cardName:"次のターンお休み",
         cardText:"次のターンが回ってきた時、スキップする"
-    },
+    },*/
     {
         cardId:15,
         cardType:1,
@@ -132,7 +132,7 @@ cardTexts = [
         cardName:"自分とランダムに入れ替え",
         cardText:"自分とランダムに選ばれたプレイヤーとの位置を入れ替える"
     },
-    {
+    /*{
         cardId:20,
         cardType:1,
         cardName:"サイコロをもう一度振る",
@@ -149,8 +149,8 @@ cardTexts = [
         cardType:1,
         cardName:"サイコロをもう一度振る*",
         cardText:"もう一度サイコロを振り、出た目が奇数ならその分戻り、出た目が偶数ならその分進む"
-    },
-    {
+    },*/
+    /*{
         cardId:23,
         cardType:1,
         cardName:"プレイヤーのカードを捨てる",
@@ -161,7 +161,7 @@ cardTexts = [
         cardType:1,
         cardName:"プレイヤーのカードを奪う",
         cardText:"他のプレイヤー1人を指定し、そのプレイヤーのカードを1枚ランダムに奪う"
-    },
+    },*/
     {
         cardId:25,
         cardType:1,
