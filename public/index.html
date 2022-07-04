@@ -7,6 +7,7 @@
         <script src="./js/three/build/three.min.js"></script>
         <script src="./js/three/examples/js/loaders/GLTFLoader.js"></script>
         <script src="./js/canvas2d.js"></script>
+        <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
         <style>
             canvas {background:#eee; display:block; margin:0 auto;}
         </style>
@@ -70,6 +71,7 @@
                 myData.name = userName.value;
                 socket.emit('login',userName.value);
                 formLogin();
+                CreatematchingWait();
             });
 
         </script>
