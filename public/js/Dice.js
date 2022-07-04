@@ -12,12 +12,12 @@ class Dice extends THREE.Mesh{
         const loadPic = new THREE.TextureLoader();
         //マテリアルにテクスチャ貼り付け
         let material = [
-            new THREE.MeshBasicMaterial({map: loadPic.load( './img/dice5.jpg' )}),//1
+            new THREE.MeshBasicMaterial({map: loadPic.load( './img/dice1.jpg' )}),//1
             new THREE.MeshBasicMaterial({map: loadPic.load( './img/dice2.jpg' )}),//2
-            new THREE.MeshBasicMaterial({map: loadPic.load( './img/dice1.jpg' )}),//3
-            new THREE.MeshBasicMaterial({map: loadPic.load( './img/dice4.jpg' )}),//4
-            new THREE.MeshBasicMaterial({map: loadPic.load( './img/dice3.jpg' )}),//5
-            new THREE.MeshBasicMaterial({map: loadPic.load( './img/dice6.jpg' )}) //6
+            new THREE.MeshBasicMaterial({map: loadPic.load( './img/dice3.jpg' )}),//3
+            new THREE.MeshBasicMaterial({map: loadPic.load( './img/dice5.jpg' )}),//4
+            new THREE.MeshBasicMaterial({map: loadPic.load( './img/dice6.jpg' )}),//5
+            new THREE.MeshBasicMaterial({map: loadPic.load( './img/dice4.jpg' )}) //6
         ];
         super(geometry, material);
     }
@@ -43,27 +43,27 @@ class Dice extends THREE.Mesh{
             console.log(this.num);
             //ここのnumはすごろくの目と対応していないので注意
             switch(this.num){
-                case 0:
+                case 1:
                     this.rotation.x = 0;
                     this.rotation.z = Math.PI / 2;
                     break;
-                case 1:
+                case 2:
                     this.rotation.x = 0;
                     this.rotation.z = Math.PI / 2 * 3;
                     break;
-                case 2:
+                case 3:
                     this.rotation.x = 0;
                     this.rotation.z = 0;
                     break;
-                case 3:
+                case 4:
                     this.rotation.x = Math.PI / 2;
                     this.rotation.z = 0;
                     break;
-                case 4:
+                case 5:
                     this.rotation.x = Math.PI;
                     this.rotation.z = 0;
                     break;
-                case 5:
+                case 6:
                     this.rotation.x = Math.PI / 2 * 3;
                     this.rotation.z = 0;
                     break;
