@@ -14,11 +14,15 @@ gameData = {
     score:[0,0,0,0]
 }
 
-cardInfo = 0;
+cardInfo = {
+    type:"none",
+    id:-1
+};
 
 hoverCard = {
     playerNum:-1,
-    cardNum:-1
+    cardNum:-1,
+    type:"none"
 }
 
 sendData = {

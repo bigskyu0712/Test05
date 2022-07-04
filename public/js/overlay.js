@@ -42,7 +42,7 @@ frame.addEventListener("mousemove", (point) => {
 function updatePopover(){
     var style = "background-color: white; "
 
-    if (cardInfo > 0) { // 表示する状況の場合
+    if (cardInfo.id > 0) { // 表示する状況の場合
         setCardData()
         // 角の丸みの設定
         style += "border-radius: " + (element.offsetHeight/12.8) + "px; "
@@ -90,8 +90,18 @@ function updatePopover(){
 *** Return              : なし
 ****************************************************************************/
 function setCardData(){
-    let card = cardTexts[cardInfo];
+    let dataArray = [];
+    if(cardInfo.type == "card"){
+        dataArray = cardTexts.filter(function(value){
+            return value.cardType == 1;
+        });
+    }    if(cardInfo.type == "item"){
+        dataArray = cardTexts.filter(function(value){
+            return value.cardType == 0;
+        });
+    }
 
+    let card = dataArray[cardInfo.id - 1];
     title.textContent = card.cardName
     text.textContent  = card.cardText
 }

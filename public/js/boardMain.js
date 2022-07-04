@@ -269,7 +269,33 @@
                       //カードInfoとhoverCardを更新
                       hoverCard.cardNum = index;
                       hoverCard.PlayerNum = i;
+                      hoverCard.type = "card";
                       isHoveringItem = true;
+                      return 0;
+                    } else {
+
+                    }
+                  });
+                 
+            }
+            isHoveringItem = false;
+            return 0;
+        }
+
+        function hoverHand(raycaster){
+          for(i = 0; i < 4; i++){
+                  // その光線とぶつかったオブジェクトを得る
+                  const intersects = raycaster.intersectObjects(handList[i]);
+                    handList[i].map((mesh,index) => {
+                    // 交差しているオブジェクトが1つ以上存在し、
+                    // 交差しているオブジェクトの1番目(最前面)のものだったら
+                    if (intersects.length > 0 && mesh === intersects[0].object) {
+                      //カードInfoとhoverCardを更新
+                      hoverCard.cardNum = index;
+                      hoverCard.PlayerNum = i;
+                      hoverCard.type = "hand";
+                      isHoveringHand = true;
+                      console.log(hoverCard.cardNum);
                       return 0;
                     } else {
 
@@ -287,10 +313,11 @@
           raycaster.setFromCamera(mouse, camera);
 
           clickSquare = square.onMouse(raycaster);
-          cardInfo = square.getCardId(clickSquare);
+          cardInfo.type = "card";
+          cardInfo.id = square.getCardId(clickSquare);
           cardLanding();
           hoverItem(raycaster);
-          
+          hoverHand(raycaster);
 
 
           switch(gameState){

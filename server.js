@@ -2,7 +2,7 @@ const express = require( 'express' );
 const app = require('express')();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
-const Matching = require('./libs/Matching.js');
+const Matching = require('./libs/matching.js');
 const reader = require('./libs/cardsReader.js');
 
 

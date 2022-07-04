@@ -45,10 +45,14 @@ module.exports = class Game{
 
     receive(data,socketid){
         console.log("wait=" + this.waitUserId + ",socketid=" + socketid);
-        if(this.waitUserId == socketid){
-            this.received = 1;
-            this.loadGameFlow(data);
-            this.next();
+        if(this.gamestate == 1 && data != "drawed"){
+
+        }else{
+            if(this.waitUserId == socketid){
+                this.received = 1;
+                this.loadGameFlow(data);
+                this.next();
+            }
         }
     }
     
