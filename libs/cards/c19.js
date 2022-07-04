@@ -1,7 +1,14 @@
+/*******************************************************************
+***  File Name          : c19.js
+***  Version            : V1.0
+***  Designer           : 武田 和大
+***  Date               : 2022.07.02
+***  Purpose            : 自分とランダムに選ばれたプレイヤーとの位置を入れ替える
+***
+*******************************************************************/
 
 const Card = require("./card.js");
 
-//カードの19番目，自分とランダムに選ばれたプレイヤーとの位置を入れ替える
 
 module.exports = class c19 extends Card {
 
@@ -15,12 +22,18 @@ module.exports = class c19 extends Card {
 
     //処理を記述
     effect(){
-        board.changPositioneRandom(player);
+        this.board.changePositionRandom(this.player);
     }
 
+    //ランダムに位置を入れ替え
     //board
-    changPositioneRandom(player){
-        
-    }
+    /*changePositionRandom(player){
+        let Turn = this.getTurn();
+        let target = Math.floor(Math.random()*this.players.length);
+        if(Turn==target){
+            target = (target + 1) % this.players.length;
+        }
+        this.changePosition(player, this.players[target]);
+    }*/
 
 }

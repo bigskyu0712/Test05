@@ -1,7 +1,13 @@
+/*******************************************************************
+***  File Name          : c10.js
+***  Version            : V1.0
+***  Designer           : 武田 和大
+***  Date               : 2022.07.02
+***  Purpose            : 全員の手札のカードをすべて山札に戻し、1人3枚ずつランダムに配布する
+***
+*******************************************************************/
 
 const Card = require("./card.js");
-
-//カードの10番目，全員の手札のカードをすべて山札に戻し、1人3枚ずつランダムに配布する
 
 module.exports = class c10 extends Card {
 
@@ -9,20 +15,23 @@ module.exports = class c10 extends Card {
     static cardType = 1;
 
     //コンストラクタ，必要がなければいじらなくて大丈夫です．
-    constructor(board) {
-        this.board = board;
+    constructor(board,player) {
+        super(board,player);
     }
 
     //処理を記述
     effect(){
-        board.everyoneDeleteAllCard(); //c9と同じ
-        //全員3枚もらう
-        let i, j;
-        for (i=0; i<board.players.length; ++i){
-            for (j=0; j<3; ++j){
-                board.addCardRandom(board.players[i]);
-            }
-        }
+        this.board.everyoneDeleteAndAdd();
     }
+
+    //全員が全てのカードを消去し、3枚手札に加える
+    //board
+    /*everyoneDeleteAndAdd(){
+        this.everyoneDeleteAllCard();
+        let i = 0;
+        for (i=0; i<this.players.length; ++i){
+            this.draw(this.players[i], 3);
+        }
+    }*/
 
 }

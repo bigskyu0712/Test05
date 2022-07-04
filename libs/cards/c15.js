@@ -1,7 +1,13 @@
+/*******************************************************************
+***  File Name          : c15.js
+***  Version            : V1.0
+***  Designer           : 武田 和大
+***  Date               : 2022.07.02
+***  Purpose            : 自分の順位の数だけさらに進む
+***
+*******************************************************************/
 
 const Card = require("./card.js");
-
-//カードの15番目，自分の順位の数だけさらに進む
 
 
 module.exports = class c15 extends Card {
@@ -12,14 +18,25 @@ module.exports = class c15 extends Card {
     //コンストラクタ，必要がなければいじらなくて大丈夫です．
     constructor(board,player) {
         super(board,player);
-        //現在の順位も入れる？
     }
 
     //処理を記述
     effect(){
-        //順位をどう計算するか
-        //分からない
-        board.rankMove(player);
+        let rank = this.board.getRank(this.player);
+        this.board.moveDueToCard(this.player, rank);  
     }
+
+    //現在の順位を取得
+    //board
+    /*getRank(player){
+        let i, Turn, rank=1;
+        Turn = this.getTurn();
+        for (i=1; i<this.players.length; ++i){
+            if(this.players[(Turn + i) % this.players.length].score > player.score){
+                ++rank;
+            }
+        }
+        return rank;
+    }*/
 
 }

@@ -1,7 +1,13 @@
+/*******************************************************************
+***  File Name          : c5.js
+***  Version            : V1.0
+***  Designer           : 武田 和大
+***  Date               : 2022.07.02
+***  Purpose            : 自分の手札のカードを1枚ランダムに捨てる
+***
+*******************************************************************/
 
 const Card = require("./card.js");
-
-//カードの5番目，自分の手札のカードを1枚ランダムに捨てる
 
 
 module.exports = class c5 extends Card {
@@ -16,13 +22,15 @@ module.exports = class c5 extends Card {
 
     //処理を記述
     effect(){
-        board.deleteCardRandom(player); //deleteItemRandomを元に作る
+        this.board.deleteCardRandom(player); //deleteItemRandomを元に作る
     }
 
-    deleteCardRandom(player){
-        let hand = player.getHand();
-        let cardId = hand[Math.random() % hand.length];
-        player.deleteCard(cardId);
-    }
+    //ランダムにカードを消去
+    //board
+    /*deleteCardRandom(player){
+        let Hand = player.getHand();
+        let CardId = Hand[Math.floor(Math.random()*Hand.length)]; //変更
+        player.deleteCard(CardId);
+    }*/
 
 }

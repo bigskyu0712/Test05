@@ -1,7 +1,13 @@
+/*******************************************************************
+***  File Name          : c3.js
+***  Version            : V1.0
+***  Designer           : 武田 和大
+***  Date               : 2022.07.02
+***  Purpose            : アイテムカードを1枚選んで入手する
+***
+*******************************************************************/
 
 const Card = require("./card.js");
-//c3.js
-//カードの3番目，アイテムカードを1枚選んで入手する
 
 
 module.exports = class c3 extends Card {
@@ -10,19 +16,19 @@ module.exports = class c3 extends Card {
     static cardType = 1;
 
     //コンストラクタ，必要がなければいじらなくて大丈夫です．
-    constructor(board,player,itemId) {
+    constructor(board,player) {
         super(board,player);
-        this.itemId = itemId;
     }
 
     //処理を記述
     effect(){
-        board.addItem(player, itemId);
+        this.board.selectItemCard(player, 1, 1)
     }
 
     //クライアントから送信後データを受け取った時
-    afterEffect(){
-        console.log("after");
+    afterEffect(data){
+        console.log("3");
+        this.board.addItem(player, data.itemId);
     }
 
 }

@@ -1,7 +1,16 @@
+/*******************************************************************
+***  File Name          : c28.js
+***  Version            : V1.0
+***  Designer           : 武田 和大
+***  Date               : 2022.07.02
+***  Purpose            : 自分のアイテムカードをすべて捨てる
+***
+*******************************************************************/
+
+//c6と同じ
 
 const Card = require("./card.js");
 
-//カードの28番目，他のプレイヤー1人を指定し、そのプレイヤーのカードを1枚選んで奪う
 
 module.exports = class c28 extends Card {
 
@@ -9,21 +18,14 @@ module.exports = class c28 extends Card {
     static cardType = 1;
 
     //コンストラクタ，必要がなければいじらなくて大丈夫です．
-    constructor(board,player,target,cardId) {
+    constructor(board,player) {
         super(board,player);
-        this.target = target;
-        this.cardId = cardId;
     }
 
     //処理を記述
     effect(){
-        board.stealCard(player, target, cardId);
+        this.board.deleteAllItem(player); //deleteItemRandomを所持数分回す？
     }
 
-    //board
-    stealCard(player, target, cardId){
-        target.deleteCard(cardId);
-        player.addCard(cardId);
-    }
 
 }
