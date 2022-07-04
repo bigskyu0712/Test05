@@ -36,7 +36,6 @@
                     <button style = "height: 50px; position:fixed;margin-left:8px;">Login</button>
                     </form>
 
-        <ul id = "msg_list"></ul>
         <script>
             let myData = {
                 token:null,
@@ -44,13 +43,6 @@
             };
 
             var socket = io();
-
-            socket.on('displayToClient',function (data){
-                const list = document.querySelector("#msg_list");
-                const li = document.createElement("li");
-                li.innerHTML = data;
-                list.insertBefore(li, list.firstChild);
-            });
 
 
             function sendPing(){
@@ -71,7 +63,6 @@
                 myData.name = userName.value;
                 socket.emit('login',userName.value);
                 formLogin();
-                CreatematchingWait();
             });
 
         </script>

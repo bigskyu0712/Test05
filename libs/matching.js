@@ -58,7 +58,7 @@ module.exports = class Matching{
                         io.emit("displayToClient",waitUserList);
                     }
 
-                    idRoomMap[socket.id] = null;
+                    delete idRoomMap[socket.id];
 
                 }
             });
@@ -139,8 +139,13 @@ module.exports = class Matching{
                 }
 
                 setInterval(function(){
-                    rooms.forEach(function(room){
-
+                    rooms.forEach(function(room,index){
+                        if(room != null){
+                            if(room.gamestate == 10){
+                                rooms[index] = null;
+                                console.log("DELETE ROOM!!!!");
+                            }
+                        }
                     });
                 },1000/30);
 

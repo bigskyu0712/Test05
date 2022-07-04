@@ -13,6 +13,7 @@ module.exports = class Game{
     reveived = 0;
     dice = 0;
     waitUserId = 0;
+    alive = 4;
 
     //クラスの初期化
     constructor(roomId,userList){
@@ -53,15 +54,19 @@ module.exports = class Game{
     
     
     disconnectUser(socketid){
-        if(this.board.getPlayer(socketid) == this.turn){
+        this.alive--;
+        console.log("alive!! ====" + this.alive);
+        if(this.alive == 0){
+            this.gamestate = 10;
+            return 0;
+        }
+        if(this.board.getPlayer(socketid).getUserNum() == this.turn){
             this.gamestate = 6;
             this.loadGameFlow(null);
         }
         this.board.disconnect(socketid);
     }
 
-
-    
 
     loadGameFlow(data){
 

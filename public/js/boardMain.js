@@ -377,6 +377,8 @@
             draw();
           }
 
+          itemData = gameData.item[gameData.myPlayerNum];
+
           if(gameData.hand.length < cardData.length){
             cardData = gameData.hand;
           }

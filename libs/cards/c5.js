@@ -22,7 +22,7 @@ module.exports = class c5 extends Card {
 
     //処理を記述
     effect(){
-        this.board.deleteCardRandom(player); //deleteItemRandomを元に作る
+        this.board.deleteCardRandom(this.player); //deleteItemRandomを元に作る
     }
 
     //ランダムにカードを消去

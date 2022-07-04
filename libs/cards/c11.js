@@ -29,13 +29,13 @@ module.exports = class c11 extends Card {
     //クライアントから送信後データを受け取った時
     afterEffect(data){
         console.log("11");
-        this.board.addCard(data.cardId);
+        this.board.effectAddCard(this.player,data.cardId);
     }
 
     //カードIdからカードを入手
     //board
     addCard(player, cardId){
-        player.addCard(cardId);
+        player.addCard(this.player,cardId);
     }
 
 }

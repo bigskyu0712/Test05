@@ -45,7 +45,7 @@ module.exports = class Board{
 
     //デッキの初期化
     initdeck(){
-        this.deck = [2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,7,7,7,7,7,7,7,7,7,7,9,9,9,9,9,9,9,11,11,11,11,11,11,11,11];
+        this.deck = [2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,7,7,7,7,7,7,7,7,7,7,9,9,9,9,9,9,9,11,11,11,11,11,11,11,11,31,31,31,31,31,31];
         this.initItem();
     }
 
@@ -145,13 +145,13 @@ module.exports = class Board{
     }
 
     gameEnd(){
+        console.log("game end!!!!!");
         let score = [];
         for(i = 0; i < 4; i++){
             this.players[i].updateScore();
             score.push(this.players[i].getScore());
         }
         display.showResult();
-        this.game.end();
     }
 
     changedRule(turn,cardId){

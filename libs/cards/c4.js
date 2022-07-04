@@ -22,7 +22,7 @@ module.exports = class c4 extends Card {
 
     //処理を記述
     effect(){
-        this.board.addCardRandom(player); //addItemRandomを元に作る
+        this.board.addCardRandom(this.player); //addItemRandomを元に作る
     }
 
     //ランダムにカードを入手

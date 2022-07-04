@@ -107,3 +107,9 @@ socket.on("deleteAllCard",function(data){
     }
     isUpdate = true;
 });
+
+socket.on("showResult",function(data){
+    gameData.score = data;
+    socket.disconnect()
+    showResult();
+});

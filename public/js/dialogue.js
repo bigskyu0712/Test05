@@ -50,6 +50,7 @@ function formLogin(){
 }
 
 function dialogueHide(){
+    usingContext.clearRect(0,0,800,600);
     using.style.display = 'none';
     using.style.pointerEvents ='none';
 }
@@ -60,7 +61,7 @@ function showResult(){
     using.style.pointerEvents ='auto';
     usingContext.clearRect(0, 0,800,600);
     usingContext.rect( 100, 100, 600, 400 );
-    usingContext.fillStyle = "rgba(200,200,200,0.7)";
+    usingContext.fillStyle = "rgba(0,0,0,0.7)";
     usingContext.fill();   
     dialogW = using.width;
     dialogH = using.height;
@@ -74,6 +75,7 @@ function showResult(){
     for(i=0;i<4;i++){
         displayAvater(i);
     }
+    using.addEventListener('click', showNext, false);
 }
 
 function displayAvater(i){
@@ -84,4 +86,57 @@ function displayAvater(i){
             usingContext.textAlign = 'left';
             usingContext.fillText( gameData.playerName[i] + ":" + gameData.score[i], 220 , 200 + 80 * i);       
         }
+}
+
+function showNext(){
+    makeDialog();
+    usingContext.fill();
+    dialogW = using.width;
+    dialogH = using.height;
+    usingContext.textAlign = 'center';
+    usingContext.Baseline = 'center';
+    usingContext.font = '30px serif';
+    let text = "もう一度ゲームを行いますか？";
+    allTextLength = cvs.measureText(text).width;
+    usingContext.fillStyle = 'black';
+    usingContext.fillText(text, dialogW / 2 , 200);
+    
+    makebutton();
+}
+
+let dialogueCursor = {
+	x: 0,
+	y: 0
+};
+
+function makebutton(){
+    usingContext.closePath();
+    using.removeEventListener('click', showNext, false);
+    usingContext.fillStyle = "rgba(120,120,120,1)";
+    usingContext.fillRect(200,300,150,80);
+    usingContext.fillRect(450,300,150,80);
+    usingContext.fillStyle = 'white';
+    usingContext.fillText("はい", 275 , 350);
+    usingContext.fillText("いいえ", 525 , 350);
+    using.addEventListener("mousemove", (point) => {
+        // 表示する位置を少しずらしframe以外の要素に重ならないようにする
+        dialogueCursor.x = point.clientX;
+        dialogueCursor.y = point.clientY;
+    });
+    using.addEventListener("click",onClickEvent,false);
+}
+
+function onClickEvent(){
+    if(
+        (dialogueCursor.x > 200 && dialogueCursor.x  < 350) && (dialogueCursor.y > 300 && dialogueCursor.y  < 380)
+    ){
+        socket.connect();
+        socket.emit('login',userName.value);
+        formLogin();
+    }
+    if(
+        (dialogueCursor.x > 450 && dialogueCursor.x  < 600) && (dialogueCursor.y > 300 && dialogueCursor.y  < 380)
+    ){
+        location.reload();
+    }
 }
