@@ -27,7 +27,7 @@ cardTexts = [
     {
         cardId:2,
         cardType:1,
-        cardName:"踏むと勝利",
+        cardName:"アイテムを１枚入手",
         cardText:"アイテムカードからランダムに１枚入手する"
     },
     {
