@@ -158,7 +158,7 @@ cardTexts = [
         cardId:23,
         cardType:1,
         cardName:"プレイヤーのカードを捨てる",
-        cardText:"他のプレイヤー1人を指定し、そのプレイヤーのカードを1枚ランダムに捨てる。\"
+        cardText:"他のプレイヤー1人を指定し、そのプレイヤーのカードを1枚ランダムに捨てる。"
     },
     {
         cardId:24,
@@ -201,6 +201,12 @@ cardTexts = [
         cardType:1,
         cardName:"プレイヤーと位置を入れ替え",
         cardText:"他のプレイヤーを指定し、そのプレイヤーと位置を交換する"
+    },
+    {
+        cardId:31,
+        cardType:1,
+        cardName:"ゲームを終了",
+        cardText:"ゲームを終了し、スコアで順位を決める"
     },
     {
         cardId:1,
