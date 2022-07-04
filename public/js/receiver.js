@@ -15,6 +15,8 @@ socket.on("startGame",function(data){
 socket.on("draw",function (drawCards){
     console.log(drawCards);
     gameData.hand = gameData.hand.concat(drawCards);
+    console.log("socket send");
+    socket.emit("reply","drawed");
 });
 
 socket.on("selectCardFromHand",function (){
@@ -130,4 +132,8 @@ socket.on("sendDraw",function(){
 
 socket.on("changeState",function(data){
     gameState = data;
+});
+
+socket.on("nextTurn",function(){
+    clearTopText();
 });

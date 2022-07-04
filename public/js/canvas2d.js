@@ -22,6 +22,11 @@ function initCanvas2d(){
     cvs.font = '60px serif';
 }
 
+
+function initcanvas(){
+    cvs.clearRect(0, 0, w, h);
+}
+
 function clearTopText() {
     cvs.clearRect(0, 0, w, 100); //上に表示してた文字を消す
 }

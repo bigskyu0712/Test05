@@ -24,7 +24,7 @@ module.exports = class c28 extends Card {
 
     //処理を記述
     effect(){
-        this.board.deleteAllItem(player); //deleteItemRandomを所持数分回す？
+        this.board.deleteAllItem(this.player); //deleteItemRandomを所持数分回す？
     }
 
 

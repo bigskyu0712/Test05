@@ -29,6 +29,11 @@ let cardData = [];
 let isUpdate = false;
 
 
+function initGameHome(){
+  let itemCardData = [];
+  let cardData = [];
+}
+
 /****************************************************************************
 *** Function Name       : main()
 *** Designer            : 岩上 雄飛
