@@ -1,7 +1,13 @@
+/*******************************************************************
+***  File Name          : c6.js
+***  Version            : V1.0
+***  Designer           : 武田 和大
+***  Date               : 2022.07.02
+***  Purpose            : 自分のアイテムカードをすべて捨てる
+***
+*******************************************************************/
 
 const Card = require("./card.js");
-
-//カードの6番目，自分のアイテムカードをすべて捨てる
 
 
 module.exports = class c6 extends Card {
@@ -16,14 +22,16 @@ module.exports = class c6 extends Card {
 
     //処理を記述
     effect(){
-        board.deleteAllItem(player); //deleteItemRandomを所持数分回す
+        this.board.deleteAllItem(player); //deleteItemRandomを所持数分回す？
     }
 
-    //board
-    deleteAllItem(player){
-        for (let i=0; i<player.item.length; ++i){
+    //全てのアイテムカードを消去
+    //board 変更
+    /*deleteAllItem(player){
+        let i, j=player.item.length;
+        for (i=0; i<j; ++i){
             this.deleteItemRandom(player);
         }
-    }
+    }*/
 
 }

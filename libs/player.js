@@ -11,6 +11,7 @@ module.exports = class Player
         this.hand = []; //手札
         this.item = []; //所持アイテム
         this.position = 0; //盤上での位置
+        this.rest = 0;  //0は通常, 0以外は1回休み
     }
 
 
@@ -62,6 +63,9 @@ module.exports = class Player
     //ポジションの更新
     updatePosition(dice){
         this.position += dice;
+        if(this.position<0){ 
+            this.position += 20;
+        }
     }
 
     //手札からカードの削除

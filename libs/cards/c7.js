@@ -1,7 +1,13 @@
+/*******************************************************************
+***  File Name          : c7.js
+***  Version            : V1.0
+***  Designer           : 武田 和大
+***  Date               : 2022.07.02
+***  Purpose            : 自分のカードをすべて捨てる
+***
+*******************************************************************/
 
 const Card = require("./card.js");
-
-//カードの7番目，自分のカードをすべて捨てる
 
 
 module.exports = class c7 extends Card {
@@ -16,14 +22,17 @@ module.exports = class c7 extends Card {
 
     //処理を記述
     effect(){
-        board.deleteAllCard(player); //deleteCardRandomを所持数分回す
+        this.board.deleteAllCard(player); //deleteCardRandomを所持数分回す
     }
 
+    //全てのカードを消去
     //board
-    deleteAllCard(player){
-        for (let i=0; i<player.hand.length; ++i){
+    //変更
+    /*deleteAllCard(player){
+        let i, j=player.item.length;
+        for (i=0; i<j; ++i){
             this.deleteCardRandom(player);
         }
-    }
+    }*/
 
 }

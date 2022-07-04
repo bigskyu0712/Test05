@@ -1,7 +1,13 @@
+/*******************************************************************
+***  File Name          : c25.js
+***  Version            : V1.0
+***  Designer           : 武田 和大
+***  Date               : 2022.07.02
+***  Purpose            : 他のプレイヤー1人を指定し、そのプレイヤーとカードを1枚ランダムに交換する
+***
+*******************************************************************/
 
 const Card = require("./card.js");
-
-//カードの25番目，他のプレイヤー1人を指定し、そのプレイヤーとカードを1枚ランダムに交換する
 
 module.exports = class c25 extends Card {
 
@@ -9,19 +15,30 @@ module.exports = class c25 extends Card {
     static cardType = 1;
 
     //コンストラクタ，必要がなければいじらなくて大丈夫です．
-    constructor(board,player,target) {
+    constructor(board,player) {
         super(board,player);
-        this.target = target;
     }
 
     //処理を記述
     effect(){
-        board.changeCardRandom(player, target);
-        //乱数2つ設定
-        //乱数1はtargetの手札のcardId
-        //乱数2はplayerの手札のcardId
-        //乱数1でplayerのdeleteCardとtargetのaddCard
-        //乱数2でplayerのaddCardとtargetのdeleteCard
+        this.board.selectPlayer(this.player, 1);
+    }
+        
+    afterEffect(data){
+        console.log("25");
+        this.board.changeCardRandom(this.player, data.selectPlayer);
     }
 
+    //ランダムにカードを交換
+    //board
+    //変更
+    /*changeCardRandom(player, selectPlayer){
+        let CardId = player.getHand()[Math.floor(Math.random()*selectPlayer.getHand().length)];
+        this.deleteCard(player, CardId);
+        this.addCard(selectPlayer, CardId);
+        CardId = selectPlayer.getHand()[Math.floor(Math.random()*selectPlayer.getHand().length)];
+        this.deleteCard(selectPlayer, CardId);
+        this.addCard(player, CardId);
+    }*/
+    
 }

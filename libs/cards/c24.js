@@ -1,7 +1,13 @@
+/*******************************************************************
+***  File Name          : c24.js
+***  Version            : V1.0
+***  Designer           : 武田 和大
+***  Date               : 2022.07.02
+***  Purpose            : 他のプレイヤー1人を指定し、そのプレイヤーのカードを1枚ランダムに奪う
+***
+*******************************************************************/
 
 const Card = require("./card.js");
-
-//カードの24番目，他のプレイヤー1人を指定し、そのプレイヤーのカードを1枚ランダムに奪う
 
 module.exports = class c24 extends Card {
 
@@ -9,17 +15,36 @@ module.exports = class c24 extends Card {
     static cardType = 1;
 
     //コンストラクタ，必要がなければいじらなくて大丈夫です．
-    constructor(board,player,target) {
+    constructor(board,player) {
         super(board,player);
-        this.target = target;
     }
 
     //処理を記述
     effect(){
-        board.stealCardRandom(player, target); 
-        //targetの手札のcardIdの乱数設定
-        //targetはその乱数値でdeleteCard
-        //playerはその乱数値でaddCard
+        this.board.selectPlayer(this.player, 1);
     }
+
+    //クライアントから送信後データを受け取った時
+    afterEffect(data){
+        console.log("24");
+        this.board.stealCardRandom(this.player, data.selectPlayer);
+
+    }
+
+    //ランダムにカードを奪う
+    //board
+    //変更
+    /*stealCardRandom(player, selectPlayer){
+        let CardId = selectPlayer.getHand()[Math.floor(Math.random()*selectPlayer.getHand().length)];
+        this.deleteCard(selectPlayer, CardId)
+        this.addCard(player, CardId);
+    }*/
+
+    //カードIdからカードを入手
+    //board
+    /*addCard(player, cardId){
+        player.addCard(cardId);
+    }*/
+
 
 }

@@ -118,8 +118,170 @@ module.exports = class Borad{
         
     }
 
+    
+    //ここからカードの効果処理に使うメソッドです
+    //c4
+    //ランダムにカードを入手
+    addCardRandom(player){
+        let rand = Math.floor(Math.random()*this.deck.length);
+        let temp = this.deck[rand];
+        this.deck[rand] = this.deck[this.deck.length - 1];
+        this.deck[this.deck.length - 1] = temp;
+        player.addCard(this.deck.pop()); 
+    }
 
+    //c5
+    //ランダムにカードを消去
+    deleteCardRandom(player){
+        let Hand = player.getHand();
+        let CardId = Hand[Math.floor(Math.random()*Hand.length)];
+        player.deleteCard(CardId);
+    }
 
+    //c6
+    //全てのアイテムカードを消去
+    deleteAllItem(player){
+        let i, j=player.item.length;
+        for (i=0; i<j; ++i){
+            this.deleteItemRandom(player);
+        }
+    }
+
+    //c7
+    //全てのカードを消去
+    deleteAllCard(player){
+        let i, j=player.item.length;
+        for (i=0; i<j; ++i){
+            this.deleteCardRandom(player);
+        }
+    }
+
+    //c8
+    //全員がランダムにカードを消去
+    everyoneDeleteRandom(){
+        for (let i=0; i<this.players.length; ++i){
+            this.deleteCardRandom(this.players[i]);
+        }
+    }
+
+    //c9
+    //全員が全てのカードを消去
+    everyoneDeleteAllCard(){
+        let i = 0;
+        for (i=0; i<this.players.length; ++i){
+            this.deleteAllCard(this.players[i]);
+        }
+    }
+
+    //c10
+    //全員が全てのカードを消去し、3枚手札に加える
+    everyoneDeleteAndAdd(){
+        this.everyoneDeleteAllCard();
+        let i = 0;
+        for (i=0; i<this.players.length; ++i){
+            this.draw(this.players[i], 3);
+        }
+    }
+
+    //c12
+    //カードIdからカードを消去
+    deleteCard(player, cardId){
+        player.deleteCard(cardId);
+    }
+
+    //c14
+    rest(player){
+        player.rest = 1;
+    }
+
+    //c15
+    //現在の順位を取得
+    getRank(player){
+        let i, Turn, rank=1;
+        Turn = this.getTurn();
+        for (i=1; i<this.players.length; ++i){
+            if(this.players[(Turn + i) % this.players.length].score > player.score){
+                ++rank;
+            }
+        }
+        return rank;
+    }
+
+    //c17
+    //現在のターンを取得
+    getTurn(){
+        return this.game.turn;
+    }
+
+    //c19
+    //ランダムに位置を入れ替え
+    changePositionRandom(player){
+        let Turn = this.getTurn();
+        let target = Math.floor(Math.random()*this.players.length);
+        if(Turn==target){
+            target = (target + 1) % this.players.length;
+        }
+        this.changePosition(player, this.players[target]);
+    }
+
+    //c20
+    //サイコロを振る
+    diceDueToCard(player){
+        this.diceNum = Math.floor(Math.random() * 6) + 1;
+        display.dice(player.getUserId(), this.diceNum);
+    }
+
+    //c20
+    //位置を更新し、コマが動く
+    moveDueToCard(player, dice){
+        console.log("position=" + player.getPosition() + "dice=" + dice);
+        player.updatePosition(dice);
+        display.updatePosition(this.roomId, turn, player.getPosition());
+        console.log("position=" + player.getPosition());
+    }
+
+    //c24
+    //ランダムにカードを奪う
+    stealCardRandom(player, selectPlayer){
+        let CardId = selectPlayer.getHand()[Math.floor(Math.random()*selectPlayer.getHand().length)];
+        this.deleteCard(selectPlayer, CardId)
+        this.addCard(player, CardId);
+    }
+
+    //c24
+    //カードIdからカードを入手
+    addCard(player, cardId){
+        player.addCard(cardId);
+    }
+
+    //c25
+    //ランダムにカードを交換
+    changeCardRandom(player, selectPlayer){
+        let CardId = player.getHand()[Math.floor(Math.random()*selectPlayer.getHand().length)];
+        this.deleteCard(player, CardId);
+        this.addCard(selectPlayer, CardId);
+        CardId = selectPlayer.getHand()[Math.floor(Math.random()*selectPlayer.getHand().length)];
+        this.deleteCard(selectPlayer, CardId);
+        this.addCard(player, CardId);
+    }
+
+    //c26
+    //全てのカードを交換
+    changeAllCard(player, selectPlayer){
+        let temp = [];
+        temp = player.hand;
+        player.hand = selectPlayer.hand.splice(0, 0);
+        selectPlayer.hand = temp.splice(0, 0);
+    }
+
+    //c30
+    //位置を入れ替え
+    changePosition(player, selectPlayer){
+        let temp;
+        temp = player.position;
+        player.position = selectPlayer.position;
+        selectPlayer.position = temp;
+    }
 
 
     //ここから基本操作
@@ -251,8 +413,17 @@ module.exports = class Borad{
 
     
     //次の手番のユーザを取得
+    //1回休みに対応
     getNextUser(turn){
-        return (turn + 1) % this.players.length;
+        let i, nextTurn;
+        for (i=0; i<this.players.length + 1; ++i){ //全員が1回休みになっていることを考慮して5回回す
+            nextTurn = (turn + 1 + i) % this.players.length;
+            if(this.players[nextTurn].rest==0){ //行動できる場合
+                break;
+            }
+            this.players[nextTurn].rest = 0; //次は行動できる
+        }
+        return nextTurn;
     }
 
 

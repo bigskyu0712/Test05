@@ -1,8 +1,13 @@
+/*******************************************************************
+***  File Name          : c22.js
+***  Version            : V1.0
+***  Designer           : 武田 和大
+***  Date               : 2022.07.02
+***  Purpose            : もう1度サイコロを振り、出た目が奇数ならその分戻り、偶数ならその分進む
+***
+*******************************************************************/
 
 const Card = require("./card.js");
-
-//カードの22番目，もう1度サイコロを振り、出た目が奇数ならその分戻り、偶数ならその分進む
-
 
 
 module.exports = class c22 extends Card {
@@ -17,7 +22,12 @@ module.exports = class c22 extends Card {
 
     //処理を記述
     effect(){
-        //サイコロ振る
+        let dice = this.board.diceDueToCard(this.player);
+        if(dice % 2 == 1){
+            dice = -1 * dice;
+        }
+        this.board.moveDueToCard(this.player, dice);  
+
     }
 
 }

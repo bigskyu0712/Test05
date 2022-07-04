@@ -1,7 +1,16 @@
+/*******************************************************************
+***  File Name          : c27.js
+***  Version            : V1.0
+***  Designer           : 武田 和大
+***  Date               : 2022.07.02
+***  Purpose            : 自分の手札のカードを1枚ランダムに捨てる
+***
+*******************************************************************/
+
+//c5と同じ
 
 const Card = require("./card.js");
 
-//カードの27番目，他のプレイヤー1人を指定し、そのプレイヤーのカードを1枚選んで捨てる
 
 module.exports = class c27 extends Card {
 
@@ -9,14 +18,14 @@ module.exports = class c27 extends Card {
     static cardType = 1;
 
     //コンストラクタ，必要がなければいじらなくて大丈夫です．
-    constructor(board,player,cardId) {
-        super(board,player); //このplayerは指名された側
-        this.cardId = cardId;
+    constructor(board,player) {
+        super(board,player);
     }
 
     //処理を記述
     effect(){
-        board.deleteCard(player, cardId); //c12と同じ
+        this.board.deleteCardRandom(player); //deleteItemRandomを元に作る
     }
+
 
 }
