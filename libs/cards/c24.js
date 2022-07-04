@@ -21,14 +21,13 @@ module.exports = class c24 extends Card {
 
     //処理を記述
     effect(){
-        this.board.selectPlayer(this.player, 1);
+        this.board.selectPlayerHand(this.player);
     }
 
     //クライアントから送信後データを受け取った時
-    afterEffect(data){
-        console.log("24");
-        this.board.stealCardRandom(this.player, data.selectPlayer);
-
+    afterEffect(data){//hoverCard
+        this.board.stealCardRandom(player, data);
+        
     }
 
     //ランダムにカードを奪う

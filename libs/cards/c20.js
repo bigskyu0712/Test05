@@ -23,9 +23,11 @@ module.exports = class c20 extends Card {
     //処理を記述
     effect(){
         //サイコロ振る処理
-        let dice = this.board.diceDueToCard(this.player) 
-        //進む処理
-        this.board.moveDueToCard(this.player, dice);  
+        this.board.noneAction();
+    }
+
+    afterEffect(){
+        this.board.game.gameState = 2;
     }
 
     //サイコロを振る

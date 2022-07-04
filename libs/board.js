@@ -45,7 +45,7 @@ module.exports = class Board{
 
     //デッキの初期化
     initdeck(){
-        this.deck = [2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,7,7,7,7,7,7,7,7,7,7,9,9,9,9,9,9,9,11,11,11,11,11,11,11,11,31,31,31,31,31,31];
+        this.deck = [2,2,2,2,3,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,6,7,7,7,7,7,,9,9,9,9,11,11,11,11,11,14,14,14,14,14,20,20,20,20,14,24,24,24,24,24,24,24,31,31,31];
         this.initItem();
     }
 
@@ -192,6 +192,10 @@ module.exports = class Board{
             console.log(this.players[j].getUserId());
             this.draw(this.players[j],4);
         }    
+    }
+
+    addCard(player,cardId){
+        player.addCard(cardId);
     }
 
     //ドロー
@@ -385,7 +389,9 @@ module.exports = class Board{
     deleteAllCard(player){
         let j = player.hand.length;
         for (let i=0; i<j; ++i){
-            this.deleteCardRandom(player);
+            let Hand = player.getHand();
+            let cardNum = Math.floor(Math.random()*Hand.length);
+            player.deleteCardNum(cardNum);
         }
         display.upDateHand(player.getUserId(), player.getHand());
         display.changeHand(this.roomId,player.getUserNum(),player.getHand().length);
@@ -402,10 +408,16 @@ module.exports = class Board{
     //c9
     //�S�����S�ẴJ�[�h������
     everyoneDeleteAllCard(){
-        let i = 0;
         for (i=0; i<this.players.length; ++i){
-            this.deleteAllCard(this.players[i]);
+            let j = this.players[i].hand.length;
+            for (let k=0; k<j; ++k){
+                let Hand = this.players[i].getHand();
+                let cardNum = Math.floor(Math.random()*Hand.length);
+                this.players[i].deleteCardNum(cardNum);
+            }
         }
+        display.upDateHand(player.getUserId(), player.getHand());
+        display.changeHand(this.roomId,player.getUserNum(),player.getHand().length);
     }
 
     //c10
@@ -439,7 +451,7 @@ module.exports = class Board{
 
     //board
     rest(player){
-        player.rest = 1;
+        player.state = 1;
     }
     
     //board��getNextUser�ɂ���
@@ -503,12 +515,22 @@ module.exports = class Board{
         console.log("position=" + player.getPosition());
     }
 
+
+
     //c24
     //�����_���ɃJ�[�h��D��
-    stealCardRandom(player, selectPlayer){
-        let CardId = selectPlayer.getHand()[Math.random()*selectPlayer.getHand().length];
-        this.deleteCard(selectPlayer, CardId)
-        this.effectAddCard(player, CardId);
+    stealCardRandom(player, data){
+        let cardId = this.players[data.playerNum].getHand()[data.cardNum];
+        this.players[data.playerNum].deleteCard(data, cardId)
+        this.addCard(player, cardId);
+        display.upDateHand(player.getUserId(), player.getHand());
+        display.changeHand(this.roomId,player.getUserNum(),player.getHand().length);
+        display.upDateHand(this.players[data.playerNum].getUserId(), this.players[data.playerNum].getHand());
+        display.changeHand(this.roomId,this.players[data.playerNum].getUserNum(),this.players[data.playerNum].getHand().length);
+    }
+
+    selectPlayerHand(player){
+        display.selectPlayerHand(player.getUserId());
     }
 
     //c25
@@ -516,10 +538,10 @@ module.exports = class Board{
     changeCardRandom(player, selectPlayer){
         let CardId = player.getCard[Math.random()*player.getCard.length];
         this.deleteCard(player, CardId);
-        this.effectAddCard(selectPlayer, CardId);
+        this.addCard(selectPlayer, CardId);
         CardId = selectPlayer.getCard[Math.random()*selectPlayer.getCard.length];
         this.deleteCard(selectPlayer, CardId);
-        this.effectAddCard(player, CardId);
+        this.addCard(player, CardId);
     }
 
     //c26

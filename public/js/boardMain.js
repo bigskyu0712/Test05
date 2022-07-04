@@ -170,6 +170,12 @@
                 socket.emit("reply",hoverCard);
               }
 
+            case 24:
+              if(isHoveringItem == true && hoverCard.type == "hand"){
+                socket.emit("reply",hoverCard);
+              }
+              break;
+
                 break;
             default:
               break;
@@ -292,7 +298,7 @@
                     if (intersects.length > 0 && mesh === intersects[0].object) {
                       //カードInfoとhoverCardを更新
                       hoverCard.cardNum = index;
-                      hoverCard.PlayerNum = i;
+                      hoverCard.playerNum = i;
                       hoverCard.type = "hand";
                       isHoveringHand = true;
                       console.log(hoverCard.cardNum);

@@ -25,9 +25,13 @@ module.exports = class c14 extends Card {
         this.board.rest(this.player);
     }
 
+    afterEffect(){
+
+    }
 
     //playerのコンストラクタの追加
     //rest = 0 ・・・ 0は行動できる, 1(0以外)は休み
+    //↑了解です。playerのフィールドにstate(0:通常,1:休み,3:切断を追加しました。)
 
     //次のターンお休み
     //board

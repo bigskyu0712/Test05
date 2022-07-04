@@ -20,7 +20,7 @@ module.exports = class Game{
         this.board = new Board(roomId,userList,this);
         this.turn = this.board.setFirstPlayers();
         console.log("turn="+this.turn);
-        this.gamestate = 1;
+        this.gameState = 1;
         this.board.initdeck();
     }
 
@@ -38,14 +38,14 @@ module.exports = class Game{
 
     next(){
         this.received = 0;
-        this.gamestate++;
+        this.gameState++;
         this.loadGameFlow(null);
     }
 
 
     receive(data,socketid){
         console.log("wait=" + this.waitUserId + ",socketid=" + socketid);
-        if(this.gamestate == 1 && data != "drawed"){
+        if(this.gameState == 1 && data != "drawed"){
 
         }else{
             if(this.waitUserId == socketid){
@@ -61,11 +61,11 @@ module.exports = class Game{
         this.alive--;
         console.log("alive!! ====" + this.alive);
         if(this.alive == 0){
-            this.gamestate = 10;
+            this.gameState = 10;
             return 0;
         }
         if(this.board.getPlayer(socketid).getUserNum() == this.turn){
-            this.gamestate = 6;
+            this.gameState = 6;
             this.loadGameFlow(null);
         }
         this.board.disconnect(socketid);
@@ -76,7 +76,7 @@ module.exports = class Game{
 
         //以下ゲームフローを記述
 
-        switch(this.gamestate){
+        switch(this.gameState){
 
             case 1:
                 //ドロー
@@ -121,8 +121,8 @@ module.exports = class Game{
             
 
         }
-        if(this.gamestate == 6){
-            this.gamestate = 1;
+        if(this.gameState == 6){
+            this.gameState = 1;
             this.loadGameFlow();
         }
     }

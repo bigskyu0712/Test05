@@ -127,3 +127,7 @@ exports.deleteAllCard = function(roomId,userNum){
 exports.showResult = function(roomId,data){
     server.io.to(roomId).emit("showResult",data);
 }
+
+exports.selectPlayerHand = function(userId){
+    server.io.to(userId).emit("selectPlayerHand");
+}
