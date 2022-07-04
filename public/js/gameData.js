@@ -70,3 +70,22 @@ function initSendData() {
         itemNum:-1
     }
 }
+
+function initGameData(){
+    diceNum = 0;
+    isMyturn = false;
+
+    gameData = {
+        myPlayerNum:-1,
+        playerName:[],
+        positions:[0,0,0,0],
+        item:[[],[],[],[]],
+        score:[[],[],[],[]],
+        hand:[],
+        playerHandNumber:[4,4,4,4],
+        direction:[],
+        square:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        score:[0,0,0,0],
+        term:-1
+    }
+}

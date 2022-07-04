@@ -5,7 +5,9 @@
       createCard = [];
 
       function init() {
-
+        initGameData();
+        initcanvas();
+        initGameHome();
         setDirection(gameData.myPlayerNum);
         console.log("direction:"+gameData.direction);
         let cameraInitZ = 1200;      //cameraのz座標,初期値
@@ -21,6 +23,7 @@
         let handList = [[],[],[],[]];
         let isHoveringItem = false;
         let nowTerm = -1;
+        let goalCard;
 
 
         // サイズを指定
@@ -192,6 +195,11 @@
             return 0;
         }
 
+        function hoverRule(raycaster){
+          const intersects = raycaster.intersectObjects(goalCard);
+          console.log(intersects);
+        }
+
         //gamestate
 
         function handleClick(event){
@@ -315,7 +323,7 @@
 
         drawName();
 
-        let goalCard;
+        
 
         // 毎フレーム時に実行されるループイベントです
         function tick() {
@@ -328,6 +336,10 @@
           cardLanding();
           hoverItem(raycaster);
           hoverHand(raycaster);
+          if(goalCard != null){
+            hoverRule(raycaster);
+          }
+          
 
 
           switch(gameState){
