@@ -28,7 +28,7 @@ module.exports = class c3 extends Card {
     //クライアントから送信後データを受け取った時
     afterEffect(data){
         console.log("3");
-        this.board.addItem(this.player, data.itemId);
+        this.board.addItemNum(this.player, data);
     }
 
 }

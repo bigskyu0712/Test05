@@ -222,11 +222,6 @@ function isHoveringCard(canvas,     //canvas
 *** Return              : 
 ****************************************************************************/
 function makeSwitchButton(canvas){
-  /*****
-    ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    カードの座標がわからないのでy座標を埋めてください
-    ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-  ****/
   var buttonX = 0;
   var buttonY = 300;
   let ctx = canvas.getContext('2d');
@@ -276,7 +271,7 @@ function switchCards(ctx, canvas) //context
     cardData = gameData.hand;
     showCards(ctx, canvas, cardData,-1);
   } else {
-    itemData = gameData.item[gameData.myPlayerNum];
+    itemCardData = gameData.item[gameData.myPlayerNum];
     showItemCards(ctx, canvas, itemCardData,-1);
   }
 }
