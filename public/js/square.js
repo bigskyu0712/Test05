@@ -4,6 +4,7 @@ class Square extends THREE.Group{
     offset;
     cubesize;
     cardIdList = [];
+    numList = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1];
 
     constructor(cubesize){
         
@@ -85,6 +86,14 @@ class Square extends THREE.Group{
       }else{
         return -1;
       }
+    }
+
+    setNum(squareNum,num){
+      this.numList[squareNum] = num;
+    }
+
+    getNum(squareNum){
+      return this.numList[squareNum];
     }
 
 }

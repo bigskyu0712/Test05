@@ -80,8 +80,8 @@ function displayAvater(i){
         let image = new Image();
         image.src = "../img/p"+ i +".svg";
         image.onload = function () {
-            usingContext.drawImage (image, 150, 150 + 80 * i, 80, 80);
+            usingContext.drawImage (image, 150, 140 + 80 * i, 80, 80);
             usingContext.textAlign = 'left';
-            usingContext.fillText( 'text', 220 , 210 + 80 * i);       
+            usingContext.fillText( gameData.playerName[i] + ":" + gameData.score[i], 220 , 200 + 80 * i);       
         }
 }

@@ -50,6 +50,18 @@ module.exports = class Game{
             this.next();
         }
     }
+    
+    
+    disconnectUser(socketid){
+        if(this.board.getPlayer(socketid) == this.turn){
+            this.gamestate = 6;
+            this.loadGameFlow(null);
+        }
+        this.board.disconnect(socketid);
+    }
+
+
+    
 
     loadGameFlow(data){
 

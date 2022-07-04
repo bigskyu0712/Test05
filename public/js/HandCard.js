@@ -47,7 +47,7 @@ class HandCard extends THREE.Mesh {
     ****************************************************************************/
     setPosition(playerNum,index){
         console.log("Player direction:", gameData.direction[playerNum]);
-
+        this.position.y = 70;
         // プレイヤー位置によって座標を設定
         switch(gameData.direction[playerNum]){
             case 1:

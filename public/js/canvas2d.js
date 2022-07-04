@@ -23,7 +23,13 @@ function initCanvas2d(){
 }
 
 function clearTopText() {
-    cvs.clearRect(0, 0, w, 80); //上に表示してた文字を消す
+    cvs.clearRect(0, 0, w, 100); //上に表示してた文字を消す
+}
+
+function displayText(text) {
+    clearTopText();
+    cvs.fillStyle = 'white';
+    cvs.fillText(text, w / 2, 80);
 }
 
 

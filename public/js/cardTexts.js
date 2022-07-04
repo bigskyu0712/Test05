@@ -1,20 +1,18 @@
 /*******************************************************************
 ***  File Name    : cardText.js
-***  Version      : V1.1
-***  Designer     : 岩上雄飛
-***  Date         : 2022.07.04
-***  Purpose      : hover.jsで表示するカードのデータを保管
+***  Version      : V1.0
+<<<<<<< Updated upstream
+***  Designer     : 岩上 雄飛
+=======
+***  Designer     : 
+>>>>>>> Stashed changes
+***  Date         : 2022.06.28
+***  Purpose      : カードのデータを保管
 ***
 *******************************************************************/
 
 /*
-*** Revision :
-*** V1.0 : 岩上雄飛, 2022.06.28
-*** V1.1 : 岩上雄飛, 2022.07.04 アイテムカードの情報を追加、マスカードの更新
-*/
-
-/*
-cardId  : カードの番号
+cardId  : カードのID
 cardType: カードの種類
             0: アイテムカード 
             1: マスカード
@@ -24,70 +22,6 @@ cardText: カードの詳細
 */
 
 cardTexts = [
-    // アイテムカード
-    {
-        cardId:1,
-        cardType = 0,
-        cardName:"星",
-        cardText:"宇宙にたくさん存在する"
-    },
-    {
-        cardId:2,
-        cardType = 0,
-        cardName:"愛",
-        cardText:"ハート"
-    }
-    ,
-    {
-        cardId:3,
-        cardType = 0,
-        cardName:"コイン",
-        cardText:"薄い円型の金属"
-    },
-    {
-        cardId:4,
-        cardType = 0,
-        cardName:"太陽",
-        cardText:"表面温度 約6000°C の惑星"
-    },
-    {
-        cardId:5,
-        cardType = 0,
-        cardName:"コップ",
-        cardText:"植木鉢じゃないよ"
-    },
-    {
-        cardId:6,
-        cardType = 0,
-        cardName:"色鉛筆",
-        cardText:"赤い色の線が描ける鉛筆"
-    },
-    {
-        cardId:7,
-        cardType = 0,
-        cardName:"音楽",
-        cardText:"楽譜と音符"
-    },
-    {
-        cardId:8,
-        cardType = 0,
-        cardName:"ケーキ",
-        cardText:"スイカ味のケーキ"
-    },
-    {
-        cardId:9,
-        cardType = 0,
-        cardName:"",
-        cardText:""
-    },
-    {
-        cardId:10,
-        cardType = 0,
-        cardName:"",
-        cardText:""
-    },
-
-    // マスカード
     {
         cardId:1,
         cardType:1,
@@ -150,15 +84,9 @@ cardTexts = [
     },
     {
         cardId:11,
-<<<<<<< HEAD
         cardType:1,
         cardName:"好きなカードを選ぶ",
         cardText:"山札にあるカードの中から、自分の好きなカードを１枚手札に加える"
-=======
-        cardType = 1,
-        cardName:"踏むと勝利",
-        cardText:"アイテムカードからランダムに１枚入手する"
->>>>>>> 02f82b48e53301590e5acfc0d2e33fd3003cc035
     },
     {
         cardId:12,
@@ -168,15 +96,9 @@ cardTexts = [
     },
     {
         cardId:13,
-<<<<<<< HEAD
         cardType:1,
         cardName:"全員が手札を選び、捨てる",
         cardText:"すべてのプレーヤがそれぞれ１枚選び、捨てる"
-=======
-        cardType = 1,
-        cardName:"アイテムを１枚選ぶ",
-        cardText:"アイテムカードから１枚選び、入手する"
->>>>>>> 02f82b48e53301590e5acfc0d2e33fd3003cc035
     },
     {
         cardId:14,
@@ -192,15 +114,9 @@ cardTexts = [
     },
     {
         cardId:16,
-<<<<<<< HEAD
         cardType:1,
         cardName:"最下位の時、もう一度行動",
         cardText:"自分が最下位の場合、\nもう一度ドローからやり直すことができる"
-=======
-        cardType = 1,
-        cardName:"カードを１枚入手",
-        cardText:"山札から１枚ランダムにカードを入手する"
->>>>>>> 02f82b48e53301590e5acfc0d2e33fd3003cc035
     },
     {
         cardId:17,
@@ -264,7 +180,6 @@ cardTexts = [
     },
     {
         cardId:27,
-<<<<<<< HEAD
         cardType:1,
         cardName:"プレイヤーのカードを捨てる",
         cardText:"他のプレイヤーを指定し、そのプレイヤーの手札から１枚選び、そのカードを捨てる"
@@ -280,23 +195,6 @@ cardTexts = [
         cardType:1,
         cardName:"プレイヤーとカードを交換",
         cardText:"他のプレイヤーを指定し、そのプレイヤーの手札から１枚選び、そのカードと自分の手札から１枚交換する"
-=======
-        cardType = 1,
-        cardName:"手札を１枚捨てる",
-        cardText:"自分の手札からランダムに１枚捨てる"
-    },
-    {
-        cardId:28,
-        cardType = 1,
-        cardName:"アイテムをすべて捨てる",
-        cardText:"自分が所持しているアイテムを全て捨てる"
-    },
-    {
-        cardId:29,
-        cardType = 1,
-        cardName:"アイテムをすべて捨てる",
-        cardText:"自分の手札にアイテムカードをすべて捨てる"
->>>>>>> 02f82b48e53301590e5acfc0d2e33fd3003cc035
     },
     {
         cardId:30,
@@ -304,8 +202,6 @@ cardTexts = [
         cardName:"プレイヤーと位置を入れ替え",
         cardText:"他のプレイヤーを指定し、そのプレイヤーと位置を交換する"
     },
-
-    // ルールカード
     {
         cardId:1,
         cardType:2,
@@ -317,5 +213,5 @@ cardTexts = [
         cardType:2,
         cardName:"カードを２回使用",
         cardText:"このルールが設定されている間、\nカードを２回 使用することができる"
-    }
+    },
 ];
