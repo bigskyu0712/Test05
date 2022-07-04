@@ -3,7 +3,7 @@
 ***  Version      : V1.1
 ***  Designer		  : 岩上 雄飛
 ***  Date			    : 2022.06.21
-***  Purpose      : W4の画面
+***  Purpose      : W4（ゲームのホーム画面）のカード表示
 ***
 *******************************************************************/
 
@@ -49,12 +49,6 @@ function main() {
     alert('エラー.');
     return;
   }
-
-  //drawGrid(ctx, canvas, gridSize);
-
-  //ユーザ情報を取得（今後追加予定）
-  // rgba(48,211,59,1)  rgba(255,149,0,1)
-  //drawMessage(canvas, "rgba(48,211,59,1)");
 
   //カードの読み込み
   switchCards(ctx, canvas);
@@ -105,8 +99,6 @@ function main() {
       default:
         break;
     }
-
-    // gridClicked(ctx, canvas, clickPoint, gridSize);
   });
 
   // マウスの位置を取得
@@ -127,17 +119,6 @@ function main() {
         isHoveringOnCard = true;
         tmp = isHoveringCard(canvas, hoverPoint);
         console.log("hover", isHoveringCard(canvas, hoverPoint));
-        /*let hoverCard = cards[isHoveringCard(canvas, hoverPoint)]
-        hoverCard.src = hoverCard.src
-        hoverCard.onload = function(){
-          ctx.fillStyle = "clear"
-          ctx.drawImage(hoverCard, 
-                        (canvas.width  - hoverCardHeight / 88*63 )/2, 
-                        (canvas.height - hoverCardHeight         )/2, 
-                        hoverCardHeight /88*63, 
-                        hoverCardHeight); 
-        }
-      */
         
        if(hoverCard != isHoveringCard(canvas,hoverPoint)){
         isUpdate = true;
@@ -151,16 +132,6 @@ function main() {
       if (isHoveringOnCard == true){
         console.log("no hover")
         isHoveringOnCard = false
-        
-        //拡大表示されたカードの部分を再描画
-        /*ctx.clearRect((canvas.width  - hoverCardHeight / 88*63 )/2, 
-                     (canvas.height - hoverCardHeight         )/2, 
-                     hoverCardHeight * 88/63, 
-                     hoverCardHeight);
-                     */
-
-        //drawGrid(ctx, canvas, gridSize);
-        //drawMessage(canvas, "rgba(48,211,59,1)")
       }
     }
   });
@@ -179,7 +150,6 @@ function main() {
       } else {
         showItemCards(ctx, canvas, itemCardData, hoverCard);
       }
-      // showCards(ctx,canvas,cardData,hoverCard)
       isUpdate = false;
       console.log(isUpdate);
     }
@@ -282,7 +252,7 @@ function switchCards(ctx, canvas) //context
 *** Function Name       : showCards()
 *** Designer            : 岩上 雄飛
 *** Date                : 2022.6.14
-*** Function            : 入力されたカードを表示する
+*** Function            : 入力されたマスカードを表示する
 *** Return              : なし
 ****************************************************************************/
 function showCards(ctx,       //canvasのcontext
@@ -290,11 +260,8 @@ function showCards(ctx,       //canvasのcontext
                    cardData,  //表示するカード情報
                    hovercard) //マウスオーバーされたカード
 {
-  //cardWidth = (canvas.width / 2 - 10*cardData.length) / cardData.length //カードの幅
   cardWidth = (canvas.width / 2 - 10*4) / 4 //カードの幅
-  //if (cardWidth > 140){
-  //  cardWidth = 140
-  //}
+
   cardSpacing = cardWidth/8 //カードの間隔
 
   for (let index = 0; index < cardData.length; index++) {

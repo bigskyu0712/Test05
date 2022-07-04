@@ -1,16 +1,15 @@
 /*******************************************************************
 ***  File Name      : ItemCard.js
 ***  Version        : V1.0
-***  Designer       : 
+***  Designer       : 曾根 悠太
 ***  Date           : 2022.07.02
-***  Purpose        : アイテムカードのオブジェクト
+***  Purpose        : 手札のオブジェクト
 ***
 *******************************************************************/
 
 /*
 *** Revision :
-*** V1.0 : 名前書いて, 2022.06.14
-*** V1.1 : 名前書いて, 2022.07.02 場所を更新できるよう変更
+*** V1.0 : 曾根 悠太, 2022.07.02
 */
 
 
@@ -42,7 +41,7 @@ class HandCard extends THREE.Mesh {
     *** Function Name       : setPosition()
     *** Designer            : 
     *** Date                : 2022.7.2
-    *** Function            : アイテムカードの位置を設定・更新する
+    *** Function            : 手札の位置を設定・更新する
     *** Return              : なし
     ****************************************************************************/
     setPosition(playerNum,index){
@@ -50,6 +49,7 @@ class HandCard extends THREE.Mesh {
         this.position.y = 70;
         // プレイヤー位置によって座標を設定
         switch(gameData.direction[playerNum]){
+            // 左側のユーザの場合
             case 1:
                 this.position.x = -480;
                 this.position.z = -165 + (index-1) * 110;
@@ -57,6 +57,8 @@ class HandCard extends THREE.Mesh {
                 this.rotation.z = Math.PI / 2 * -1;
                 this.rotation.x = Math.PI / 2 * -1;
                 break;
+
+            // 上側のユーザの場合
             case 2:
                 this.position.x = 165 - (index-1) * 110;
                 this.position.z = -480;
@@ -64,6 +66,8 @@ class HandCard extends THREE.Mesh {
                 this.rotation.y = Math.PI  * -1;
                 this.rotation.x = Math.PI / 2 * -1;
                 break;
+
+            // 右側のユーザの場合
             case 3:
                 this.position.x = 480;
                 this.position.z = 165 - (index-1) * 110;
@@ -71,6 +75,8 @@ class HandCard extends THREE.Mesh {
                 this.rotation.z = Math.PI / 2 * 1;
                 this.rotation.x = Math.PI / 2 * -1;
                 break;
+
+            // その他のユーザの場合
             default:
                 this.position.x = 0;
                 this.position.y = 2;
