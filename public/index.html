@@ -20,13 +20,18 @@
             <script src ="./js/square.js"></script>
             <script src ="./js/piece.js"></script>
             <script src ="./js/Dice.js"></script>
+            <script src ="./js/usingCard.js"></script>
+            <script src ="./js/dialogue.js"></script>
+            <script src ="./js/HandCard.js"></script>
             <script src ="./js/boardMain.js"></script>
+            <script src ="./js/cardTexts.js"></script>
             <canvas id="cvs3d" style="position:fixed; top:0px; left:0px; width: 800px; height:600px; z-index: 1; background-color: #000000;"></canvas>
             <canvas id="canvas2d" width ="1600" height = "1200" style="position:fixed; top:0px; left:0px; width:800px; height:600px; z-index: 10; background-color:rgba(0,0,0,0);pointer-events: none;"></canvas>
             <canvas id="underBar" width = "1600" height = "360"style="position:fixed; top:420px; left:0px; width:800px; height:180px; z-index: 11; background-color:rgba(0,0,0,0);"></canvas>
-                <form id="frm-login" style="position: relative; top: 800px">
-                    <input type="text" id="userName">
-                    <button>Login</button>
+            <canvas id="usingCard" width = "800" height = "600"style="position:fixed; top:0px; left:0px; width:800px; height:600px; z-index: 12; background-color:rgba(0,0,0,0);"></canvas>
+                <form id="frm-login">
+                    <input type="text" id="userName" style="width: 300px; height: 45px;font-size: 30px;">
+                    <button style = "height: 50px; position:fixed;margin-left:8px;">Login</button>
                     </form>
 
         <ul id = "msg_list"></ul>
@@ -63,13 +68,14 @@
                 }
                 myData.name = userName.value;
                 socket.emit('login',userName.value);
+                formLogin();
             });
 
         </script>
         <script src="./js/receiver.js"></script>
         <div id="hoverElement" style="background-color:black; position:absolute; width:10px; height:10px; top:0px; left:0px;">
-            <h1 id="hoverTitle">Title</h1>
-            <spam id="hoverText">text</spam>
+            <h3 id="hoverTitle">Title</h3>
+            <spam id="hoverText" style="font-size:8px;">text</spam>
         </div>
     
         

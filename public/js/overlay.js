@@ -7,7 +7,7 @@
 ***
 *******************************************************************/
 
-var canvas = document.getElementById("canvas2d");
+var frame = document.getElementById("cvs3d");
 var element = document.getElementById("hoverElement");
 let title = document.getElementById("hoverTitle");
 let text = document.getElementById("hoverText");
@@ -19,14 +19,14 @@ var lastPosition = {
 };
 
 // カーソルの位置を保管
-const cursor = {
+let cursor = {
 	x: innerWidth / 2,
 	y: innerHeight / 2
 };
 
 // カーソルの位置を取得
-canvas.addEventListener("mousemove", (point) => {
-    // 表示する位置を少しずらしcanvas以外の要素に重ならないようにする
+frame.addEventListener("mousemove", (point) => {
+    // 表示する位置を少しずらしframe以外の要素に重ならないようにする
 	cursor.x = point.clientX + 16;
 	cursor.y = point.clientY + 16;
 });
@@ -52,20 +52,23 @@ function updatePopover(){
         style += "border-style: solid; border-color: rgb(255, 179, 64); border-width: 4px; "
         // htmlの要素を表示する
         style += "display: block; position: absolute;"
-        
+        //z-index
+        style += "z-index:101;"
+
         // 表示するブロックのy座標がcanvasの外に出るか判別
-        let yCondition = cursor.y > canvas.height - element.offsetHeight
+        let yCondition = cursor.y > frame.height - element.offsetHeight
         // 表示するブロックのx座標がcanvasの外に出るか判別
-        let xCondition = cursor.x > canvas.width - element.offsetWidth
+        let xCondition = cursor.x > frame.width - element.offsetWidth
+
 
         if (yCondition && xCondition) { // yとx共に外にある場合
-            style += "left:" + (canvas.width - element.offsetWidth) + "px; " 
-            style += "top: " + (canvas.height - element.offsetHeight) + "px; "
+            style += "left:" + (frame.width - element.offsetWidth) + "px; " 
+            style += "top: " + (frame.height - element.offsetHeight) + "px; "
         } else if (yCondition) { //yのみ外にある場合
             style += "left: " + cursor.x + "px; "
-            style += "top: " +  (canvas.height - element.offsetHeight) + "px; "
+            style += "top: " +  (frame.height - element.offsetHeight) + "px; "
         } else if (xCondition) { //xのみ外にある場合
-            style += "left:" + (canvas.width - element.offsetWidth) + "px; "
+            style += "left:" + (frame.width - element.offsetWidth) + "px; "
             style += "top: " +  cursor.y + "px; "
         } else { //以外
             style += "left:" + cursor.x + "px; top: " +  cursor.y + "px;"
@@ -87,11 +90,8 @@ function updatePopover(){
 *** Return              : なし
 ****************************************************************************/
 function setCardData(){
-    let squareCards = cardTexts.filter(card => card.cardType == 1)
-    let card = squareCards.find(card => card.cardId == 1)
+    let card = cardTexts[cardInfo];
 
     title.textContent = card.cardName
     text.textContent  = card.cardText
 }
-
-updatePopover()

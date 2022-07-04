@@ -3,10 +3,11 @@
 //プレイヤーのクラス
 module.exports = class Player
 {
-    constructor(name,userId){
+    constructor(name,userId,num){
 
         this.name = name;
         this.userId = userId;
+        this.number = num;
         this.score = 0; //スコア
         this.hand = []; //手札
         this.item = []; //所持アイテム
@@ -22,6 +23,10 @@ module.exports = class Player
     //ユーザIdの取得
     getUserId(){
         return this.userId;
+    }
+
+    getUserNum(){
+        return this.number;
     }
 
     //スコアの取得

@@ -64,16 +64,33 @@ function main() {
         y: e.clientY - rect.top
     };
 
-    if(gameState == 2){
-      console.log(sendData);
-      sendData.cardNum = tmp;
-      if(sendData.position != -1 && sendData.position != null){
-        socket.emit("reply", sendData);
-        gameState = 0;
-        cardData = cardData.splice(tmp, 1);
-        gameData.hand = gameData.hand.splice(tmp,1);
-        isUpdate = true;
-      }
+    switch(gameState){
+      case 2:
+        console.log(sendData);
+        sendData.cardNum = tmp;
+        if(sendData.cardNum != -1 && sendData.position != -1){
+          console.log("socket send");
+          socket.emit("reply", sendData);
+          cardData.splice(sendData.cardNum, 1);
+          gameData.hand.splice(sendData.cardNum,1);
+          isUpdate = true;
+          gameState = 3;
+        }
+        break;
+
+      case 10:
+        console.log(sendData);
+        sendData.cardNum = tmp;
+        if(sendData.cardNum != -1){
+          console.log("socket send");
+          socket.emit("effectReply", sendData);
+          cardData.splice(sendData.cardNum, 1);
+          gameData.hand.splice(sendData.cardNum,1);
+          isUpdate = true;
+          gameState = 0;
+        }
+      default:
+        break;
     }
 
     // gridClicked(ctx, canvas, clickPoint, gridSize);

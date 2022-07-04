@@ -7,6 +7,7 @@
       function init() {
 
         setDirection(gameData.myPlayerNum);
+        console.log("direction:"+gameData.direction);
         let cameraInitZ = 1200;      //cameraのz座標,初期値
 
         let cameraX = 0;  //cameraのx座標
@@ -16,6 +17,10 @@
       
         let clickSquare;
         let cardList = [];
+        let itemList = [[],[],[],[]];
+        let handList = [[],[],[],[]];
+        let isHoveringItem = false;
+
 
         // サイズを指定
         const width = 800;
@@ -81,6 +86,23 @@
         drawCard.position.set(0,21,5);
         scene.add(drawCard);
 
+        
+            /****************************************************************************
+            *** Function Name       : placePlayerCards()
+            *** Designer            : 
+            *** Date                : 2022.7.2
+            *** Function            : 入力されたユーザのマスカード枚数を画面に表示する
+            *** Return              : なし
+            ****************************************************************************/
+            function placePlayerCards(playerNum)  // プレイヤーの番号
+            {
+             for (var i = 0; i < gameData.playerHandNumber[playerNum]; i++) {
+             const squareCard = new SquareCard('./img/cback.png');
+             squareCard.setPosition(2, i);
+             scene.add(squareCard);
+               }
+           }
+
 
         // 平行光源
         const directionalLight = new THREE.DirectionalLight(0xffffff);
@@ -129,7 +151,7 @@
             case 2:
               sendData.position = clickSquare;
               console.log(sendData);
-              if(sendData.cardNum != -1){
+              if(sendData.cardNum != -1 && sendData.position != -1){
                 console.log("socket send");
                 socket.emit("reply", sendData);
                 cardData.splice(sendData.cardNum, 1);
@@ -140,18 +162,14 @@
               break;
             
             case 6:
-              dice.throw(diceNum);
-              gameState = 7;
+              socket.emit("throw",diceNum);
               break;
             
-            case 7:
+            case 15:
+              if(isHoveringItem == true){
+                socket.emit("reply",hoverCard);
+              }
 
-            case 8:
-                const itemCard = new ItemCard('./img/cards/png/i'+ 1 +'.png');
-                let ran = Math.floor(Math.random() * 4);
-                itemCard.setPosition(ran);
-                gameData.item[ran].push(1);
-                scene.add(itemCard);
                 break;
             default:
               break;
@@ -161,13 +179,14 @@
 
         function installationCard(id,squareNum){
             const card = new Card('./img/cards/png/c'+ id +'.png');
+            console.log(squareNum);
             card.position.x = square.getPosition(squareNum).x;
-            card.position.y = square.getPosition(squareNum).y + 42;
+            card.position.y = square.getPosition(squareNum).y + 82;
             card.position.z = square.getPosition(squareNum).z;
             card.rotation.y = Math.random() * 2 * Math.PI;
             cardList.push(card);
             scene.add(card);
-            square.setId(squareNum,0);
+            square.setId(squareNum,id);
         }
 
         function draw(){
@@ -189,6 +208,7 @@
           }
         }
 
+        let timeoffset = 0;
         function cameraMove(){
           if(gameState==2){
             if(cameraZ>1){              
@@ -201,21 +221,60 @@
             if(cameraZ<cameraInitZ){   //画角を初期値まで戻す
               cameraY -= 20;
               cameraZ += 20;
+              timeoffset = cameraZ;
             }
             else {
-              gameState = 6;
+              if(timeoffset >= 60){
+                gameState = 6;
+                timeoffset = 0;
+              }else{
+                timeoffset++;
+              }
             }
           }
           camera.position.set(cameraX, cameraY, cameraZ);
           camera.lookAt(new THREE.Vector3(0, 0, 0));
         }
 
-        let dice = new Dice();
-        function createDice(){
-          dice.position.set(0,200,300);
-          scene.add( dice );
-          dice.isVisible = true;
+        function itemCreate(num,scene){
+          for(i = itemList[num].length;i < gameData.item[num].length;i++){
+            const itemCard = new ItemCard('./img/cards/png/i'+ gameData.item[num][i] +'.png',gameData.item[num][i],scene);
+            console.log("num=" + num);
+            itemCard.setPosition(num);
+            itemList[num].push(itemCard);
+            scene.add(itemCard);
+          }
         }
+
+        let dice = new Dice();
+        dice.out();
+        scene.add( dice );
+
+        drawName();
+
+        function hoverItem(raycaster){
+          for(i = 0; i < 4; i++){
+                  // その光線とぶつかったオブジェクトを得る
+                  const intersects = raycaster.intersectObjects(itemList[i]);
+                    itemList[i].map((mesh,index) => {
+                    // 交差しているオブジェクトが1つ以上存在し、
+                    // 交差しているオブジェクトの1番目(最前面)のものだったら
+                    if (intersects.length > 0 && mesh === intersects[0].object) {
+                      //カードInfoとhoverCardを更新
+                      hoverCard.cardNum = index;
+                      hoverCard.PlayerNum = i;
+                      isHoveringItem = true;
+                      return 0;
+                    } else {
+
+                    }
+                  });
+                 
+            }
+            isHoveringItem = false;
+            return 0;
+        }
+
         // 毎フレーム時に実行されるループイベントです
         function tick() {
           // レイキャスト = マウス位置からまっすぐに伸びる光線ベクトルを生成
@@ -224,15 +283,101 @@
           clickSquare = square.onMouse(raycaster);
           cardInfo = square.getCardId(clickSquare);
           cardLanding();
+          hoverItem(raycaster);
+          
 
 
-          if(gameData.hand.length != cardData.length){
+          switch(gameState){
+            case 3:
+              if(createCard.length > 0){
+                while(createCard.length < 1){
+                  installationCard(createCard[0][0],createCard[1][1]);
+                  createCard.shift();
+                }
+                gameState = 4;
+              }
+              break;
+            case 6:
+                dice.in();
+                dice.rotate();
+              
+              break;
+            case 7:
+              dice.throw(diceNum);
+              gameState++;
+              break;
+            case 8:
+              dice.dice();
+              if(dice.t > 300){
+                dice.out();
+                dice.isVisible = false;
+                console.log("socket send");
+                socket.emit("reply", "dice");
+                dice.isvisible = false;
+                gameState = 0;
+              }
+              break;
+            case 9:
+              if(dice.isVisible == true) {
+                dice.out()
+              }
+              dice.isvisible = false;
+              gameState = 10;
+              break;
+            case 10:
+              let isMoved = 1;
+              for(i = 0; i < 4; i++){
+                isMoved *= (gameData.positions[i] == pieces[i].now);
+              }
+              if(isMoved == 1){
+                if(isMyturn == true){
+                  console.log("socket send");
+                  socket.emit("reply", "moved");
+                }
+                gameState = 0;
+              }
+              break;
+            default:
+              break;
+          }
+
+          for(i = 0; i < 4; i++){
+            if(handList[i].length != gameData.playerHandNumber[i]){
+              handList[i].forEach(function(card){
+                scene.remove(card);
+                card.geometry.dispose();
+              });
+              handList[i] = [];
+              for(j = 0; j < gameData.playerHandNumber[i]; j++){
+                let handCard = new HandCard();
+                handCard.setPosition(i,j);
+                handList[i].push(handCard);
+                scene.add(handCard);
+              }
+            }
+          }
+
+          if(createCard.length > 0){
+            installationCard(createCard[0][0],createCard[0][1]);
+            createCard.shift();
+          }
+
+          if(gameData.hand.length > cardData.length){
             if(receiveCardDatas.length == 0){
-              receiveCardDatas = gameData.hand;
+              for(i = 0; i < gameData.hand.length - cardData.length;i++){
+                receiveCardDatas[i] = gameData.hand[i + cardData.length];
+              }
             }
             draw();
           }
 
+          if(gameData.hand.length < cardData.length){
+            cardData = gameData.hand;
+          }
+
+          for(i = 0;i < 4; i++){
+            pieces[i].moveTo(gameData.positions[i]);
+          }
 
           let positionList = [];
           pieces.forEach(function(piece) {
@@ -250,42 +395,18 @@
           });
 
 
-
-
-          switch(gameState){
-            case 3:
-              installationCard(createCard[0],createCard[1]);
-              gameState = 4;
-              break;
-            case 6:
-              if(dice.isVisible == false){
-                createDice();
-              }else{
-                dice.rotate();
-              }
-              break;
-            case 7:
-              dice.dice();
-              if(dice.t > 300){
-                scene.remove( dice );
-                dice.geometry.dispose();
-                dice.isVisible = false;
-                gameState = 8;
-              }
-              break;
-            case 8:
-              let isMoved = 1;
-              for(i = 0; i < 4; i++){
-                pieces[i].moveTo(gameData.positions[i]);
-                isMoved *= pieces.isRun;
-              }
-              if(isMoved == 0){
-                gameState = 9;
-              }
-              break;
-            default:
-              break;
+          for(i = 0; i < 4;i++){
+            if(gameData.item[i].length > itemList[i].length){
+              itemCreate(i,scene);
+            }else if(gameData.item[i].length < itemList[i].length){
+              itemList[i].forEach(function(itemCard){
+                itemCard.setPosition(i,scene);
+              });
+              itemList[i] = gameData.item[i];
+            }
           }
+
+
           cameraMove();
           // レンダリング
           renderer.render(scene, camera);

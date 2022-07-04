@@ -24,6 +24,10 @@ module.exports = class Matching{
 
         let latestRoomNum = 0;
 
+        let idRoomMap = {};
+
+
+
         io.on('connection', function(socket) {
             console.log("connect..." + socket.id);
             let userData;
@@ -33,26 +37,28 @@ module.exports = class Matching{
             //切断時処理
             socket.on('disconnect',function() {
                 //ユーザーネームを登録していない場合
-                if(userData==undefined) {
+                console.log(idRoomMap[socket.id]);
+                if(idRoomMap[socket.id] == undefined) {
                     console.log("No name player disconnect...");
 
                 //登録している場合
                 }else{
                     //ゲーム中なら
-                    if(userData.isPlayingGame == 1){
-
+                    if(idRoomMap[socket.id].isPlayingGame == 1){
+                        rooms[idRoomMap[socket.id].room].disconnectUser(socket.id);
                     //待機中なら
-                    }else if(userData.isPlayingGame == 0){
+                    }else{
                         //ユーザーリストから削除してクライアントにデータを送信
-                        if(waitUserData.length == 1){
-                            waitUserData.shift();
+                        if(waitUserList.length == 1){
+                            waitUserList = [];
                         }else{
-                            waitUserData.splice(waitUserData.findIndex(data => data.id === userData.id),1);
+                            waitUserList.splice(waitUserList.findIndex(data => data.id === socket.id),1);
+                            console.log("dis!");
                         }
                         io.emit("displayToClient",waitUserList);
                     }
 
-
+                    idRoomMap[socket.id] = null;
 
                 }
             });
@@ -71,14 +77,18 @@ module.exports = class Matching{
                     userName:userName,
                     id:socket.id,
                     token:token,
-                    isPlayingGame:0
+                    isPlayingGame:0,
+                    room:0
                 };
 
             //待ち人数が6人以下の場合
                 if( waitUserList.length > 0) {
                     //ゲーム開始時にtempRoomIdをそのままルームidに
                     socket.join(tempRoomId);
-                    console.log("rooms!!" + Array.from(socket.rooms));
+                    userData.room = tempRoomId;
+                    idRoomMap[socket.id] = userData;
+                    console.log("rooms!!" +userData.room);
+                    //console.log("rooms!!" + Array.from(socket.rooms));
                     
                     //waitUserListを更
                     waitUserList.push(userData);
@@ -99,7 +109,11 @@ module.exports = class Matching{
 
                         rooms[tempRoomId].startGame();
 
-                        roomIds.push(tempRoomId);
+                        for(i = 0;i < 4;i++){
+                            idRoomMap[waitUserList[i].id].isPlayingGame = 1;
+                        }
+
+
 
                         waitUserList = [];
 
@@ -110,7 +124,9 @@ module.exports = class Matching{
                     tempRoomId = matching.createRoomId(rooms,server.MAXROOMIDNUMBER);
                     //部屋に入室
                     socket.join(tempRoomId);
-
+                    userData.room = tempRoomId;
+                    idRoomMap[socket.id] = userData;
+                    console.log(idRoomMap);
                     console.log("rooms!!" + Array.from(socket.rooms));
 
                     //自分を待ちプレイヤーに追加
@@ -122,11 +138,12 @@ module.exports = class Matching{
 
                 }
 
-                setInterval(() => {
-                    roomIds.forEach(function(id){
-                        rooms[id].wait();
-                    })
-                }, 1000/30);
+                setInterval(function(){
+                    rooms.forEach(function(room){
+
+                    });
+                },1000/30);
+
 
             });
 

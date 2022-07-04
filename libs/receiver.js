@@ -15,8 +15,14 @@ exports.startReceive = function(io,socket,rooms){
 
     socket.on('reply',function(data){
         const roomId = Array.from(socket.rooms)[1];
-        console.log("received");
+        console.log("received:" + data);
         rooms[roomId].receive(data,socket.id);
+    });
+
+    socket.on('throw',function(diceNum){
+        const roomId = Array.from(socket.rooms)[1];
+        console.log("throw");
+        server.io.to(roomId).emit("throw",diceNum);
     });
 
     

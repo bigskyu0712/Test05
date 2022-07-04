@@ -107,4 +107,13 @@ class Dice extends THREE.Mesh{
             this.t++;
         }
     }
+
+    in(){
+        this.position.set(0,200,300);
+        this.isVisible = true;
+    }
+
+    out(){
+        this.position.z = 1100;
+    }
 }

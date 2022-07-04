@@ -14,17 +14,28 @@
 */
 
 
-class ItemCard extends Card {
+class HandCard extends THREE.Mesh {
 
     cardSize = 1.3;
     itemId;
     t;
     
-    constructor(path,id){
-        super(path);
+    constructor(){
+        const geometry = new THREE.BoxBufferGeometry(1.3 * 63, 1, 1.3 * 88);
 
-        this.t = 0;
-        this.itemId = id;
+
+        //const material = new THREE.MeshNormalMaterial();
+
+        const loader = new THREE.TextureLoader();
+        const texture = loader.load('./img/cback.png');
+
+        // マテリアルにテクスチャーを設定
+        const material = new THREE.MeshStandardMaterial({
+            map: texture
+        });
+
+
+        super(geometry, material);
     }
 
     /****************************************************************************
@@ -34,35 +45,31 @@ class ItemCard extends Card {
     *** Function            : アイテムカードの位置を設定・更新する
     *** Return              : なし
     ****************************************************************************/
-    setPosition(playerNum)  // ユーザの番号
-    {
+    setPosition(playerNum,index){
         console.log("Player direction:", gameData.direction[playerNum]);
-
-        // カードが何番目か取得
-        let index = gameData.item[playerNum].indexOf(this.itemId);
-        if (index == -1) {
-            index = gameData.item[playerNum].length;
-        }
 
         // プレイヤー位置によって座標を設定
         switch(gameData.direction[playerNum]){
             case 1:
-                this.position.x = -420;
+                this.position.x = -480;
                 this.position.z = -165 + (index-1) * 110;
 
-                this.rotation.y = Math.PI / 2 * -1;
+                this.rotation.z = Math.PI / 2 * -1;
+                this.rotation.x = Math.PI / 2 * -1;
                 break;
             case 2:
                 this.position.x = 165 - (index-1) * 110;
-                this.position.z = -420;
+                this.position.z = -480;
                 
                 this.rotation.y = Math.PI  * -1;
+                this.rotation.x = Math.PI / 2 * -1;
                 break;
             case 3:
-                this.position.x = 420;
+                this.position.x = 480;
                 this.position.z = 165 - (index-1) * 110;
 
-                this.rotation.y = Math.PI / 2 * 1;
+                this.rotation.z = Math.PI / 2 * 1;
+                this.rotation.x = Math.PI / 2 * -1;
                 break;
             default:
                 this.position.x = 0;

@@ -84,13 +84,15 @@ module.exports = class Game{
 
             case 5:
                 //踏んだマスの処理
-                this.board.action(this.turn);
+                console.log("action!!");
+                this.board.action(this.turn,this.received,data);
                 break;
 
             case 6:
                 //次のユーザーに
                 console.log("next turn");
                 this.turn = this.board.getNextUser(this.turn);
+                this.waitUserId = this.board.players[this.turn].getUserId();
                 break;
 
             default:
