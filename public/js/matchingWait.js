@@ -10,14 +10,12 @@
 /*
 *** Revision :
 *** V1.0 : 日野優介, 2022.06.14
+*** V1.1 : 金森嵩天, 2022.07.03
 */
 
-window.onload = function() {
-    main();
-};
 
 /****************************************************************************
-*** Function Name       : main()
+*** Function Name       : CreatematchingWait()
 *** Designer            : 日野優介
 *** Date                : 2022.6.14
 *** Function            : 画面への描画する関数の呼び出し
@@ -25,16 +23,16 @@ window.onload = function() {
 *** Return              : なし
 ****************************************************************************/
 
-function main() {
+function  CreatematchingWait() {
 
-    var canvas = document.getElementById('canvas1');
+    var canvas = document.getElementById('canvas2d');
     var context = canvas.getContext('2d');
 
-    var stage = new createjs.Stage("canvas1");
+    var stage = new createjs.Stage("canvas2d");
     stage.enableMouseOver();
     
     //'終了'ボタンの位置を指定
-    var btn = createButton("終了", canvas.clientWidth/3, 60, "#0275d8");
+    var btn = createButton("マッチング待機中", canvas.clientWidth/3, 60, "#0275d8");
     btn.x = canvas.clientWidth/3;
     btn.y = 3*canvas.clientHeight/5;
     stage.addChild(btn);
