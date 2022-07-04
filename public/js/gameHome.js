@@ -276,7 +276,7 @@ function switchCards(ctx, canvas) //context
     cardData = gameData.hand;
     showCards(ctx, canvas, cardData,-1);
   } else {
-    itemData = gameData.item[gameData.myPlayerNum];
+    itemCardData = gameData.item[gameData.myPlayerNum];
     showItemCards(ctx, canvas, itemCardData,-1);
   }
 }

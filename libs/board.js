@@ -61,7 +61,14 @@ module.exports = class Board{
     //アイテムを追加(Id指定)
     addItem(player, itemId){
         player.addItem(itemId);
+        display.effectAddItem(this.roomId,itemId,player.getUserNum());
         
+    }
+
+    addItemNum(player, itemNum){
+        player.addItem(this.item[itemNum]);
+        display.effectAddItem(this.roomId,this.item[itemNum],player.getUserNum());
+        this.item.splice(itemNum,1);
     }
 
     //アイテムを追加(ランダム)
@@ -414,10 +421,10 @@ module.exports = class Board{
     //c11
     //�J�[�hId����J�[�h�����
     effectAddCard(player, cardNum){
-        player.addCard(cardNum);
+        player.addCard(this.deck[cardNum]);
+        display.draw(player.getUserId(),this.deck[cardNum]);
         this.deck.splice(cardNum,1);
         console.log("deck removed:"+this.deck);
-        display.draw(player.getUserId(),cardNum);
     }
 
     //c12
