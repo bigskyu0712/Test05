@@ -77,7 +77,10 @@ function updatePopover(){
     } else { // 表示しない場合
         style = "display: none; position: absolute;"
     }
+
+    // 書式の更新
     element.style = style
+    // 常時更新
     requestAnimationFrame(updatePopover);
 }
 
@@ -91,17 +94,22 @@ function updatePopover(){
 ****************************************************************************/
 function setCardData(){
     let dataArray = [];
+    // マスカードの場合
     if(cardInfo.type == "card"){
         dataArray = cardTexts.filter(function(value){
             return value.cardType == 1;
         });
-    }    if(cardInfo.type == "item"){
+    }    
+    // アイテムカードの場合
+    if(cardInfo.type == "item"){
         dataArray = cardTexts.filter(function(value){
             return value.cardType == 0;
         });
     }
 
+    // カードの情報を取得
     let card = dataArray[cardInfo.id - 1];
+    // index.htmlにタイトルと詳細を書き込む
     title.textContent = card.cardName
     text.textContent  = card.cardText
 }
