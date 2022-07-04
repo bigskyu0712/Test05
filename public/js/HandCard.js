@@ -36,7 +36,7 @@ class HandCard extends THREE.Mesh {
 
 
         super(geometry, material);
-    }
+    }//
 
     /****************************************************************************
     *** Function Name       : setPosition()
