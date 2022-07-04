@@ -35,7 +35,7 @@ module.exports = class c11 extends Card {
     //カードIdからカードを入手
     //board
     addCard(player, cardId){
-        player.addCard(this.player,cardId);
+        player.effectAddCard(this.player,cardId);
     }
 
 }
