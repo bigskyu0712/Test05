@@ -222,11 +222,6 @@ function isHoveringCard(canvas,     //canvas
 *** Return              : 
 ****************************************************************************/
 function makeSwitchButton(canvas){
-  /*****
-    ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    カードの座標がわからないのでy座標を埋めてください
-    ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-  ****/
   var buttonX = 0;
   var buttonY = 300;
   let ctx = canvas.getContext('2d');

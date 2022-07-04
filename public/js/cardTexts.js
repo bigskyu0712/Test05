@@ -1,12 +1,8 @@
 /*******************************************************************
 ***  File Name    : cardText.js
 ***  Version      : V1.0
-<<<<<<< Updated upstream
-***  Designer     : 岩上 雄飛
-=======
 ***  Designer     : 
->>>>>>> Stashed changes
-***  Date         : 2022.06.28
+***  Date         : 2022.07.04
 ***  Purpose      : カードのデータを保管
 ***
 *******************************************************************/
@@ -31,7 +27,7 @@ cardTexts = [
     {
         cardId:2,
         cardType:1,
-        cardName:"踏むと勝利",
+        cardName:"アイテムを１枚入手",
         cardText:"アイテムカードからランダムに１枚入手する"
     },
     {
@@ -85,8 +81,8 @@ cardTexts = [
     {
         cardId:11,
         cardType:1,
-        cardName:"好きなカードを選ぶ",
-        cardText:"山札にあるカードの中から、自分の好きなカードを１枚手札に加える"
+        cardName:"アイテムを１枚入手",
+        cardText:"アイテムカードからランダムに１枚入手する"
     },
     {
         cardId:12,
@@ -97,8 +93,8 @@ cardTexts = [
     {
         cardId:13,
         cardType:1,
-        cardName:"全員が手札を選び、捨てる",
-        cardText:"すべてのプレーヤがそれぞれ１枚選び、捨てる"
+        cardName:"アイテムを１枚選ぶ",
+        cardText:"アイテムカードから１枚選び、入手する"
     },
     {
         cardId:14,
@@ -115,8 +111,8 @@ cardTexts = [
     {
         cardId:16,
         cardType:1,
-        cardName:"最下位の時、もう一度行動",
-        cardText:"自分が最下位の場合、\nもう一度ドローからやり直すことができる"
+        cardName:"カードを１枚入手",
+        cardText:"山札から１枚ランダムにカードを入手する"
     },
     {
         cardId:17,
@@ -181,20 +177,20 @@ cardTexts = [
     {
         cardId:27,
         cardType:1,
-        cardName:"プレイヤーのカードを捨てる",
-        cardText:"他のプレイヤーを指定し、そのプレイヤーの手札から１枚選び、そのカードを捨てる"
+        cardName:"手札を１枚捨てる",
+        cardText:"自分の手札からランダムに１枚捨てる"
     },
     {
         cardId:28,
         cardType:1,
-        cardName:"プレイヤーのカードを奪う",
-        cardText:"他のプレイヤーを指定し、そのプレイヤーの手札から１枚選び、そのカードを奪う"
+        cardName:"アイテムをすべて捨てる",
+        cardText:"自分が所持しているアイテムを全て捨てる"
     },
     {
         cardId:29,
         cardType:1,
-        cardName:"プレイヤーとカードを交換",
-        cardText:"他のプレイヤーを指定し、そのプレイヤーの手札から１枚選び、そのカードと自分の手札から１枚交換する"
+        cardName:"アイテムをすべて捨てる",
+        cardText:"自分の手札にアイテムカードをすべて捨てる"
     },
     {
         cardId:30,
