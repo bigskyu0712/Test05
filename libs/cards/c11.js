@@ -3,11 +3,9 @@
 ***  Version            : V1.0
 ***  Designer           : 武田 和大
 ***  Date               : 2022.07.02
-***  Purpose            : アイテムカードを1枚ランダムに入手する
+***  Purpose            : 山札からカードを1枚選んで入手する
 ***
 *******************************************************************/
-
-//c2と同じ
 
 const Card = require("./card.js");
 
@@ -23,8 +21,21 @@ module.exports = class c11 extends Card {
 
     //処理を記述
     effect(){
-        board.addItemRandom(player);
-        console.log("2");
+        //山札からカードを選ぶ場合はどうするか
+        //送ってくださったメソッド名をメモする前にzoom閉じてしまったため、名前違うかもしれないです。
+        this.board.effectSelectCardFromDeck(this.player, 1);
+    }
+
+    //クライアントから送信後データを受け取った時
+    afterEffect(data){
+        console.log("11");
+        this.board.addCard(data.cardId);
+    }
+
+    //カードIdからカードを入手
+    //board
+    addCard(player, cardId){
+        player.addCard(cardId);
     }
 
 }

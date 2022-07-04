@@ -1,20 +1,29 @@
-
-
+const itemScore = require('./itemScore.js')
+ 
 //プレイヤーのクラス
 module.exports = class Player
 {
-    constructor(name,userId,num){
+    constructor(name,userId,num,state){
 
         this.name = name;
         this.userId = userId;
         this.number = num;
+        this.state = state;//0...接続中，1...一回休み...3...切断状態
         this.score = 0; //スコア
         this.hand = []; //手札
         this.item = []; //所持アイテム
         this.position = 0; //盤上での位置
-        this.rest = 0;  //0は通常, 0以外は1回休み
     }
 
+    //切断時
+    disconnect(){
+        this.state = 3;
+        const data = {
+            hand: this.hand,
+            item: this.item,
+        }
+        return data;
+    }
 
     //各ステータスを取得(一部使わないかも)
     getUserName(){
@@ -65,12 +74,17 @@ module.exports = class Player
         this.score += score;
     }
 
+    updateScore(){
+        this.score = 0;
+        this.item.forEach(function(itemId){
+            this.score += itemScore[itemId];
+        });
+    }
+
     //ポジションの更新
     updatePosition(dice){
         this.position += dice;
-        if(this.position<0){ 
-            this.position += 20;
-        }
+        this.position = this.position % 20;
     }
 
     //手札からカードの削除

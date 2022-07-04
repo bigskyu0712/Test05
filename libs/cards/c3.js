@@ -22,7 +22,7 @@ module.exports = class c3 extends Card {
 
     //処理を記述
     effect(){
-        this.board.selectItemCard(player, 1, 1)
+        this.board.effectSelectItem(this.player,1);
     }
 
     //クライアントから送信後データを受け取った時
