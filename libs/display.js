@@ -135,3 +135,11 @@ exports.selectPlayerHand = function(userId){
 exports.changeRule = function(roomId,cardId){
     server.io.to(roomId).emit("changeRule",cardId);
 }
+
+exports.sendDraw = function(userId){
+    server.io.to(userId).emit("sendDraw");
+}
+
+exports.changeState = function(roomId,num){
+    server.io.to(roomId).emit("changeState",num);
+}

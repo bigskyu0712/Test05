@@ -22,7 +22,7 @@ module.exports = class c9 extends Card {
 
     //処理を記述
     effect(){
-        this.board.everyoneDeleteAllCard(); //deleteAllCardを全員分行う
+        this.board.everyoneDeleteAllCard(this.player); //deleteAllCardを全員分行う
     }
 
     //全員が全てのカードを消去

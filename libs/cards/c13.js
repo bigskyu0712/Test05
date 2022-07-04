@@ -24,13 +24,18 @@ module.exports = class c13 extends Card {
 
     //処理を記述
     effect(){
-        this.board.selectItemCard(player, 1, 1)
+        if(this.board.item.length > 0){
+            this.board.selectItemCard(player, 1, 1)
+        }else{
+            this.board.nonAction();
+        }
     }
 
     //クライアントから送信後データを受け取った時
     afterEffect(data){
-        console.log("3");
-        this.board.addItem(player, data.itemId);
+        if(this.board.item.length > 0){
+            this.board.addItem(player, data.itemId);
+        }
     }
 
 }

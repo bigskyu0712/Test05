@@ -186,6 +186,10 @@ module.exports = class Board{
         display.noneAction(player.getUserId());
     }
 
+    changeState(num){
+        display.changeState(this.roomId,num);
+    }
+
 
     //ここから基本操作
     startGame(){
@@ -388,6 +392,8 @@ module.exports = class Board{
         this.deck[rand] = this.deck[this.deck.length - 1];
         this.deck[this.deck.length - 1] = temp;
         player.addCard(this.deck.pop()); 
+        display.upDateHand(player.getUserId(), player.getHand());
+        display.changeHand(this.roomId,player.getUserNum(),player.getHand().length);
     }
 
     //c5
@@ -433,7 +439,7 @@ module.exports = class Board{
 
     //c9
     //�S�����S�ẴJ�[�h������
-    everyoneDeleteAllCard(){
+    everyoneDeleteAllCard(player){
         for (i=0; i<this.players.length; ++i){
             let j = this.players[i].hand.length;
             for (let k=0; k<j; ++k){
@@ -441,9 +447,10 @@ module.exports = class Board{
                 let cardNum = Math.floor(Math.random()*Hand.length);
                 this.players[i].deleteCardNum(cardNum);
             }
+            display.upDateHand(this.players[i].getUserId(), this.players[i].getHand());
+            display.changeHand(this.roomId,this.players[i].getUserNum(),this.players[i].getHand().length);
         }
-        display.upDateHand(player.getUserId(), player.getHand());
-        display.changeHand(this.roomId,player.getUserNum(),player.getHand().length);
+        
     }
 
     //c10

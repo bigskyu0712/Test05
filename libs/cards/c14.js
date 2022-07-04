@@ -23,6 +23,7 @@ module.exports = class c14 extends Card {
     //処理を記述
     effect(){
         this.board.rest(this.player);
+        this.board.nonAction(this.player);
     }
 
     afterEffect(){

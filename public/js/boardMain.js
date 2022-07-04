@@ -145,6 +145,7 @@
         }
 
         function hoverItem(raycaster){
+          isHoveringItem = false;
           for(i = 0; i < 4; i++){
                   // その光線とぶつかったオブジェクトを得る
                   const intersects = raycaster.intersectObjects(itemList[i]);
@@ -164,11 +165,11 @@
                   });
                  
             }
-            isHoveringItem = false;
             return 0;
         }
 
         function hoverHand(raycaster){
+          isHoveringHand = false;
           for(i = 0; i < 4; i++){
                   // その光線とぶつかったオブジェクトを得る
                   const intersects = raycaster.intersectObjects(handList[i]);
@@ -181,7 +182,6 @@
                       hoverCard.playerNum = i;
                       hoverCard.type = 2;
                       isHoveringHand = true;
-                      console.log(hoverCard.cardNum);
                       return 0;
                     } else {
 
@@ -189,7 +189,6 @@
                   });
                  
             }
-            isHoveringItem = false;
             return 0;
         }
 
@@ -222,10 +221,10 @@
               break;
 
             case 24:
-              console.log(isHoveringItem == true);
+              console.log(isHoveringHand );
               console.log(hoverCard.type == 2);
-              console.log(isHoveringItem == true && hoverCard.type == 2);
-              if(isHoveringItem == true && hoverCard.type == 2){
+              console.log(isHoveringHand == true && hoverCard.type == 2);
+              if(isHoveringHand == true && hoverCard.type == 2){
                 console.log("hoge");
                 socket.emit("reply",hoverCard);
               }
@@ -265,7 +264,7 @@
               cardData.push(receiveCardDatas[receiveCardDatas.length - 1]);
             }
             isUpdate = true;
-            if(drawCard.counter == 0){
+            if(cardData.length == gameData.hand.length){
               isDrawed = 1;
               receiveCardDatas = [];
               console.log("socket send");

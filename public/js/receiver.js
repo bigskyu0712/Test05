@@ -123,3 +123,11 @@ socket.on("changeRule",function(data){
   gameData.term = data;  
   gameState = 3;
 });
+
+socket.on("sendDraw",function(){
+    socket.emit("reply","drawed");
+});
+
+socket.on("changeState",function(data){
+    gameState = data;
+});

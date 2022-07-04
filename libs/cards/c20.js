@@ -23,11 +23,12 @@ module.exports = class c20 extends Card {
     //処理を記述
     effect(){
         //サイコロ振る処理
-        this.board.noneAction();
+        this.board.nonAction(this.player);
     }
 
     afterEffect(){
         this.board.game.gameState = 2;
+        this.board.changeState(4);
     }
 
     //サイコロを振る

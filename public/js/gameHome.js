@@ -78,7 +78,8 @@ function main() {
         sendData.cardNum = tmp;
         if(gameData.hand[sendData.cardNum] > 31 && showCardType == 0){
           console.log("socket send");
-          socket.emit("reply", sendData);  
+          socket.emit("reply", sendData); 
+          gameData.hand.splice(sendData.cardNum,1); 
           gameState = 3;
           break;       
         }

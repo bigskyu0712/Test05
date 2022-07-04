@@ -29,7 +29,7 @@ module.exports = class c11 extends Card {
     //クライアントから送信後データを受け取った時
     afterEffect(data){
         console.log("11");
-        this.board.effectAddCard(this.player,data.cardId);
+        this.board.effectAddCard(this.player, data);
     }
 
     //カードIdからカードを入手
