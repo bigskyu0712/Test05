@@ -147,7 +147,7 @@ module.exports = class Board{
     gameEnd(){
         let score = [];
         for(i = 0; i < 4; i++){
-            this.players[i].updateScore()
+            this.players[i].updateScore();
             score.push(this.players[i].getScore());
         }
         display.showResult();
