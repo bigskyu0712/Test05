@@ -26,8 +26,8 @@ module.exports = class c24 extends Card {
 
     //クライアントから送信後データを受け取った時
     afterEffect(data){//hoverCard
-        this.board.stealCardRandom(player, data);
-        
+        this.board.stealCardRandom(this.player, data);
+
     }
 
     //ランダムにカードを奪う

@@ -116,5 +116,10 @@ socket.on("showResult",function(data){
 
 socket.on("selectPlayerHand",function(){
     displayText("相手の手札から1枚選んでください"); 
-    this.gameState = 24;
+    gameState = 24;
+});
+
+socket.on("changeRule",function(data){
+  gameData.term = data;  
+  gameState = 3;
 });

@@ -131,3 +131,7 @@ exports.showResult = function(roomId,data){
 exports.selectPlayerHand = function(userId){
     server.io.to(userId).emit("selectPlayerHand");
 }
+
+exports.changeRule = function(roomId,cardId){
+    server.io.to(roomId).emit("changeRule",cardId);
+}

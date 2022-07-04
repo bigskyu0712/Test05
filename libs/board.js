@@ -26,6 +26,7 @@ module.exports = class Board{
             this.players.push(newPlayer);
         }
         this.diceMap = [];
+        this.winTerm = [0,0];
         console.log(this.players);
         console.log(this.roomId);
     }
@@ -45,7 +46,8 @@ module.exports = class Board{
 
     //デッキの初期化
     initdeck(){
-        this.deck = [2,2,2,2,3,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,6,7,7,7,7,7,,9,9,9,9,11,11,11,11,11,14,14,14,14,14,20,20,20,20,14,24,24,24,24,24,24,24,31,31,31];
+        this.deck = [2,2,2,2,3,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,6,7,7,7,7,7,9,9,9,9,9,11,11,11,11,11,14,14,14,14,14,20,20,20,20,14,24,24,24,24,24,24,24,31,31,31,32,32,32,32];
+        //this.deck = [32,32,32,3,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32];
         this.initItem();
     }
 
@@ -146,9 +148,22 @@ module.exports = class Board{
         display.displayUsingCard(player.getUserId(),this.item,"item");
     }
 
+
+
     //エクストラウィン
-    extraWin(player){
-       
+    extraWin(playerNum){
+        console.log("game end!!!!!");
+        let score = [];
+        for(i = 0; i < 4; i++){
+            if(i == playerNum){
+                this.players[i].score = "Extra win";
+                continue;
+            }
+            this.players[i].updateScore();
+            score.push(this.players[i].getScore());
+        }
+        
+        display.showResult();
     }
 
     gameEnd(){
@@ -161,8 +176,9 @@ module.exports = class Board{
         display.showResult();
     }
 
-    changedRule(turn,cardId){
-        
+    changedRule(term,cardId){
+        this.winTerm = term;
+        display.changeRule(this.roomId,cardId);
     }
 
 
@@ -238,7 +254,7 @@ module.exports = class Board{
                 }else if(reader.cards[card].cardType == 2){
 
                     //ルールを変更
-                    this.board.changedRule(card);
+                    this.changedRule(reader.cards[card].term,card);
 
                 }
             }else{
@@ -317,6 +333,7 @@ module.exports = class Board{
         let next = (turn + 1) % this.players.length;
         console.log("state=" + this.players[next].state);
         let i = 0;
+        this.checkWinTerm();
         while(this.players[next].state > 0){
             i++;
             next = (turn + i) % this.players.length;
@@ -329,6 +346,15 @@ module.exports = class Board{
         return next;
     }
 
+    checkWinTerm(){
+        for(i=0;i<4; i++){
+            const isWin = this.players[i].hasItem(this.winTerm[0]) * this.players[i].hasItem(this.winTerm[1]);
+            if(isWin){
+                this.extraWin(i);
+                break;
+            }
+        }
+    }
 
 
 

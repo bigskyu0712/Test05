@@ -20,6 +20,7 @@
         let itemList = [[],[],[],[]];
         let handList = [[],[],[],[]];
         let isHoveringItem = false;
+        let nowTerm = -1;
 
 
         // サイズを指定
@@ -143,6 +144,55 @@
           });
         }
 
+        function hoverItem(raycaster){
+          for(i = 0; i < 4; i++){
+                  // その光線とぶつかったオブジェクトを得る
+                  const intersects = raycaster.intersectObjects(itemList[i]);
+                    itemList[i].map((mesh,index) => {
+                    // 交差しているオブジェクトが1つ以上存在し、
+                    // 交差しているオブジェクトの1番目(最前面)のものだったら
+                    if (intersects.length > 0 && mesh === intersects[0].object) {
+                      //カードInfoとhoverCardを更新
+                      hoverCard.cardNum = index;
+                      hoverCard.PlayerNum = i;
+                      hoverCard.type = 1;
+                      isHoveringItem = true;
+                      return 0;
+                    } else {
+
+                    }
+                  });
+                 
+            }
+            isHoveringItem = false;
+            return 0;
+        }
+
+        function hoverHand(raycaster){
+          for(i = 0; i < 4; i++){
+                  // その光線とぶつかったオブジェクトを得る
+                  const intersects = raycaster.intersectObjects(handList[i]);
+                    handList[i].map((mesh,index) => {
+                    // 交差しているオブジェクトが1つ以上存在し、
+                    // 交差しているオブジェクトの1番目(最前面)のものだったら
+                    if (intersects.length > 0 && mesh === intersects[0].object) {
+                      //カードInfoとhoverCardを更新
+                      hoverCard.cardNum = index;
+                      hoverCard.playerNum = i;
+                      hoverCard.type = 2;
+                      isHoveringHand = true;
+                      console.log(hoverCard.cardNum);
+                      return 0;
+                    } else {
+
+                    }
+                  });
+                 
+            }
+            isHoveringItem = false;
+            return 0;
+        }
+
         //gamestate
 
         function handleClick(event){
@@ -169,14 +219,18 @@
               if(isHoveringItem == true){
                 socket.emit("reply",hoverCard);
               }
+              break;
 
             case 24:
-              if(isHoveringItem == true && hoverCard.type == "hand"){
+              console.log(isHoveringItem == true);
+              console.log(hoverCard.type == 2);
+              console.log(isHoveringItem == true && hoverCard.type == 2);
+              if(isHoveringItem == true && hoverCard.type == 2){
+                console.log("hoge");
                 socket.emit("reply",hoverCard);
               }
               break;
 
-                break;
             default:
               break;
           }
@@ -264,54 +318,7 @@
 
         drawName();
 
-        function hoverItem(raycaster){
-          for(i = 0; i < 4; i++){
-                  // その光線とぶつかったオブジェクトを得る
-                  const intersects = raycaster.intersectObjects(itemList[i]);
-                    itemList[i].map((mesh,index) => {
-                    // 交差しているオブジェクトが1つ以上存在し、
-                    // 交差しているオブジェクトの1番目(最前面)のものだったら
-                    if (intersects.length > 0 && mesh === intersects[0].object) {
-                      //カードInfoとhoverCardを更新
-                      hoverCard.cardNum = index;
-                      hoverCard.PlayerNum = i;
-                      hoverCard.type = "card";
-                      isHoveringItem = true;
-                      return 0;
-                    } else {
-
-                    }
-                  });
-                 
-            }
-            isHoveringItem = false;
-            return 0;
-        }
-
-        function hoverHand(raycaster){
-          for(i = 0; i < 4; i++){
-                  // その光線とぶつかったオブジェクトを得る
-                  const intersects = raycaster.intersectObjects(handList[i]);
-                    handList[i].map((mesh,index) => {
-                    // 交差しているオブジェクトが1つ以上存在し、
-                    // 交差しているオブジェクトの1番目(最前面)のものだったら
-                    if (intersects.length > 0 && mesh === intersects[0].object) {
-                      //カードInfoとhoverCardを更新
-                      hoverCard.cardNum = index;
-                      hoverCard.playerNum = i;
-                      hoverCard.type = "hand";
-                      isHoveringHand = true;
-                      console.log(hoverCard.cardNum);
-                      return 0;
-                    } else {
-
-                    }
-                  });
-                 
-            }
-            isHoveringItem = false;
-            return 0;
-        }
+        let goalCard;
 
         // 毎フレーム時に実行されるループイベントです
         function tick() {
@@ -333,8 +340,9 @@
                   installationCard(createCard[0][0],createCard[1][1]);
                   createCard.shift();
                 }
-                gameState = 4;
+               
               }
+              gameState = 4;
               break;
             case 6:
                 dice.in();
@@ -414,6 +422,19 @@
 
           if(gameData.hand.length < cardData.length){
             cardData = gameData.hand;
+          }
+
+          if(nowTerm != gameData.term){
+            if(goalCard != null){
+              scene.remove(goalCard);
+              goalCard.geometry.dispose();
+            }
+            goalCard = new Card('./img/cards/png/c'+ gameData.term +'.png');
+            goalCard.position.x = 120;
+            goalCard.position.y = 2
+            goalCard.position.z = 0;
+            scene.add(goalCard);
+            nowTerm = gameData.term;
           }
 
           for(i = 0;i < 4; i++){

@@ -107,5 +107,9 @@ module.exports = class Player
         });
     }
 
+    hasItem(id){
+        return this.item.indexOf(id) > -1;
+    }
+
     
 }

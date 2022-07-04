@@ -11,7 +11,8 @@ gameData = {
     playerHandNumber:[4,4,4,4],
     direction:[],
     square:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    score:[0,0,0,0]
+    score:[0,0,0,0],
+    term:-1
 }
 
 cardInfo = {

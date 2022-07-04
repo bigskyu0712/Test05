@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const CARDNUMBER = 32;
+const CARDNUMBER = 33;
 
 
 //各カードに関する処理
