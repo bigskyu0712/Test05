@@ -46,7 +46,7 @@ module.exports = class Board{
 
     //デッキの初期化
     initdeck(){
-        this.deck = [2,2,2,2,3,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,6,7,7,7,7,7,9,9,9,9,9,11,11,11,11,11,14,14,14,14,14,20,20,20,20,14,24,24,24,24,24,24,24,31,31,31,32,32,32,32];
+        this.deck = [2,2,2,2,3,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,6,7,7,7,7,7,8,8,8,8,8,8,11,11,11,11,11,14,14,14,14,14,20,20,20,20,14,24,24,24,24,24,24,24,31,31,31,32,32,32,32];
         //this.deck = [32,32,32,3,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32];
         this.initItem();
     }
@@ -156,14 +156,14 @@ module.exports = class Board{
         let score = [];
         for(i = 0; i < 4; i++){
             if(i == playerNum){
-                this.players[i].score = "Extra win";
+                score[i] = "Extra win";
                 continue;
             }
             this.players[i].updateScore();
             score.push(this.players[i].getScore());
         }
         
-        display.showResult();
+        display.showResult(this.roomId,score);
     }
 
     gameEnd(){
@@ -173,7 +173,7 @@ module.exports = class Board{
             this.players[i].updateScore();
             score.push(this.players[i].getScore());
         }
-        display.showResult();
+        display.showResult(this.roomId,score);
     }
 
     changedRule(term,cardId){
@@ -351,6 +351,7 @@ module.exports = class Board{
     }
 
     checkWinTerm(){
+
         for(i=0;i<4; i++){
             const isWin = this.players[i].hasItem(this.winTerm[0]) * this.players[i].hasItem(this.winTerm[1]);
             if(isWin){
@@ -434,7 +435,10 @@ module.exports = class Board{
     everyoneDeleteRandom(){
         for (let i=0; i<this.players.length; ++i){
             this.deleteCardRandom(this.players[i]);
+            display.upDateHand(this.players[i].getUserId(), this.players[i].getHand());
+            display.changeHand(this.roomId,this.players[i].getUserNum(),this.players[i].getHand().length);
         }
+
     }
 
     //c9
@@ -553,8 +557,9 @@ module.exports = class Board{
     //c24
     //�����_���ɃJ�[�h��D��
     stealCardRandom(player, data){
+        console.log(data.playerNum)
         let cardId = this.players[data.playerNum].getHand()[data.cardNum];
-        this.players[data.playerNum].deleteCard(data, cardId)
+        this.players[data.playerNum].deleteCardNum(data.cardNum);
         this.addCard(player, cardId);
         display.upDateHand(player.getUserId(), player.getHand());
         display.changeHand(this.roomId,player.getUserNum(),player.getHand().length);

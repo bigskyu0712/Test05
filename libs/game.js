@@ -47,6 +47,7 @@ module.exports = class Game{
         console.log("wait=" + this.waitUserId + ",socketid=" + socketid);
         if(this.gameState == 1 && data != "drawed"){
 
+        }else if(this.gameState == 2 && data == "drawed"){
         }else{
             if(this.waitUserId == socketid){
                 this.received = 1;

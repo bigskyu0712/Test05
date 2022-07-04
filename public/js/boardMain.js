@@ -267,8 +267,6 @@
             if(cardData.length == gameData.hand.length){
               isDrawed = 1;
               receiveCardDatas = [];
-              console.log("socket send");
-              socket.emit("reply","drawed");
             }
           }
         }
