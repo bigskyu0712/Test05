@@ -1,11 +1,15 @@
 
+  
+      isInited = false;
       gameState = 0;
       isDrawed = 0;
       receiveCardDatas = [];
       createCard = [];
+      let isClear = false;
 
       function init() {
         setDirection(gameData.myPlayerNum);
+        isInited = true;
         console.log("direction:"+gameData.direction);
         let cameraInitZ = 1200;      //cameraのz座標,初期値
 
@@ -20,7 +24,7 @@
         let handList = [[],[],[],[]];
         let isHoveringItem = false;
         let nowTerm = -1;
-        let goalCard;
+        let goalCard = [];
 
 
         // サイズを指定
@@ -192,7 +196,25 @@
             return 0;
         }
 
+        function hoverGoal(raycaster){
+                // その光線とぶつかったオブジェクトを得る
+                const intersects = raycaster.intersectObjects(goalCard);
+                  goalCard.map((mesh) => {
+                  // 交差しているオブジェクトが1つ以上存在し、
+                  // 交差しているオブジェクトの1番目(最前面)のものだったら
+                  if (intersects.length > 0 && mesh === intersects[0].object) {
+                    //カードInfoとhoverCardを更新
+                    cardInfo.id = gameData.term;
+                    cardInfo.type = "card";
+                    return 0;
+                  } else {
 
+                  }
+                });
+               
+          
+          return 0;
+      }
 
         //gamestate
 
@@ -231,6 +253,8 @@
                 socket.emit("reply",hoverCard);
               }
               break;
+
+
 
             default:
               break;
@@ -330,6 +354,7 @@
           cardLanding();
           hoverItem(raycaster);
           hoverHand(raycaster);
+          hoverGoal(raycaster);
 
           
 
@@ -385,6 +410,8 @@
                 gameState = 0;
               }
               break;
+
+
             default:
               break;
           }
@@ -426,15 +453,15 @@
           }
 
           if(nowTerm != gameData.term){
-            if(goalCard != null){
-              scene.remove(goalCard);
-              goalCard.geometry.dispose();
+            if(goalCard[0] != null){
+              scene.remove(goalCard[0]);
+              goalCard[0].geometry.dispose();
             }
-            goalCard = new Card('./img/cards/png/c'+ gameData.term +'.png');
-            goalCard.position.x = 120;
-            goalCard.position.y = 2
-            goalCard.position.z = 0;
-            scene.add(goalCard);
+            goalCard[0] = new Card('./img/cards/png/c'+ gameData.term +'.png');
+            goalCard[0].position.x = 120;
+            goalCard[0].position.y = 2
+            goalCard[0].position.z = 0;
+            scene.add(goalCard[0]);
             nowTerm = gameData.term;
           }
 
@@ -469,6 +496,22 @@
             }
           }
 
+          if(isClear == true){
+              cardList.forEach(function(card){
+                scene.remove(card);
+                card.geometry.dispose();
+              });            if(goalCard[0] != null){
+                scene.remove(goalCard[0]);
+                goalCard[0].geometry.dispose();
+              }
+              cardList = [];
+              itemList = [[],[],[],[]];
+              handList = [[],[],[],[]];
+              isHoveringItem = false;
+              nowTerm = -1;
+              goalCard = [];
+              isClear = false;
+          }
 
           cameraMove();
           // レンダリング

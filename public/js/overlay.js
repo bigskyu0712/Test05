@@ -53,7 +53,7 @@ function updatePopover(){
         // htmlの要素を表示する
         style += "display: block; position: absolute;"
         //z-index
-        style += "z-index:101;"
+        style += "z-index:13;"
 
         // 表示するブロックのy座標がcanvasの外に出るか判別
         let yCondition = cursor.y > frame.height - element.offsetHeight
@@ -104,6 +104,11 @@ function setCardData(){
     if(cardInfo.type == "item"){
         dataArray = cardTexts.filter(function(value){
             return value.cardType == 0;
+        });
+    }
+    if(cardInfo.type == "goal"){
+        dataArray = cardTexts.filter(function(value){
+            return value.cardType == 2;
         });
     }
 

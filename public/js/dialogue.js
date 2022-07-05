@@ -57,6 +57,7 @@ function dialogueHide(){
 
 
 function showResult(){
+    usingCardList = [];
     usingRemove();
     using.style.display = 'block';
     using.style.pointerEvents ='auto';

@@ -12,14 +12,22 @@ socket.on("startGame",function(data){
     updatePopover();
     console.log(data);
     gameData.playerName = data;
-    init();
+    if(isInited == false){
+        init();
+    }else{
+        isClear = true;
+    }
 })
 
 socket.on("draw",function (drawCards){
-    console.log(drawCards);
-    gameData.hand = gameData.hand.concat(drawCards);
-    console.log("socket send");
-    socket.emit("reply","drawed");
+    setTimeout(function(){
+        console.log(drawCards);
+        gameData.hand = gameData.hand.concat(drawCards);
+        isUpdate = true;
+        console.log("socket send");
+        socket.emit("reply","drawed");
+    },500);
+    
 });
 
 socket.on("selectCardFromHand",function (){

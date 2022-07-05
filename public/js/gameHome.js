@@ -165,6 +165,7 @@ function main() {
         showItemCards(ctx, canvas, itemCardData, hoverCard);
       }
       isUpdate = false;
+      makeSwitchButton(canvas);
       console.log(isUpdate);
     }
   },1000 / 60);

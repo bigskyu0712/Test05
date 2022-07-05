@@ -62,7 +62,8 @@ function invisible() {
 function usingRemove(){
     using.removeEventListener('mouseover', onMouseOver, false);
     using.removeEventListener('mouseout', onMouseOut, false);
-    using.removeEventListener('click', onClick, false);  
+    using.removeEventListener('click', onClick, false);
+    using.removeEventListener('mousemove', usingOnMouseMove, false);  
 }
 
 //usingCardListは単体実行用に代入、実際には外部から与えられる

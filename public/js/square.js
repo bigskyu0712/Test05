@@ -72,7 +72,9 @@ class Square extends THREE.Group{
     }
 
     getPosition(num){
-      return this.meshList[num].position;
+      if(num != -1){
+        return this.meshList[num].position;
+      }
     }
 
     setId(num,id){
