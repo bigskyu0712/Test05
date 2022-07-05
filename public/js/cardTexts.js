@@ -132,13 +132,13 @@ cardTexts = [
         cardName:"自分とランダムに入れ替え",
         cardText:"自分とランダムに選ばれたプレイヤーとの位置を入れ替える"
     },
-    /*{
+    {
         cardId:20,
         cardType:1,
         cardName:"サイコロをもう一度振る",
         cardText:"もう一度サイコロを振ることができる"
     },
-    {
+    /*{
         cardId:21,
         cardType:1,
         cardName:"サイコロをもう一度振る*",
@@ -198,12 +198,12 @@ cardTexts = [
         cardName:"プレイヤーと位置を入れ替え",
         cardText:"他のプレイヤーを指定し、そのプレイヤーと位置を交換する"
     },
-    /*{
+    {
         cardId:31,
         cardType:1,
         cardName:"ゲームを終了",
         cardText:"ゲームを終了し、スコアで順位を決める"
-    },*/
+    },
     {
         cardId:1,
         cardType:2,
