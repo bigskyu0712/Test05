@@ -5,7 +5,7 @@
 │
 ├── libs
 │   ├── board.js
-│   ├── cards   *M3-4 カード効果適応処理*
+│   ├── cards               *M3-4 カード効果適応処理*
 │   │   ├── c0.js
 │   │   ├── c1.js
 │   │   ├── c2.js
@@ -86,8 +86,9 @@
 │   │   ├── koma.png
 │   │   └── p0-3.svg
 │   │
-│   ├── index.html            *M1-2 マッチング開始処理（12/79）*
-│   │                         *M1-1 マッチングUI主処理（12/79）*
+│   ├── index.html            *M1-2 マッチング開始処理  （12/79）*
+│   │                         *M1-1 マッチングUI主処理  （12/79）*
+│   │                         *M1-1 W1 ユーザ名登録画面 （4/79）*
 │   │
 │   └── js
 │       ├── Dice.js
@@ -104,10 +105,12 @@
 │       ├── createSquare.js
 │       ├── dialogue.js       *M1-7 ゲーム終了処理（16/147）*
 │       │                     *M1-3 マッチング終了処理（5/147）*
+│       │                     *W2 マッチング待機画面（12/147）*
+│       │                     *W10 退出画面（40/147）*
 │       │                     **
 │       ├── display.js
 │       ├── gameData.js
-│       ├── gameHome.js
+│       ├── gameHome.js       **
 │       ├── gameResult.js
 │       ├── goalCard.js
 │       ├── overlay.js        *M1-5 カード表示処理*
@@ -117,7 +120,8 @@
 │       ├── setCard.js
 │       ├── square.js
 │       ├── squareCard.js
-│       └── usingCard.js      *M1-5 カード表示処理（22/337）*
+│       └── usingCard.js      *W8 カード効果画面*
+│                             *M1-5 カード表示処理（22/337）*
 │
 ├── server.js
 ├── usingCard.html
