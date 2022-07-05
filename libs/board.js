@@ -346,9 +346,9 @@ module.exports = class Board{
             next = (turn + i) % this.players.length;
             if(this.players[next].state == 1){
                 this.players[next].state = 0;
+                i++;
+                next = (turn + i) % this.players.length;
             }
-            i++;
-            next = (turn + i) % this.players.length;
         }
         display.getNextUser(this.roomId);
         
