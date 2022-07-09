@@ -143,3 +143,7 @@ exports.sendDraw = function(userId){
 exports.changeState = function(roomId,num){
     server.io.to(roomId).emit("changeState",num);
 }
+
+exports.selectPlayerItem = function(userId){
+    server.io.to(userId).emit("selectPlayerItem");
+}

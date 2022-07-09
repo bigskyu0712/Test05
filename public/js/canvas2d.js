@@ -82,6 +82,8 @@ function drawName() {
     let name = [];
     let j = 0;
 
+    //バグ修正
+    /* 
     for (let i=gameData.myPlayerNum; i<gameData.myPlayerNum + 4; ++i){
         console.log(i % 4);
         if(player==players[i % 4]){
@@ -89,6 +91,11 @@ function drawName() {
         }
         name[j] = players[i % 4];
         ++j;
+    }
+　　*/
+
+    for(i = 0;i < 4;i++){
+        name[i] = gameData.playerName[gameData.direction[i]];
     }
 
     cvs.textAlign = 'center';
