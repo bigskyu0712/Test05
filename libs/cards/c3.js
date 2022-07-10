@@ -16,7 +16,9 @@ module.exports = class c3 extends Card {
     static cardType = 1;
 
     //コンストラクタ，必要がなければいじらなくて大丈夫です．
-    constructor(board,player) {
+    constructor(board,   //boardクラス
+                player)  //playerクラス
+    {
         super(board,player);
     }
 
@@ -39,7 +41,8 @@ module.exports = class c3 extends Card {
 *** Method              : クライアントから送信後データを受け取った後の処理
 *** Return              : なし
 ******************************************************************/
-    afterEffect(data){
+    afterEffect(data)   //sendDataの配列
+    {
         console.log("3");
         this.board.addItemNum(this.player, data);
     }
