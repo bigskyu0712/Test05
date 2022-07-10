@@ -53,7 +53,7 @@ module.exports = class c6 extends Card {
 *** Return              : なし
 ******************************************************************/
 
-    afterEffect(data)   //sendDataの配列
+    afterEffect(data)   //sendData
     { 
         this.stealItem(this.player, data);
     }
@@ -67,7 +67,7 @@ module.exports = class c6 extends Card {
 ******************************************************************/
 
     stealItem(player,  //playerクラス
-              data)    //sendDataの配列
+              data)    //sendData
     {
         let itemId = this.board.players[data.playerNum].getItem()[data.cardNum];
         this.board.players[data.playerNum].deleteItemNum(data.cardNum);
