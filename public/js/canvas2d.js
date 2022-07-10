@@ -76,14 +76,14 @@ function drawName() {
 
     let leftTextLength = 0;   //左側のユーザ名の長さ
     let rightTextLength = 0;  //右側のユーザ名の長さ
-
+     /* 
     let player = gameData.playerName[gameData.myPlayerNum]; //仮置き
     let players = gameData.playerName; //仮置き
     let name = [];
     let j = 0;
 
     //バグ修正
-    /* 
+   
     for (let i=gameData.myPlayerNum; i<gameData.myPlayerNum + 4; ++i){
         console.log(i % 4);
         if(player==players[i % 4]){
@@ -92,22 +92,56 @@ function drawName() {
         name[j] = players[i % 4];
         ++j;
     }
-　　*/
+　　
 
     for(i = 0;i < 4;i++){
         name[i] = gameData.playerName[gameData.direction[i]];
     }
 
+    */
+
     cvs.textAlign = 'center';
     cvs.Baseline = 'center';
     cvs.font = '60px serif';
 
-    leftTextLength = cvs.measureText(name[0]).width;
-    rightTextLength = cvs.measureText(name[1]).width;
+    for(i = 0;i <4; i++){
 
-    cvs.fillStyle = 'white';
-    cvs.fillText(name[0], leftTextLength / 2, h / 2);
-    cvs.fillText(name[1], w/2, 150);
-    cvs.fillText(name[2], w - rightTextLength / 2, h/2);
+        switch(i){
+            case 0:
+                cvs.fillStyle = 'rgba(242,101,34,1)';
+                break;
+            case 1:
+                cvs.fillStyle = 'rgba(255,222,23,1)';
+                break;
+            case 2:
+                cvs.fillStyle = 'rgba(0,161,75,1)';
+                break;
+            case 3:
+                cvs.fillStyle = 'rgba(33,64,154,1)';
+                break;
+            default:
+                break;
+        }
+        switch(gameData.direction[i]){
+            case 0:
+                break;
+            case 1:
+                leftTextLength = cvs.measureText(gameData.playerName[gameData.direction[i]]).width;
+                cvs.fillText(gameData.playerName[i], leftTextLength / 2, h / 2);
+                break;
+            case 2:
+                cvs.fillText(gameData.playerName[i], w/2, 150);
+                break;
+            case 3:
+                rightTextLength = cvs.measureText(gameData.playerName[gameData.direction[i]]).width;
+                cvs.fillText(gameData.playerName[i], w - rightTextLength / 2, h/2);
+                break;
+            default :
+                break;
+
+        }
+
+    }   
+
 
 }

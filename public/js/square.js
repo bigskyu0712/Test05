@@ -83,7 +83,7 @@ class Square extends THREE.Group{
     }
 
     getCardId(num){
-      if(num > 0){
+      if(num > -1){
         return this.cardIdList[num];
       }else{
         return -1;

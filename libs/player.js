@@ -110,6 +110,11 @@ module.exports = class Player
         });
     }
 
+    deleteItemNum(itemNum){
+        this.item.splice(itemNum, 1);
+    }
+
+
     hasItem(id){
         return this.item.indexOf(id) > -1;
     }

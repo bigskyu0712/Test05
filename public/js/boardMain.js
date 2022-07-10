@@ -244,11 +244,20 @@
               }
               break;
 
-            case 24:
+            case 20:
               console.log(isHoveringHand );
               console.log(hoverCard.type == 2);
               console.log(isHoveringHand == true && hoverCard.type == 2);
               if(isHoveringHand == true && hoverCard.type == 2){
+                console.log("hoge");
+                socket.emit("reply",hoverCard);
+              }
+              break;
+
+            case 21:
+              console.log(hoverCard.type == 1);
+              console.log(isHoveringItem == true && hoverCard.type == 1);
+              if(isHoveringItem == true && hoverCard.type == 1){
                 console.log("hoge");
                 socket.emit("reply",hoverCard);
               }

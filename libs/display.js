@@ -81,6 +81,15 @@ exports.effectAddItem = function(roomId,itemId,userNum){
     data = null;
 }
 
+exports.effectDeleteItem = function(roomId,itemNum,userNum){
+    let data = {
+        user:userNum, 
+        item:itemNum
+       };
+   server.io.to(roomId).emit("effecteffectDeleteItem",data);
+   data = null;
+}
+
 exports.deleteCardFromHand = function(roomId,userNum){
     server.io.to(roomId).emit("deleteCardFromHand",userNum);
 }

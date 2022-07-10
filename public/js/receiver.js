@@ -32,6 +32,7 @@ socket.on("draw",function (drawCards){
 
 socket.on("selectCardFromHand",function (){
     console.log("select");
+    isUpdate = true;
     isMyturn = true;
     initSendData();
     gameState = 2;
@@ -75,6 +76,7 @@ socket.on("noneAction",function (){
 socket.on("nextTurn",function (){
     console.log("nextTurn");
     isMyturn = false;
+    isUpdate = true;
 });
 
 socket.on("effectAddItem",function(data){
@@ -147,4 +149,15 @@ socket.on("changeState",function(data){
 
 socket.on("nextTurn",function(){
     clearTopText();
+});
+
+socket.on("selectPlayerItem",function(){
+    displayText("相手のアイテムから1枚選んでください"); 
+    gameState = 21;
+});
+
+socket.on("effectDeleteItem", function(){
+    
+    console.log("itemPlus"+data.itemNum);
+    gameData.item[data.user].splice(data.itemNum, 1);
 });

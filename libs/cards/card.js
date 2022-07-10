@@ -1,3 +1,5 @@
+const Display = require('../display');
+
 module.exports = class Card {
 
     static cardType = 0;
@@ -5,6 +7,7 @@ module.exports = class Card {
     constructor(board,player) {
         this.board = board;
         this.player = player;
+        this.display = Display;
     }
 
     static getType(){

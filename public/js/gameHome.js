@@ -80,7 +80,9 @@ function main() {
 
 
         console.log("sendata: ", sendData);
-        sendData.cardNum = tmp;
+        if(showCardType == 0){
+          sendData.cardNum = tmp;
+        }
         if(gameData.hand[sendData.cardNum] > 31 && showCardType == 0){
           console.log("socket send");
           socket.emit("reply", sendData); 
