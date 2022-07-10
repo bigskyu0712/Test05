@@ -15,25 +15,45 @@ module.exports = class c11 extends Card {
     static cardType = 1;
 
     //コンストラクタ，必要がなければいじらなくて大丈夫です．
-    constructor(board,player) {
+    constructor(board,   //boardクラス
+                player)  //playerクラス
+    {
         super(board,player);
     }
 
-    //処理を記述
+/******************************************************************
+*** Method Name         : effect()
+*** Designer            : 武田 和大
+*** Date                : 2022.07.04
+*** Method              : カードの効果を適応する
+*** Return              : なし
+******************************************************************/
+
     effect(){
-        //山札からカードを選ぶ場合はどうするか
-        //送ってくださったメソッド名をメモする前にzoom閉じてしまったため、名前違うかもしれないです。
         this.board.effectSelectCardFromDeck(this.player, 1);
     }
 
-    //クライアントから送信後データを受け取った時
+/******************************************************************
+*** Method Name         : afterEffect()
+*** Designer            : 武田 和大
+*** Date                : 2022.07.04
+*** Method              : クライアントから送信後データを受け取った後の処理
+*** Return              : なし
+******************************************************************/
+
     afterEffect(data){
         console.log("11");
         this.board.effectAddCard(this.player, data);
     }
 
-    //カードIdからカードを入手
-    //board
+/******************************************************************
+*** Method Name         : addCard()
+*** Designer            : 武田 和大
+*** Date                : 2022.07.04
+*** Method              : カードIdからカードを入手
+*** Return              : なし
+******************************************************************/
+
     addCard(player, cardId){
         player.effectAddCard(this.player,cardId);
     }
