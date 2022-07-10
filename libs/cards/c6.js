@@ -16,7 +16,9 @@ module.exports = class c6 extends Card {
     static cardType = 1;
 
     //コンストラクタ，必要がなければいじらなくて大丈夫です．
-    constructor(board,player) {
+    constructor(board,   //boardクラス
+                player)  //playerクラス
+    {
         super(board,player);
     }
 
@@ -51,7 +53,8 @@ module.exports = class c6 extends Card {
 *** Return              : なし
 ******************************************************************/
 
-    afterEffect(data){
+    afterEffect(data)   //sendDataの配列
+    { 
         this.stealItem(this.player, data);
     }
 
@@ -63,7 +66,9 @@ module.exports = class c6 extends Card {
 *** Return              : なし
 ******************************************************************/
 
-    stealItem(player, data){
+    stealItem(player,  //playerクラス
+              data)    //sendDataの配列
+    {
         let itemId = this.board.players[data.playerNum].getItem()[data.cardNum];
         this.board.players[data.playerNum].deleteItemNum(data.cardNum);
         player.addItem(itemId);
