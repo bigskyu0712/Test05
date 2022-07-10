@@ -1,3 +1,11 @@
+/*******************************************************************
+***  File Name          : c32.js
+***  Version            : V1.0
+***  Designer           : 曾根 悠太
+***  Date               : 2022.07.02
+***  Purpose            : ルールカードの設定。
+***
+*******************************************************************/
 
 const Card = require("./card.js");
 
@@ -8,11 +16,20 @@ module.exports = class c32 extends Card {
     static term = [1,2];
 
     //コンストラクタ，必要がなければいじらなくて大丈夫です．
-    constructor(board,player) {
+    constructor(board,   //boardクラス
+                player)  //playerクラス
+    {
         super(board,player);
     }
 
-    //処理を記述
+/******************************************************************
+*** Method Name         : effect()
+*** Designer            : 曾根 悠太
+*** Date                : 2022.07.04
+*** Method              : カードの効果を適応する
+*** Return              : なし
+******************************************************************/
+
     effect(){
     }
 
