@@ -48,7 +48,7 @@ module.exports = class c13 extends Card {
 *** Return              : なし
 ******************************************************************/
 
-    afterEffect(data)   //sendDataの配列
+    afterEffect(data)   //sendData
     {
         if(this.board.item.length > 0){
             this.board.addItem(player, data.itemId);
