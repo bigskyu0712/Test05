@@ -20,7 +20,14 @@ module.exports = class c8 extends Card {
         super(board,player);
     }
 
-    //処理を記述
+/******************************************************************
+*** Method Name         : effect()
+*** Designer            : 武田 和大
+*** Date                : 2022.07.04
+*** Method              : カードの効果を適応する
+*** Return              : なし
+******************************************************************/
+
     effect(){
         this.board.everyoneDeleteRandom(); //deleteRandomを全員分行う
     }
