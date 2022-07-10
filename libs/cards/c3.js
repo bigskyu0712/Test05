@@ -41,7 +41,7 @@ module.exports = class c3 extends Card {
 *** Method              : クライアントから送信後データを受け取った後の処理
 *** Return              : なし
 ******************************************************************/
-    afterEffect(data)   //sendDataの配列
+    afterEffect(data)   //sendData
     {
         console.log("3");
         this.board.addItemNum(this.player, data);
