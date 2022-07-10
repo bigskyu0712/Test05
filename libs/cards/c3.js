@@ -20,11 +20,25 @@ module.exports = class c3 extends Card {
         super(board,player);
     }
 
+/******************************************************************
+*** Function Name       : effect()
+*** Designer            : 武田 和大
+*** Date                : 2022.07.04
+*** Function            : カードの効果を適応する
+*** Return              : なし
+******************************************************************/
     //処理を記述
     effect(){
         this.board.effectSelectItem(this.player,1);
     }
 
+/******************************************************************
+*** Function Name       : afterEffect()
+*** Designer            : 武田 和大
+*** Date                : 2022.07.04
+*** Function            : クライアントから送信後データを受け取った後の処理
+*** Return              : なし
+******************************************************************/
     //クライアントから送信後データを受け取った時
     afterEffect(data){
         console.log("3");
