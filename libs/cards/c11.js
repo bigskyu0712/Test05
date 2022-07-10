@@ -41,7 +41,8 @@ module.exports = class c11 extends Card {
 *** Return              : なし
 ******************************************************************/
 
-    afterEffect(data){
+    afterEffect(data)   //sendDataの配列
+    {
         console.log("11");
         this.board.effectAddCard(this.player, data);
     }
@@ -54,7 +55,9 @@ module.exports = class c11 extends Card {
 *** Return              : なし
 ******************************************************************/
 
-    addCard(player, cardId){
+    addCard(player,  //playerクラス
+            cardId)  //cardのID
+    {
         player.effectAddCard(this.player,cardId);
     }
 
