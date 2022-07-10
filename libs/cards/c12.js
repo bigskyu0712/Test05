@@ -42,7 +42,8 @@ module.exports = class c12 extends Card {
 *** Return              : なし
 ******************************************************************/
 
-    afterEffect(data){
+    afterEffect(data)   //sendDataの配列
+    {
         console.log("12");
         this.board.deleteCard(this.player, data.cardId);
     }
