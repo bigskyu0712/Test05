@@ -18,11 +18,20 @@ module.exports = class c29 extends Card {
     static cardType = 1;
 
     //コンストラクタ，必要がなければいじらなくて大丈夫です．
-    constructor(board,player) {
+    constructor(board,   //boardクラス
+                player)  //playerクラス
+    {
         super(board,player);
     }
 
-    //処理を記述
+/******************************************************************
+*** Method Name         : effect()
+*** Designer            : 武田 和大
+*** Date                : 2022.07.04
+*** Method              : カードの効果を適応する
+*** Return              : なし
+******************************************************************/
+
     effect(){
         this.board.deleteAllCard(player); //deleteCardRandomを所持数分回す
     }
