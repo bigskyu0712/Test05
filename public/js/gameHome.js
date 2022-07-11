@@ -158,7 +158,7 @@ function main() {
     if(isUpdate == true) {
       ctx.clearRect(cardCenteredAxis,
                     0, 
-                    (cardWidth + cardSpacing) * cards.length, 
+                    canvas.width, 
                     canvas.height);
                     cards = [];
       if (showCardType == 0){

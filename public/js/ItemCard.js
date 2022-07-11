@@ -43,14 +43,16 @@ class ItemCard extends Card {
     *** Function            : アイテムカードの位置を設定・更新する
     *** Return              : なし
     ****************************************************************************/
-    setPosition(playerNum)  // ユーザの番号
+    setPosition(playerNum,scene)  // ユーザの番号
     {
         console.log("Player direction:", gameData.direction[playerNum]);
 
         // カードが何番目か取得
         let index = gameData.item[playerNum].indexOf(this.itemId);
         if (index == -1) {
-            index = gameData.item[playerNum].length;
+            scene.remove(this);
+            this.geometry.dispose();
+            return -1;
         }
 
         // プレイヤー位置によって座標を設定
@@ -86,6 +88,8 @@ class ItemCard extends Card {
                 this.position.z = 0;
                 break;
         }
+
+        return 0;
 
 
 

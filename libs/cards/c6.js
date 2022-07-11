@@ -59,10 +59,12 @@ module.exports = class c6 extends Card {
 *** Return              : なし
 ******************************************************************/
 
-    afterEffect(data)   //sendData
-    { 
+afterEffect(data){ // sendData
+    if(data == "noneaction"){
+    }else{
         this.stealItem(this.player, data);
     }
+}
 
 /******************************************************************
 *** Method Name         : stealItem()
@@ -75,11 +77,11 @@ module.exports = class c6 extends Card {
     stealItem(player,  //playerクラス
               data)    //sendData
     {
-        let itemId = this.board.players[data.playerNum].getItem()[data.cardNum];
+        let itemId = this.board.players[data.playerNum].item[data.cardNum];
         this.board.players[data.playerNum].deleteItemNum(data.cardNum);
         player.addItem(itemId);
         this.display.effectAddItem(this.board.roomId,itemId,player.getUserNum());
-        this.display.effectDeleteItem(this.board.roomId,data.cardNum,player.getUserNum());  
+        this.display.effectDeleteItem(this.board.roomId,data.cardNum,data.playerNum);   
     }
 
     //全てのアイテムカードを消去

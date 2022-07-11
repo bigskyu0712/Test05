@@ -55,7 +55,7 @@ module.exports = class Board{
     }
 
     initItem(){
-        this.item = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
+        this.item = [1,2,3,4,5,6,7,8];
     }
 
     //idからplayerを取得
@@ -225,6 +225,7 @@ module.exports = class Board{
     drawPhase(turn,received){
         if(received == 0){
             console.log(this.players[turn]);
+            display.NextTurn(this.roomId,turn);
             this.draw(this.players[turn],this.drawRule);
             
 
@@ -350,7 +351,7 @@ module.exports = class Board{
                 next = (turn + i) % this.players.length;
             }
         }
-        display.getNextUser(this.roomId);
+        
         
         return next;
     }

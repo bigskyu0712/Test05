@@ -72,6 +72,37 @@ function drawTopText(){
 
 }
 
+
+function showTurn(userNum){
+    clearTopText();
+    leftTextLength = cvs.measureText(gameData.playerName[userNum]).width;
+    rightTextLength = cvs.measureText("の番です").width;
+    allTextLength = cvs.measureText(gameData.playerName[userNum] + "の番です").width;
+
+    switch(userNum) {
+        case 0:
+            cvs.fillStyle = 'rgba(242,101,34,1)';
+            break;
+        case 1:
+            cvs.fillStyle = 'rgba(255,222,23,1)';
+            break;
+        case 2:
+            cvs.fillStyle = 'rgba(0,161,75,1)';
+            break;
+        case 3:
+            cvs.fillStyle = 'rgba(33,64,154,1)';
+            break;
+        default:
+            break;
+    }
+
+    cvs.fillText(gameData.playerName[userNum], w / 2 - allTextLength / 2 + leftTextLength / 2, 80);
+    cvs.fillStyle = 'white';
+    cvs.fillText("の番です", w / 2 + allTextLength / 2 - rightTextLength / 2, 80);
+
+}
+
+
 function drawName() {
 
     let leftTextLength = 0;   //左側のユーザ名の長さ
@@ -126,20 +157,24 @@ function drawName() {
             case 0:
                 break;
             case 1:
+                cvs.textAlign = 'left';
                 leftTextLength = cvs.measureText(gameData.playerName[gameData.direction[i]]).width;
-                cvs.fillText(gameData.playerName[i], leftTextLength / 2, h / 2);
+                cvs.fillText(gameData.playerName[i], 20, h / 2);
                 break;
             case 2:
+                cvs.textAlign = 'center';
                 cvs.fillText(gameData.playerName[i], w/2, 150);
                 break;
             case 3:
+                cvs.textAlign = 'right'
                 rightTextLength = cvs.measureText(gameData.playerName[gameData.direction[i]]).width;
-                cvs.fillText(gameData.playerName[i], w - rightTextLength / 2, h/2);
+                cvs.fillText(gameData.playerName[i], w - 20, h/2);
                 break;
             default :
                 break;
 
         }
+        cvs.textAlign = 'center';
 
     }   
 

@@ -22,10 +22,9 @@ module.exports = class c3 extends Card {
     static cardType = 1;
 
     //コンストラクタ，必要がなければいじらなくて大丈夫です．
-    constructor(board,   //boardクラス
-                player)  //playerクラス
-    {
+    constructor(board,player) {
         super(board,player);
+        this.isEffected = false;
     }
 
 /******************************************************************
@@ -36,8 +35,16 @@ module.exports = class c3 extends Card {
 *** Return              : なし
 ******************************************************************/
 
+    //処理を記述
     effect(){
-        this.board.effectSelectItem(this.player,1);
+        console.log(this.board.item.length);
+        if(this.board.item.length > 0){
+            this.board.effectSelectItem(this.player,1);
+            this.isEffected = true;
+        }else{
+            this.board.nonAction(this.player);
+            this.isEffected = false;
+        }
     }
 
 /******************************************************************
@@ -48,10 +55,11 @@ module.exports = class c3 extends Card {
 *** Return              : なし
 ******************************************************************/
 
-    afterEffect(data)   //sendData
-    {
-        console.log("3");
-        this.board.addItemNum(this.player, data);
+    //クライアントから送信後データを受け取った時
+    afterEffect(data){
+        if(this.board.item.length > 0){
+            this.board.addItemNum(this.player, data);
+        }
     }
 
 }

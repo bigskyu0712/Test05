@@ -1,11 +1,44 @@
+/*******************************************************************
+***  File Name		: boardMain.js
+***  Version		: V1.5
+***  Designer		: 曾根 悠太
+***  Date			: 2022.07.10
+***  Purpose   :W3~W5，ボード表示の主に3d部分に関する処理 
+***
+*******************************************************************/
+/*
+*** Revision :
+*** V1.0 : 曾根悠太, 2022.06.25
+*** V1.1 : 曾根悠太, 2022.06.26
+*** V1.2 : 曾根悠太, 2022.06.28
+*** V1.3 : 曾根悠太, 2022.06.30
+*** V1.4 : 曾根悠太, 2022.07.06
+*** V1.5 : 曾根悠太, 2022.07.10
+*/
 
-  
+
+
       isInited = false;
       gameState = 0;
       isDrawed = 0;
       receiveCardDatas = [];
       createCard = [];
       let isClear = false;
+
+/**************************************************************************** 
+
+*** Function Name       : init() 
+
+*** Designer            : 曾根悠太 
+
+*** Date                : 2022.07.10 
+
+*** Function            : UIの3Dに関するデータの初期化  
+
+*** Return              : なし 
+
+****************************************************************************/ 
+
 
       function init() {
         setDirection(gameData.myPlayerNum);
@@ -92,21 +125,21 @@
         scene.add(drawCard);
 
         
-            /****************************************************************************
-            *** Function Name       : placePlayerCards()
-            *** Designer            : 
-            *** Date                : 2022.7.2
-            *** Function            : 入力されたユーザのマスカード枚数を画面に表示する
-            *** Return              : なし
-            ****************************************************************************/
-            function placePlayerCards(playerNum)  // プレイヤーの番号
-            {
-             for (var i = 0; i < gameData.playerHandNumber[playerNum]; i++) {
-             const squareCard = new SquareCard('./img/cback.png');
-             squareCard.setPosition(2, i);
-             scene.add(squareCard);
-               }
-           }
+/****************************************************************************
+*** Function Name       : placePlayerCards()
+*** Designer            : 
+*** Date                : 2022.07.02
+*** Function            : 入力されたユーザのマスカード枚数を画面に表示する
+*** Return              : なし
+****************************************************************************/
+        function placePlayerCards(playerNum)  // プレイヤーの番号
+        {
+          for (var i = 0; i < gameData.playerHandNumber[playerNum]; i++) {
+            const squareCard = new SquareCard('./img/cback.png');
+            squareCard.setPosition(2, i);
+            scene.add(squareCard);
+          }
+        }
 
 
         // 平行光源
@@ -140,6 +173,15 @@
           mouse.y = -(y / h) * 2 + 1;
         }
 
+
+/****************************************************************************
+*** Function Name       : cardLanding()
+*** Designer            : 
+*** Date                : 2022.06.25
+*** Function            : 表示中のカードの落下アニメーションの実装
+*** Return              : なし
+****************************************************************************/
+
         function cardLanding(){
           cardList.forEach(function(card){
             if(card.position.y > 3){
@@ -148,31 +190,49 @@
           });
         }
 
+/****************************************************************************
+*** Function Name       : hoverItem()
+*** Designer            : 
+*** Date                : 2022.07.06
+*** Function            : マウスオーバーしたアイテムを検知する
+*** Return              : なし
+****************************************************************************/        
+
         function hoverItem(raycaster){
           isHoveringItem = false;
           for(i = 0; i < 4; i++){
-                  // その光線とぶつかったオブジェクトを得る
-                  const intersects = raycaster.intersectObjects(itemList[i]);
+                  if(itemList[i].length > 0){
+                    // その光線とぶつかったオブジェクトを得る
+                    const intersects = raycaster.intersectObjects(itemList[i]);
                     itemList[i].map((mesh,index) => {
                     // 交差しているオブジェクトが1つ以上存在し、
                     // 交差しているオブジェクトの1番目(最前面)のものだったら
-                    if (intersects.length > 0 && mesh === intersects[0].object) {
+                      if (intersects.length > 0 && mesh === intersects[0].object) {
                       //カードInfoとhoverCardを更新
-                      hoverCard.cardNum = index;
-                      hoverCard.PlayerNum = i;
-                      hoverCard.type = 1;
-                      isHoveringItem = true;
-                      return 0;
-                    } else {
+                        hoverCard.cardNum = index;
+                        hoverCard.playerNum = i;
+                        hoverCard.type = 1;
+                        isHoveringItem = true;
+                        return; //処理を終了
+                      } else {
 
                     }
                   });
+                }
                  
             }
-            return 0;
         }
 
-        function hoverHand(raycaster){
+
+/****************************************************************************
+*** Function Name       : hoverHand()
+*** Designer            : 
+*** Date                : 2022.07.06
+*** Function            : マウスオーバーした相手の手札を検知する
+*** Return              : なし
+****************************************************************************/ 
+
+        function hoverHand(raycaster){ //raycaster
           isHoveringHand = false;
           for(i = 0; i < 4; i++){
                   // その光線とぶつかったオブジェクトを得る
@@ -186,17 +246,24 @@
                       hoverCard.playerNum = i;
                       hoverCard.type = 2;
                       isHoveringHand = true;
-                      return 0;
+                      return; //処理を終了
                     } else {
 
                     }
                   });
                  
             }
-            return 0;
         }
 
-        function hoverGoal(raycaster){
+/****************************************************************************
+*** Function Name       : hoverGoal()
+*** Designer            : 
+*** Date                : 2022.07.06
+*** Function            : マウスオーバーしたゴールカードを検知する
+*** Return              : なし
+****************************************************************************/ 
+
+        function hoverGoal(raycaster){ //raycaster
                 // その光線とぶつかったオブジェクトを得る
                 const intersects = raycaster.intersectObjects(goalCard);
                   goalCard.map((mesh) => {
@@ -206,7 +273,7 @@
                     //カードInfoとhoverCardを更新
                     cardInfo.id = gameData.term;
                     cardInfo.type = "card";
-                    return 0;
+                    return; //処理を終了
                   } else {
 
                   }
@@ -218,9 +285,20 @@
 
         //gamestate
 
-        function handleClick(event){
+/****************************************************************************
+*** Function Name       : handleClick()
+*** Designer            : 
+*** Date                : 2022.07.06
+*** Function            : クリック時のイベントの処理
+*** Return              : なし
+****************************************************************************/ 
+
+
+        function handleClick(event){ //event
           if(isMyturn === true){
+            //ゲームの遷移状態によって実行するイベントを変更する
           switch (gameState){
+            //State:2,カードが選択された状態でマスがクリックされた場合マスにカードを設置
             case 2:
               sendData.position = clickSquare;
               console.log(sendData);
@@ -233,30 +311,23 @@
                 gameState = 3;
               }
               break;
-            
+            //State:6,サイコロを投げる
             case 6:
               socket.emit("throw",diceNum);
               break;
-            
-            case 15:
-              if(isHoveringItem == true){
-                socket.emit("reply",hoverCard);
-              }
-              break;
-
+            //State:20,相手の手札をクリックした場合そのデータをサーバへ送る
             case 20:
-              console.log(isHoveringHand );
-              console.log(hoverCard.type == 2);
-              console.log(isHoveringHand == true && hoverCard.type == 2);
+              //console.log(hoverCard.type == 2);　確認用
+              //console.log(isHoveringHand == true && hoverCard.type == 2);　確認用
               if(isHoveringHand == true && hoverCard.type == 2){
                 console.log("hoge");
                 socket.emit("reply",hoverCard);
               }
               break;
-
+            //State:21,相手のアイテムをクリックした場合そのデータをサーバへ送る
             case 21:
-              console.log(hoverCard.type == 1);
-              console.log(isHoveringItem == true && hoverCard.type == 1);
+              //console.log(hoverCard.type == 1); 確認用
+              //console.log(isHoveringItem == true && hoverCard.type == 1);　確認用
               if(isHoveringItem == true && hoverCard.type == 1){
                 console.log("hoge");
                 socket.emit("reply",hoverCard);
@@ -271,7 +342,17 @@
           }
         }
 
-        function installationCard(id,squareNum){
+/****************************************************************************
+*** Function Name       : installationCard()
+*** Designer            : 
+*** Date                : 2022.07.06
+*** Function            : マスの上にカードを設置する
+*** Return              : なし
+****************************************************************************/ 
+
+
+        function installationCard(id, //カードのID
+                                  squareNum){ //マス番号
           console.log("getNum=" +square.getNum(squareNum));
             if(square.getNum(squareNum) > -1){
               scene.remove(cardList[square.getNum(squareNum)]);
@@ -288,6 +369,14 @@
             scene.add(card);
             square.setId(squareNum,id);
         }
+
+/****************************************************************************
+*** Function Name       : draw()
+*** Designer            : 
+*** Date                : 2022.07.06
+*** Function            : ドローについてのアニメーションを設定する
+*** Return              : なし
+****************************************************************************/
 
         function draw(){
           isDrawed = 0;
@@ -334,13 +423,22 @@
           camera.lookAt(new THREE.Vector3(0, 0, 0));
         }
 
+/****************************************************************************
+*** Function Name       : itemCreate()
+*** Designer            : 
+*** Date                : 2022.07.06
+*** Function            : アイテムの生成を行う
+*** Return              : なし
+****************************************************************************/
+
         function itemCreate(num,scene){
-          for(i = itemList[num].length;i < gameData.item[num].length;i++){
-            const itemCard = new ItemCard('./img/cards/png/i'+ gameData.item[num][i] +'.png',gameData.item[num][i],scene);
+          for(i = 0;i < gameData.item[num].length;i++){
+            let itemCard = new ItemCard('./img/cards/png/i'+ gameData.item[num][i] +'.png',gameData.item[num][i],scene);
             console.log("num=" + num);
             itemCard.setPosition(num);
             itemList[num].push(itemCard);
             scene.add(itemCard);
+            itemCard = null;
           }
         }
 
@@ -350,7 +448,13 @@
 
         drawName();
 
-        
+/****************************************************************************
+*** Function Name       : tick()
+*** Designer            : 
+*** Date                : 2022.07.06
+*** Function            : 毎フレーム毎のアニメーションを設定する
+*** Return              : なし
+****************************************************************************/        
 
         // 毎フレーム時に実行されるループイベントです
         function tick() {
@@ -361,8 +465,8 @@
           cardInfo.type = "card";
           cardInfo.id = square.getCardId(clickSquare);
           cardLanding();
-          hoverItem(raycaster);
-          hoverHand(raycaster);
+          
+          
           hoverGoal(raycaster);
 
           
@@ -418,6 +522,14 @@
                 }
                 gameState = 0;
               }
+              break;
+
+            case 20:
+              hoverHand(raycaster);
+              break;
+
+            case 21:
+              hoverItem(raycaster);
               break;
 
 
@@ -496,12 +608,18 @@
 
           for(i = 0; i < 4;i++){
             if(gameData.item[i].length > itemList[i].length){
+              itemList[i].forEach(function(itemCard){
+                scene.remove(itemCard);
+                itemCard.geometry.dispose();
+              });
+              itemList[i] = [];
               itemCreate(i,scene);
             }else if(gameData.item[i].length < itemList[i].length){
               itemList[i].forEach(function(itemCard){
                 itemCard.setPosition(i,scene);
               });
               itemList[i] = gameData.item[i];
+              console.log(itemList[i]);
             }
           }
 

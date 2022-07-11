@@ -73,10 +73,11 @@ socket.on("noneAction",function (){
     }
 });
 
-socket.on("nextTurn",function (){
+socket.on("nextTurn",function (turn){
     console.log("nextTurn");
     isMyturn = false;
     isUpdate = true;
+    showTurn(turn);
 });
 
 socket.on("effectAddItem",function(data){
@@ -131,7 +132,7 @@ socket.on("showResult",function(data){
 
 socket.on("selectPlayerHand",function(){
     displayText("相手の手札から1枚選んでください"); 
-    gameState = 24;
+    gameState = 20;
 });
 
 socket.on("changeRule",function(data){
@@ -147,17 +148,12 @@ socket.on("changeState",function(data){
     gameState = data;
 });
 
-socket.on("nextTurn",function(){
-    clearTopText();
-});
-
 socket.on("selectPlayerItem",function(){
     displayText("相手のアイテムから1枚選んでください"); 
     gameState = 21;
 });
 
-socket.on("effectDeleteItem", function(){
-    
-    console.log("itemPlus"+data.itemNum);
-    gameData.item[data.user].splice(data.itemNum, 1);
+socket.on("effectDeleteItem", function(){   
+    console.log("itemPlus"+data.item);
+    gameData.item[data.user].splice(data.item, 1);
 });

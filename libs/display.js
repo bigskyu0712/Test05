@@ -86,7 +86,7 @@ exports.effectDeleteItem = function(roomId,itemNum,userNum){
         user:userNum, 
         item:itemNum
        };
-   server.io.to(roomId).emit("effecteffectDeleteItem",data);
+   server.io.to(roomId).emit("effectDeleteItem",data);
    data = null;
 }
 
