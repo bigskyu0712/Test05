@@ -1,7 +1,7 @@
 /*******************************************************************
 ***  File Name		: player.js
 ***  Version      : V1.1
-***  Designer	  : 曽根
+***  Designer	  : 曾根
 ***  Date		  : 2022.07.4
 ***  Purpose      : マッチングに関するサブルーチンをこちらに
 ***
@@ -32,7 +32,7 @@ module.exports = class Player
 
 /****************************************************************************
 *** Function Name       : disconnct()
-*** Designer            : 曽根
+*** Designer            :　曾根
 *** Date                : 2022.7.4
 *** Function            : 切断時
 *** Return              : data
@@ -49,7 +49,7 @@ module.exports = class Player
     //各ステータスを取得(一部使わないかも)
 /****************************************************************************
 *** Function Name       : getUserName()
-*** Designer            : 曽根
+*** Designer            : 曾根
 *** Date                : 2022.7.4
 *** Function            : ユーザ名取得
 *** Return              : name
@@ -59,7 +59,7 @@ module.exports = class Player
     }
 /****************************************************************************
 *** Function Name       : getUserId()
-*** Designer            : 曽根
+*** Designer            : 曾根
 *** Date                : 2022.7.4
 *** Function            : ユーザID取得
 *** Return              : userId
@@ -70,7 +70,7 @@ module.exports = class Player
 
 /****************************************************************************
 *** Function Name       : getUserNum()
-*** Designer            : 曽根
+*** Designer            : 曾根
 *** Date                : 2022.7.4
 *** Function            : 何番目のユーザか取得
 *** Return              : number
@@ -81,7 +81,7 @@ module.exports = class Player
     }
 /****************************************************************************
 *** Function Name       : getScore()
-*** Designer            : 曽根
+*** Designer            : 曾根
 *** Date                : 2022.7.4
 *** Function            : スコア取得
 *** Return              : score
@@ -91,7 +91,7 @@ module.exports = class Player
     }
 /****************************************************************************
 *** Function Name       : getHand()
-*** Designer            : 曽根
+*** Designer            : 曾根
 *** Date                : 2022.7.4
 *** Function            : 手札の取得
 *** Return              : hand
@@ -101,7 +101,7 @@ module.exports = class Player
     }
 /****************************************************************************
 *** Function Name       : getItem()
-*** Designer            : 曽根
+*** Designer            : 曾根
 *** Date                : 2022.7.4
 *** Function            : アイテムの取得
 *** Return              : item
@@ -111,7 +111,7 @@ module.exports = class Player
     }
 /****************************************************************************
 *** Function Name       : getPosition()
-*** Designer            : 曽根
+*** Designer            : 曾根
 *** Date                : 2022.7.4
 *** Function            : 位置の取得
 *** Return              : position
@@ -121,7 +121,7 @@ module.exports = class Player
     }
 /****************************************************************************
 *** Function Name       : addCard()
-*** Designer            : 曽根
+*** Designer            : 曾根
 *** Date                : 2022.7.4
 *** Function            : 手札にカードを増やす
 *** Return              : hand.push(cardId)
@@ -131,7 +131,7 @@ module.exports = class Player
     }
 /****************************************************************************
 *** Function Name       : addItem()
-*** Designer            : 曽根
+*** Designer            : 曾根
 *** Date                : 2022.7.4
 *** Function            : アイテムを増やす
 *** Return              : なし
@@ -141,7 +141,7 @@ module.exports = class Player
     }
 /****************************************************************************
 *** Function Name       : addScore()
-*** Designer            : 曽根
+*** Designer            : 曾根
 *** Date                : 2022.7.4
 *** Function            : スコアを増やす
 *** Return              : なし
@@ -151,7 +151,7 @@ module.exports = class Player
     }
 /****************************************************************************
 *** Function Name       : updateScore()
-*** Designer            : 曽根
+*** Designer            : 曾根
 *** Date                : 2022.7.4
 *** Function            : スコアを更新
 *** Return              : なし
@@ -167,7 +167,7 @@ module.exports = class Player
     }
 /****************************************************************************
 *** Function Name       : updatePosition()
-*** Designer            : 曽根
+*** Designer            : 曾根
 *** Date                : 2022.7.4
 *** Function            : ポジションの更新
 *** Return              : なし
@@ -178,7 +178,7 @@ module.exports = class Player
     }
 /****************************************************************************
 *** Function Name       : deleteCard()
-*** Designer            : 曽根
+*** Designer            : 曾根
 *** Date                : 2022.7.4
 *** Function            : 手札からカードの削除
 *** Return              : value
@@ -190,7 +190,7 @@ module.exports = class Player
     }
 /****************************************************************************
 *** Function Name       : deleteCardNum()
-*** Designer            : 曽根
+*** Designer            : 曾根
 *** Date                : 2022.7.4
 *** Function            : 手札からカードの削除(順番で)
 *** Return              : なし
@@ -201,7 +201,7 @@ module.exports = class Player
     }
 /****************************************************************************
 *** Function Name       : deleteItem()
-*** Designer            : 曽根
+*** Designer            : 曾根
 *** Date                : 2022.7.4
 *** Function            : アイテムの削除
 *** Return              : value
@@ -213,7 +213,7 @@ module.exports = class Player
     }
 /****************************************************************************
 *** Function Name       : deleteItemNum()
-*** Designer            : 曽根
+*** Designer            : 曾根
 *** Date                : 2022.7.4
 *** Function            : アイテム数の削除
 *** Return              : data
@@ -224,7 +224,7 @@ module.exports = class Player
 
 /****************************************************************************
 *** Function Name       : hasItem()
-*** Designer            : 曽根
+*** Designer            : 曾根
 *** Date                : 2022.7.4
 *** Function            : 所持アイテム
 *** Return              : item.indexOf(id)

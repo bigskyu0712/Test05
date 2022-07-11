@@ -55,7 +55,7 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : main()
+    *** Function Name       : disconnect()
     *** Designer            : 曾根 悠太
     *** Date                : 2022.07.04
     *** Function            : ユーザの切断

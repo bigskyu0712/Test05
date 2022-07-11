@@ -62,6 +62,15 @@ class Square extends THREE.Group{
         }
     }
 
+/****************************************************************************
+*** Function Name       : onMouse()
+*** Designer            : 曾根
+*** Date                : 2022.6.14
+*** Function            : 画面への描画する関数の呼び出し
+                          マウスの動きなどを管理
+*** Return              : なし
+****************************************************************************/
+
     onMouse(raycaster){
                   // その光線とぶつかったオブジェクトを得る
                   const intersects = raycaster.intersectObjects(this.meshList);
