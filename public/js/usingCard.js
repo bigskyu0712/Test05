@@ -108,27 +108,18 @@ function usingRemove()
     using.removeEventListener('mousemove', usingOnMouseMove, false);  
 }
 
-//usingCardListは単体実行用に代入、実際には外部から与えられる
-/*var usingCardList = [
-    'rc1.svg',
-    'rc2.svg',
-    'ic1.svg',
-    'mc1.svg',
-    'mc4.svg',
-    'mc5.svg',
-    'mc6.svg',
-    'mc7.svg',
-    'mc8.svg',
-    'mc9.svg',
-    'mc10.svg',
-    'mc11.svg',
-    'mc12.svg'
-];*/
+
 var numOfCard = usingCardList.length;
 var page = 1; 
 var maxPage;
 
-
+/**************************************************************************** 
+*** Function Name       : usingMain() 
+*** Designer            : 風間絃吹 
+*** Date                : 2022.07.03 
+*** Function            : メイン (ボタンの表示等)  
+*** Return              : select 
+****************************************************************************/
 function usingMain() {
     //文字列
    // usingContext.font = "36px 'ＭＳ ゴシック'";
@@ -164,17 +155,36 @@ function usingMain() {
 
 
 
-
-//マウスオーバー処理
+/**************************************************************************** 
+*** Function Name       : onMouseOver(e) 
+*** Designer            : 風間絃吹 
+*** Date                : 2022.07.03 
+*** Function            : canvasにマウスが乗ったことを検知  
+*** Return              : なし
+****************************************************************************/
 function onMouseOver(e) {
     rect = e.target.getBoundingClientRect();
     using.addEventListener('mousemove', usingOnMouseMove, false);
 }
 
+/**************************************************************************** 
+*** Function Name       : onMouseOver() 
+*** Designer            : 風間絃吹 
+*** Date                : 2022.07.03 
+*** Function            : canvasからマウスが離れたことを検知  
+*** Return              : なし
+****************************************************************************/
 function onMouseOut() {
     using.removeEventListener('mousemove', usingOnMouseMove, false);
 }
 
+/**************************************************************************** 
+*** Function Name       : usingOnMouseMove(e)
+*** Designer            : 風間絃吹 
+*** Date                : 2022.07.03 
+*** Function            : canvas上でマウスが動いていることを検知  
+*** Return              : なし
+****************************************************************************/
 function usingOnMouseMove(e) {
     moveActions.updateTargetFlag(e);
 
@@ -186,6 +196,13 @@ function usingOnMouseMove(e) {
 
 }
 
+/**************************************************************************** 
+*** Function Name       : moveActions
+*** Designer            : 風間絃吹 
+*** Date                : 2022.07.03 
+*** Function            : どのマウスオーバー領域にいるかの検知
+*** Return              : なし
+****************************************************************************/
 var moveActions = {
     timer: null,
         updateTargetFlag: function(e) {
@@ -227,7 +244,14 @@ var moveActions = {
         }
 };
 
-function usingDrawRect(color) {
+/**************************************************************************** 
+*** Function Name       : usingDrawRect()
+*** Designer            : 風間絃吹 
+*** Date                : 2022.07.03 
+*** Function            : マウスオーバー領域に乗る前、及び離れた時に実行される機能の呼び出し
+*** Return              : なし
+****************************************************************************/
+function usingDrawRect() {
     
     clearExp ();
     for (let i = 1; i <= 4; i++) {
@@ -237,8 +261,16 @@ function usingDrawRect(color) {
         cardDisp(usingCardList[(page - 1) * 4 + i - 1], i); 
     }
 }
+
+/**************************************************************************** 
+*** Function Name       : usingDrawRectIsHover()
+*** Designer            : 風間絃吹 
+*** Date                : 2022.07.03 
+*** Function            : マウスオーバー領域に乗った時に実行される機能の呼び出し
+*** Return              : なし
+****************************************************************************/
 function usingDrawRectIsHover() {
-    // マウスが要素に乗った時の描画処理
+     
     if (expFlag[0]) {
         expDisp(usingCardList[page * 4 - 4]);
     } else if (expFlag[1]) {
@@ -250,11 +282,16 @@ function usingDrawRectIsHover() {
     }
 }
 
-
-
-//クリック処理
 var clickX = 0;
 var clickY = 0; 
+
+/**************************************************************************** 
+*** Function Name       : onClick(e)
+*** Designer            : 風間絃吹 
+*** Date                : 2022.07.03 
+*** Function            : クリック位置の測定
+*** Return              : なし
+****************************************************************************/
 function onClick(e) {
     clickX = e.clientX - rect.left;
     clickY = e.clientY - rect.top;
@@ -270,6 +307,13 @@ function onClick(e) {
 
 }
 
+/**************************************************************************** 
+*** Function Name       : usingClick()
+*** Designer            : 風間絃吹 
+*** Date                : 2022.07.03 
+*** Function            : クリック位置ごとに機能呼び出しまたは代入
+*** Return              : なし
+****************************************************************************/
 function usingClick() {
     if ((clickX >= 25 * s) && (clickX < (25 + 15) * s) && (clickY >= 192.5 * s) && (clickY < (192.5 + 15) * s)) { //ページを戻す　
         prevPage();
@@ -288,6 +332,13 @@ function usingClick() {
     }
 }
 
+/**************************************************************************** 
+*** Function Name       : prevPage()
+*** Designer            : 風間絃吹 
+*** Date                : 2022.07.03 
+*** Function            : ページを戻す処理
+*** Return              : なし
+****************************************************************************/
 function prevPage() {
     if (page == 1) {
         page = maxPage;
@@ -304,6 +355,13 @@ function prevPage() {
 
 }
 
+/**************************************************************************** 
+*** Function Name       : nextPage()
+*** Designer            : 風間絃吹 
+*** Date                : 2022.07.03 
+*** Function            : ページを進める処理
+*** Return              : なし
+****************************************************************************/
 function nextPage() {
     if (page == maxPage) {
         page = 1;
@@ -319,10 +377,14 @@ function nextPage() {
     }
 }
 
-
-
-//カード表示
-function cardDisp (cardAddress, pod)  {
+/**************************************************************************** 
+*** Function Name       : cardDisp(cardAddress, pod)
+*** Designer            : 風間絃吹 
+*** Date                : 2022.07.03 
+*** Function            : カードを4枚表示
+*** Return              : なし
+****************************************************************************/
+function cardDisp(cardAddress, pod)  {
     let x = 50 * s;
     let y = 250;
     let card = new Image ();
@@ -345,9 +407,14 @@ function cardDisp (cardAddress, pod)  {
     }
 }
 
-//カード説明表示 
-function expDisp (expAddress) {
-    let x = 380, y = 200;
+/**************************************************************************** 
+*** Function Name       : expDisp(cardAddress)
+*** Designer            : 風間絃吹 
+*** Date                : 2022.07.03 
+*** Function            : カードを拡大表示
+*** Return              : なし
+****************************************************************************/
+function expDisp(expAddress) {
     let exp = new Image ();
     exp.src = expAddress;
     exp.onload = function () {
@@ -355,9 +422,15 @@ function expDisp (expAddress) {
     }
 }
 
-//カード消去
-function clearCard () {
-    usingContext.clearRect ( 50 * s, 225, 380 * s, 275 );
+/**************************************************************************** 
+*** Function Name       : clearCard()
+*** Designer            : 風間絃吹 
+*** Date                : 2022.07.03 
+*** Function            : cardDispで表示したカードの消去
+*** Return              : なし
+****************************************************************************/
+function clearCard() {
+    usingContext.clearRect( 50 * s, 225, 380 * s, 275 );
     usingContext.fillStyle = "rgba(255,255,255,1)" ;
 
     //矢印の再描画
@@ -371,8 +444,14 @@ function clearCard () {
     usingContext.stroke();
 }
 
-//説明文消去    
-function clearExp () { 
-    usingContext.clearRect (197 * s, 100 * s, (63 * 1.5 + 5) * s, (88 * 1.5 + 5) * s);
+/**************************************************************************** 
+*** Function Name       : clearExp()
+*** Designer            : 風間絃吹 
+*** Date                : 2022.07.03 
+*** Function            : expDispで表示したカードの消去
+*** Return              : なし
+****************************************************************************/   
+function clearExp() { 
+    usingContext.clearRect(197 * s, 100 * s, (63 * 1.5 + 5) * s, (88 * 1.5 + 5) * s);
 }
 

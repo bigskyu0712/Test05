@@ -1,3 +1,17 @@
+/*******************************************************************
+***  File Name          : square.js
+***  Version            : V1.0
+***  Designer           : 曾根 悠太
+***  Date               : 2022.07.04
+***  Purpose            : 
+***
+*******************************************************************/
+
+/*
+*** Revision :
+*** v1.0 : 曾根 悠太, 2022.07.04
+*/
+
 class Square extends THREE.Group{
 
     onMouseSquareNum;
@@ -6,7 +20,8 @@ class Square extends THREE.Group{
     cardIdList = [];
     numList = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1];
 
-    constructor(cubesize){
+    constructor(cubesize)   //
+    {
         
         super();
         this.meshList = [];
@@ -47,6 +62,14 @@ class Square extends THREE.Group{
         }
     }
 
+/****************************************************************************
+*** Function Name       : onMouse()
+*** Designer            : 曾根
+*** Date                : 2022.6.14
+*** Function            : マスにカーソルを合わせると赤くする処理
+*** Return              : マス番号
+****************************************************************************/
+
     onMouse(raycaster){
                   // その光線とぶつかったオブジェクトを得る
                   const intersects = raycaster.intersectObjects(this.meshList);
@@ -71,17 +94,36 @@ class Square extends THREE.Group{
                   return this.onMouseSquareNum;
     }
 
+/****************************************************************************
+*** Function Name       : getPosition()
+*** Designer            : 曾根
+*** Date                : 2022.6.14
+*** Function            : 位置の取得
+*** Return              : 位置情報
+****************************************************************************/
     getPosition(num){
       if(num != -1){
         return this.meshList[num].position;
       }
     }
-
+/****************************************************************************
+*** Function Name       : setId()
+*** Designer            : 曾根
+*** Date                : 2022.6.14
+*** Function            : カードにIDをセットする
+*** Return              : なし
+****************************************************************************/
     setId(num,id){
       this.cardIdList[num] = id;
       console.log(this.cardIdList);
     }
-
+/****************************************************************************
+*** Function Name       : getCardId()
+*** Designer            : 曾根
+*** Date                : 2022.6.14
+*** Function            : カードIDを取得
+*** Return              : カードリスト
+****************************************************************************/
     getCardId(num){
       if(num > -1){
         return this.cardIdList[num];
@@ -89,11 +131,23 @@ class Square extends THREE.Group{
         return -1;
       }
     }
-
+/****************************************************************************
+*** Function Name       : setNum()
+*** Designer            : 曾根
+*** Date                : 2022.6.14
+*** Function            : マス番号をセット
+*** Return              : なし
+****************************************************************************/
     setNum(squareNum,num){
       this.numList[squareNum] = num;
     }
-
+/****************************************************************************
+*** Function Name       : getNum()
+*** Designer            : 曾根
+*** Date                : 2022.6.14
+*** Function            : マス番号の取得
+*** Return              : なし
+****************************************************************************/
     getNum(squareNum){
       return this.numList[squareNum];
     }
