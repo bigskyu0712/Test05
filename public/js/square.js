@@ -66,9 +66,8 @@ class Square extends THREE.Group{
 *** Function Name       : onMouse()
 *** Designer            : 曾根
 *** Date                : 2022.6.14
-*** Function            : 画面への描画する関数の呼び出し
-                          マウスの動きなどを管理
-*** Return              : なし
+*** Function            : マスにカーソルを合わせると赤くする処理
+*** Return              : マス番号
 ****************************************************************************/
 
     onMouse(raycaster){
@@ -95,17 +94,36 @@ class Square extends THREE.Group{
                   return this.onMouseSquareNum;
     }
 
+/****************************************************************************
+*** Function Name       : getPosition()
+*** Designer            : 曾根
+*** Date                : 2022.6.14
+*** Function            : 位置の取得
+*** Return              : 位置情報
+****************************************************************************/
     getPosition(num){
       if(num != -1){
         return this.meshList[num].position;
       }
     }
-
+/****************************************************************************
+*** Function Name       : setId()
+*** Designer            : 曾根
+*** Date                : 2022.6.14
+*** Function            : カードにIDをセットする
+*** Return              : なし
+****************************************************************************/
     setId(num,id){
       this.cardIdList[num] = id;
       console.log(this.cardIdList);
     }
-
+/****************************************************************************
+*** Function Name       : getCardId()
+*** Designer            : 曾根
+*** Date                : 2022.6.14
+*** Function            : カードIDを取得
+*** Return              : カードリスト
+****************************************************************************/
     getCardId(num){
       if(num > -1){
         return this.cardIdList[num];
@@ -113,11 +131,23 @@ class Square extends THREE.Group{
         return -1;
       }
     }
-
+/****************************************************************************
+*** Function Name       : setNum()
+*** Designer            : 曾根
+*** Date                : 2022.6.14
+*** Function            : マス番号をセット
+*** Return              : なし
+****************************************************************************/
     setNum(squareNum,num){
       this.numList[squareNum] = num;
     }
-
+/****************************************************************************
+*** Function Name       : getNum()
+*** Designer            : 曾根
+*** Date                : 2022.6.14
+*** Function            : マス番号の取得
+*** Return              : なし
+****************************************************************************/
     getNum(squareNum){
       return this.numList[squareNum];
     }
