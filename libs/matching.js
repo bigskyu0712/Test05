@@ -6,7 +6,8 @@
 ***  Date               : 2022.07.04
 ***  Purpose            : マッチングに関わる処理を行う．
 ***
-*******************************************************************///モジュール
+*******************************************************************/
+//モジュール
 const matching = require('./matchingLogic.js');
 const server = require('./serverSettings.js');
 const room = require('./room.js');
