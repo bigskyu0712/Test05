@@ -1,4 +1,12 @@
-//モジュール
+
+/*******************************************************************
+***  File Name          : matching.js
+***  Version            : V1.0
+***  Designer           : 曾根 悠太
+***  Date               : 2022.07.04
+***  Purpose            : マッチングに関わる処理を行う．
+***
+*******************************************************************///モジュール
 const matching = require('./matchingLogic.js');
 const server = require('./serverSettings.js');
 const room = require('./room.js');
