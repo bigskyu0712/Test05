@@ -1,7 +1,7 @@
 /*******************************************************************
 ***  File Name      : ItemCard.js
 ***  Version        : V1.0
-***  Designer       : 
+***  Designer       : 岩上 雄飛
 ***  Date           : 2022.07.02
 ***  Purpose        : アイテムカードのオブジェクト
 ***
@@ -22,7 +22,7 @@ class ItemCard extends Card {
     
     /****************************************************************************
     *** Function Name       : constructor()
-    *** Designer            : 
+    *** Designer            : 岩上 雄飛
     *** Date                : 2022.7.2
     *** Function            : アイテムカードの位置を設定・更新する
     *** Return              : なし
@@ -38,7 +38,7 @@ class ItemCard extends Card {
 
     /****************************************************************************
     *** Function Name       : setPosition()
-    *** Designer            : 
+    *** Designer            : 岩上 雄飛
     *** Date                : 2022.7.2
     *** Function            : アイテムカードの位置を設定・更新する
     *** Return              : なし

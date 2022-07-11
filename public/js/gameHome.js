@@ -17,18 +17,27 @@ onload = function() {
   main();
 };
 
+// カードの保管
 var cards = [];
+// カードの間隔
 var cardSpacing = 0
+// カードのサイズ
 var cardWidth = 0
+// カードを表示する際の中心軸
 var cardCenteredAxis = 0
+// マウスがカードの上にあるか
 var isHoveringOnCard = false
+// 表示するカードの種類
 var showCardType = 0; // 0:マス, 1:アイテム
 
+// アイテムカード一覧の保管
 let itemCardData = [];
+// マスカード一覧の保管
 let cardData = [];
+// 
 let isUpdate = false;
 
-
+// gameHomeの初期化
 function initGameHome(){
   let itemCardData = [];
   let cardData = [];
@@ -75,6 +84,7 @@ function main() {
       switchCards(ctx, canvas)
     }
 
+    // ゲーム状態による表示の変更
     switch(gameState){
       case 2:
 
@@ -151,6 +161,8 @@ function main() {
       }
     }
   });
+
+  // 定期的に更新し、マウスが乗っているカードの表示を変更
   setInterval(function() {
     if(isHoveringOnCard == false){
       hoverCard = -1;
