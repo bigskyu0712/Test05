@@ -9,7 +9,7 @@
 
 /*
 *** Revision :
-*** c1.0 : 曾根 悠太, 2022.07.04
+*** v1.0 : 曾根 悠太, 2022.07.04
 */
 
 module.exports = class squareCards {
