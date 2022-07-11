@@ -1,8 +1,26 @@
+/*******************************************************************
+***  File Name      : piece.js
+***  Version        : V1.1
+***  Designer       : 曾根悠太
+***  Date           : 2022.07.02
+***  Purpose        : コマに関する処理
+***
+*******************************************************************/
+
+
 class Piece extends THREE.Sprite{
 
     now;
     isRun = 0;
     num = 0;
+
+    /****************************************************************************
+    *** Function Name       : constructor()
+    *** Designer            : 曾根悠太
+    *** Date                : 2022.7.2
+    *** Function            : 画像の読み込み
+    *** Return              : なし
+    ****************************************************************************/
 
     constructor(path,square,color){
 
@@ -16,6 +34,14 @@ class Piece extends THREE.Sprite{
         this.color = color;
 
     }
+
+    /****************************************************************************
+    *** Function Name       : moveTo()
+    *** Designer            : 曾根悠太
+    *** Date                : 2022.7.2
+    *** Function            : 所定の位置までwalkToNextを行う
+    *** Return              : なし
+    ****************************************************************************/
 
     moveTo(num){
         if(num != this.num){
@@ -31,6 +57,15 @@ class Piece extends THREE.Sprite{
         }
     }
 
+
+    /****************************************************************************
+    *** Function Name       : setPosition()
+    *** Designer            : 曾根悠太
+    *** Date                : 2022.7.2
+    *** Function            : 所定の位置までwalkToNextを行う
+    *** Return              : なし
+    ****************************************************************************/
+
     setPosition(positionList){
         if(this.isRun == 0){
             if(positionList[this.now] > 0){
@@ -44,6 +79,14 @@ class Piece extends THREE.Sprite{
             }
         }
     }
+
+    /****************************************************************************
+    *** Function Name       : walkToNext()
+    *** Designer            : 曾根悠太
+    *** Date                : 2022.7.2
+    *** Function            : 次のマスまで移動する
+    *** Return              : なし
+    ****************************************************************************/
 
     walkToNext(){
         let harf = 0;

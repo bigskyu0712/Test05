@@ -1,4 +1,28 @@
+/*******************************************************************
+***  File Name		: canvas2d.js
+***  Version		: V1.3
+***  Designer		: 曾根 悠太
+***  Date			: 2022.07.10
+***  Purpose        : 画面の文字を表示する
+***
+*******************************************************************/
+/*
+*** Revision :
+*** V1.0 : 武田和大, 2022.06.28
+*** V1.1 : 曾根悠太, 2022.06.30 drawNameをゲームに組みこみ
+*** V1.2 : 曾根悠太, 2022.07.03 drawNameのバグを修正
+*** V1.3 : 曾根悠太, 2022.07.10 drawNameの仕様変更
+*/
+
 window.addEventListener('DOMContentLoaded', initCanvas2d);
+
+/******************************************************************
+*** Function Name       : initCanvas2d()
+*** Designer            : 武田 和大
+*** Date                : 2022.06.28
+*** Function            : 初期化
+*** Return              : なし
+******************************************************************/
 
 function initCanvas2d(){
     //canvas2dの作成
@@ -22,21 +46,53 @@ function initCanvas2d(){
     cvs.font = '60px serif';
 }
 
+/******************************************************************
+*** Function Name       : initCanvas()
+*** Designer            : 武田 和大
+*** Date                : 2022.06.28
+*** Function            : 表示の初期化
+*** Return              : なし
+******************************************************************/
 
 function initcanvas(){
     cvs.clearRect(0, 0, w, h);
 }
 
+/******************************************************************
+*** Function Name       : clearTopText()
+*** Designer            : 曾根悠太
+*** Date                : 2022.06.30
+*** Function            : 表示の初期化
+*** Return              : なし
+******************************************************************/
+
 function clearTopText() {
     cvs.clearRect(0, 0, w, 100); //上に表示してた文字を消す
 }
 
-function displayText(text) {
+/******************************************************************
+*** Function Name       : displayText()
+*** Designer            : 曾根悠太
+*** Date                : 2022.07.03
+*** Function            : 文字の表示
+*** Return              : なし
+******************************************************************/
+
+function displayText(text)//文字
+{
     clearTopText();
     cvs.fillStyle = 'white';
     cvs.fillText(text, w / 2, 80);
 }
 
+
+/******************************************************************
+*** Function Name       : drawTopText()
+*** Designer            : 曾根悠太
+*** Date                : 2022.06.30
+*** Function            : 画面上部への文字の表示
+*** Return              : なし
+******************************************************************/
 
 function drawTopText(){
     
@@ -73,6 +129,14 @@ function drawTopText(){
 }
 
 
+/******************************************************************
+*** Function Name       : showTurn()
+*** Designer            : 曾根悠太
+*** Date                : 2022.07.10
+*** Function            : 誰の番か表示
+*** Return              : なし
+******************************************************************/
+
 function showTurn(userNum){
     clearTopText();
     leftTextLength = cvs.measureText(gameData.playerName[userNum]).width;
@@ -102,6 +166,13 @@ function showTurn(userNum){
 
 }
 
+/******************************************************************
+*** Function Name       : drawName()
+*** Designer            : 曾根悠太
+*** Date                : 2022.07.10
+*** Function            : 画面の四隅に名前を表示
+*** Return              : なし
+******************************************************************/
 
 function drawName() {
 

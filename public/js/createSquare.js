@@ -1,4 +1,24 @@
-function createSquare(scene,cubesize){
+/*******************************************************************
+***  File Name		: createSquare.js
+***  Version		: V1.0
+***  Designer		: 曾根 悠太
+***  Date			  : 2022.06.28
+***  Purpose    : マスについての処理
+***
+*******************************************************************/
+
+
+/******************************************************************
+*** Function Name       : createSquare()
+*** Designer            : 曾根悠太
+*** Date                : 2022.06.28
+*** Function            : マスの作成
+*** Return              : meshList
+******************************************************************/
+
+function createSquare(scene, //シーン
+                      cubesize) //マスの大きさ
+{
     let geometry = new THREE.BoxBufferGeometry(cubesize, 2, cubesize);
 
     const offset = cubesize + 10;
@@ -26,7 +46,18 @@ function createSquare(scene,cubesize){
     return meshList;
 }
 
-function onMouse(meshList,raycaster){
+
+/******************************************************************
+*** Function Name       : onMouse()
+*** Designer            : 曾根悠太
+*** Date                : 2022.06.28
+*** Function            : マスのマウスオーバー処理
+*** Return              : meshList
+******************************************************************/
+
+function onMouse(meshList,//マスの配列
+                raycaster)//光線(交差判定用)
+{
           // その光線とぶつかったオブジェクトを得る
           const intersects = raycaster.intersectObjects(meshList);
 
