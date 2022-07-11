@@ -59,7 +59,7 @@
                 e.preventDefault();
 
                 var msg = document.querySelector("#userName");
-                if(msg.value==""){
+                if(msg.value=="" || msg.value.length >= 15){
                     return false;
                 }
                 myData.name = userName.value;
