@@ -7,6 +7,11 @@
 ***
 *******************************************************************/
 
+/*
+*** Revision :
+*** v1.0 : 曾根 悠太, 2022.06.21
+*** v1.1 : 曾根 悠太, 2022.07.04
+*/
 
 module.exports = class serverSettings{
     static get MAXROOMIDNUMBER(){ return 9999; }
