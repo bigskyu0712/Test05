@@ -60,7 +60,7 @@ module.exports = class Card {
     }
 
 /******************************************************************
-*** Method Name         : addRulet()
+*** Method Name         : addRule()
 *** Designer            : 曾根 悠太
 *** Date                : 2022.07.04
 *** Method              : ルールを変更する
