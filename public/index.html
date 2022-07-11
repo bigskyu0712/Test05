@@ -1,6 +1,6 @@
 <!-- ****************************************************************
 ***  File Name		: index.html
-***  Version		: V1.0
+***  Version		: V1.4
 ***  Designer		: 曾根 悠太
 ***  Date			: 2022.06.28
 ***  Purpose       	: 
@@ -13,6 +13,7 @@
 *** V1.1 : 金森 嵩天, 2022.07.04
 *** V1.2 : 曾根 悠太, 2022.07.05
 *** V1.3 : 岩上 雄飛, 2022.07.11
+*** V1.4 : 金森 嵩天, 2022.07.11
  -->
 
 <!DOCTYPE html>
@@ -61,10 +62,18 @@
         <form id="frm-login">
             <input type="text" id="userName" style="width: 300px; height: 45px;font-size: 30px;font-family: serif;">
             <button style = "height: 50px; position:fixed;margin-left:8px; font-size: 16px; font-family: serif;">Login</button>
+            <!-- 遊び方説明ボタン -->
+            <button onClick="openNewTab()" style = "position:fixed; left:0px; top: 0px;">遊び方</button>
         </form>
+
 
         <!-- ログインボタンの処理 -->
         <script>
+            //新規タブにて遊び方説明
+            function openNewTab() {
+                window.open("https://acrobat.adobe.com/link/track?uri=urn:aaid:scds:US:0e73dbe7-2dc2-3c2e-aee7-77240066e610")
+            } 
+
             let myData = {
                 token:null,
                 name:null,
