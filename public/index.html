@@ -1,41 +1,69 @@
+<!-- ****************************************************************
+***  File Name		: index.html
+***  Version		: V1.0
+***  Designer		: 曾根 悠太
+***  Date			: 2022.06.28
+***  Purpose       	: 
+***
+**************************************************************** -->
+
+<!-- 
+*** Revision :
+*** V1.0 : 曾根 悠太, 2022.06.28
+*** V1.1 : 金森 嵩天, 2022.07.04
+*** V1.2 : 曾根 悠太, 2022.07.05
+*** V1.3 : 岩上 雄飛, 2022.07.11
+ -->
+
 <!DOCTYPE html>
 <html lang="ja">
     <head>
         <meta charset="utf-8" />
         <title>5班テストゲーム</title>
+
+        <!-- 利用するJavaScriptのライブラリ -->
         <script src = "/socket.io/socket.io.js"></script>
         <script src="./js/three/build/three.min.js"></script>
         <script src="./js/three/examples/js/loaders/GLTFLoader.js"></script>
         <script src="./js/canvas2d.js"></script>
         <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+
         <style>
+            /* Canvasの背景色指定 */
             canvas {background:#eee; display:block; margin:0 auto;}
         </style>
     </head>
-    <body>
-            <script src="./js/gameHome.js"></script>
-            <script src ="./js/gameData.js"></script>
-            <script src ="./js/card.js"></script>
-            <script src ="./js/DrawCard.js"></script>
-            <script src ="./js/SquareCard.js"></script>
-            <script src ="./js/ItemCard.js"></script>
-            <script src ="./js/square.js"></script>
-            <script src ="./js/piece.js"></script>
-            <script src ="./js/Dice.js"></script>
-            <script src ="./js/usingCard.js"></script>
-            <script src ="./js/dialogue.js"></script>
-            <script src ="./js/HandCard.js"></script>
-            <script src ="./js/boardMain.js"></script>
-            <script src ="./js/cardTexts.js"></script>
-            <canvas id="cvs3d" style="position:fixed; top:0px; left:0px; width: 800px; height:600px; z-index: 1; background-color: #000000;"></canvas>
-            <canvas id="canvas2d" width ="1600" height = "1200" style="position:fixed; top:0px; left:0px; width:800px; height:600px; z-index: 10; background-color:rgba(0,0,0,0);pointer-events: none;"></canvas>
-            <canvas id="underBar" width = "1600" height = "360"style="position:fixed; top:420px; left:0px; width:800px; height:180px; z-index: 11; background-color:rgba(0,0,0,0);"></canvas>
-            <canvas id="usingCard" width = "800" height = "600"style="position:fixed; top:0px; left:0px; width:800px; height:600px; z-index: 15; background-color:rgba(0,0,0,0);"></canvas>
-                <form id="frm-login">
-                    <input type="text" id="userName" style="width: 300px; height: 45px;font-size: 30px;">
-                    <button style = "height: 50px; position:fixed;margin-left:8px;">Login</button>
-                    </form>
 
+    <body>
+        <!-- 利用するJavaScriptファイル -->
+        <script src="./js/gameHome.js"></script>
+        <script src ="./js/gameData.js"></script>
+        <script src ="./js/card.js"></script>
+        <script src ="./js/DrawCard.js"></script>
+        <script src ="./js/SquareCard.js"></script>
+        <script src ="./js/ItemCard.js"></script>
+        <script src ="./js/square.js"></script>
+        <script src ="./js/piece.js"></script>
+        <script src ="./js/Dice.js"></script>
+        <script src ="./js/usingCard.js"></script>
+        <script src ="./js/dialogue.js"></script>
+        <script src ="./js/HandCard.js"></script>
+        <script src ="./js/boardMain.js"></script>
+        <script src ="./js/cardTexts.js"></script>
+
+        <!-- 画面を描画するCanvas -->
+        <canvas id="cvs3d" style="position:fixed; top:0px; left:0px; width: 800px; height:600px; z-index: 1; background-color: #000000;"></canvas>
+        <canvas id="canvas2d" width ="1600" height = "1200" style="position:fixed; top:0px; left:0px; width:800px; height:600px; z-index: 10; background-color:rgba(0,0,0,0);pointer-events: none;"></canvas>
+        <canvas id="underBar" width = "1600" height = "360"style="position:fixed; top:420px; left:0px; width:800px; height:180px; z-index: 11; background-color:rgba(0,0,0,0);"></canvas>
+        <canvas id="usingCard" width = "800" height = "600"style="position:fixed; top:0px; left:0px; width:800px; height:600px; z-index: 15; background-color:rgba(0,0,0,0);"></canvas>
+                
+        <!-- ログインフォーム -->
+        <form id="frm-login">
+            <input type="text" id="userName" style="width: 300px; height: 45px;font-size: 30px;font-family: serif;">
+            <button style = "height: 50px; position:fixed;margin-left:8px; font-size: 16px; font-family: serif;">Login</button>
+        </form>
+
+        <!-- ログインボタンの処理 -->
         <script>
             let myData = {
                 token:null,
@@ -53,6 +81,7 @@
                 myData.token = data.token;
             });
 
+            // ログインボタンが押された際の処理
             document.querySelector('#frm-login').addEventListener('submit',(e)=>{
                 e.preventDefault();
 
@@ -67,13 +96,15 @@
             });
 
         </script>
+
         <script src="./js/receiver.js"></script>
+        
+        <!-- マスのマウスオーバー時の表示するエレメント -->
         <div id="hoverElement" style="background-color:black; position:absolute; width:10px; height:10px; top:0px; left:0px;">
             <h3 id="hoverTitle">Title</h3>
             <spam id="hoverText" style="font-size:8px;">text</spam>
         </div>
     
-        
         <script type="text/javascript" src="./js/overlay.js"></script>
     </body>
 </html>
