@@ -1,3 +1,20 @@
+
+/*******************************************************************
+***  File Name          : matching.js
+***  Version            : V1.3
+***  Designer           : 曾根 悠太
+***  Date               : 2022.07.04
+***  Purpose            : マッチングに関わる処理を行う．
+***
+*******************************************************************/
+/*
+*** Revision :
+*** v1.0 : 曾根 悠太, 2022.05.17
+*** v1.1 : 曾根 悠太, 2022.06.28 退出に関する処理を作成
+*** V1.3 : 曾根 悠太, 2022.07.03 切断に関する処理を作成
+*/
+
+
 //モジュール
 const matching = require('./matchingLogic.js');
 const server = require('./serverSettings.js');
@@ -6,7 +23,13 @@ const display = require('./display.js');
 const receiver = require('./receiver.js');
 const Game = require('./game.js');
 
-
+/******************************************************************
+*** Method Name         : start()
+*** Designer            : 曾根悠太
+*** Date                : 2022.07.04
+*** Method              : 入退室処理
+*** Return              : なし
+******************************************************************/
 
 //マッチング処理
 module.exports = class Matching{

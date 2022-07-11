@@ -7,12 +7,9 @@
 ***
 *******************************************************************/
 
-/*
-*** Revision :
-*** v1.0 : 曾根 悠太, 2022.07.04
-*/
-
 const Card = require("./card.js");
+
+//カードの2番目，アイテムの取得になります。
 
 
 module.exports = class c2 extends Card {
@@ -21,20 +18,11 @@ module.exports = class c2 extends Card {
     static cardType = 1;
 
     //コンストラクタ，必要がなければいじらなくて大丈夫です．
-    constructor(board,   //boardクラス
-                player)  //playerクラス
-    {
+    constructor(board,player) {
         super(board,player);
     }
 
-/******************************************************************
-*** Method Name         : effect()
-*** Designer            : 曾根 悠太
-*** Date                : 2022.07.02
-*** Method              : カードの効果を適応する
-*** Return              : なし
-******************************************************************/
-
+    //処理を記述
     effect(){
         console.log(this.board.item.length);
         if(this.board.item.length > 0){

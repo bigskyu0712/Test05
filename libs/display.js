@@ -91,9 +91,11 @@ exports.noneAction = function(roomId){
 }
 
 // 次のユーザに進むと送る
-exports.getNextUser = function(roomId,userId){
-    server.io.to(roomId).emit("nextTurn");
+exports.nextTurn = function(roomId,turn){
+    console.log("nextTurn!!!");
+    server.io.to(roomId).emit("nextTurn",turn);
 }
+
 
 // 
 exports.effectTrash = function(userId){

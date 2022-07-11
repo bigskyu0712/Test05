@@ -1,3 +1,18 @@
+/*******************************************************************
+***  File Name		: usingCaed.js
+***  Version		: V1.2
+***  Designer		: 風間 絃吹
+***  Date			: 2022.07.04
+***  Purpose       	: W5 カード使用画面
+***
+*******************************************************************/
+/*
+*** Revision :
+*** V1.0 : 曾根悠太, 2022.06.14
+*** V1.1 : 曾根 悠太, 2022.07.02
+*** V1.2 : 曾根 悠太, 2022.07.04
+*/
+
 const express = require( 'express' );
 const app = require('express')();
 const http = require('http').createServer(app);

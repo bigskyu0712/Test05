@@ -5,7 +5,7 @@ socket.on("sendPlayerNum",function(playerNum){
 });
 
 socket.on("startGame",function(data){
-    
+    main();
     initcanvas();
     initGameHome();
     dialogueHide();
@@ -153,7 +153,7 @@ socket.on("selectPlayerItem",function(){
     gameState = 21;
 });
 
-socket.on("effectDeleteItem", function(){   
+socket.on("effectDeleteItem", function(data){   
     console.log("itemPlus"+data.item);
     gameData.item[data.user].splice(data.item, 1);
 });

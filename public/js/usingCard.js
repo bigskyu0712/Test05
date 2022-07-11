@@ -1,17 +1,31 @@
 /*******************************************************************
 ***  File Name		: usingCaed.js
-***  Version		: V1.0
-***  Designer		: 風間 絃吹
-***  Date			: 2022.06.28
+***  Version		: V1.1
+***  Designer		: 曾根悠太
+***  Date			: 2022.07.03
 ***  Purpose       	: W5 カード使用画面
 ***
 *******************************************************************/
+/*
+*** Revision :
+*** V1.0 : 風間絃吹, 2022.06.28
+*** V1.1 : 曾根悠太, 2022.07.03
+*/
 
 window.addEventListener('DOMContentLoaded', initUsing);
 
 let using;
 
-function initUsing(){
+/****************************************************************************
+*** Function Name       : initUsing()
+*** Designer            : 曾根悠太
+*** Date                : 2022.07.03
+*** Function            : 初期化
+*** Return              : なし
+****************************************************************************/
+
+function initUsing()
+{
     using = document.getElementById('usingCard');
     if (using.getContext) {
         usingContext = using.getContext('2d');
@@ -28,7 +42,17 @@ var select;
 var s = 1.6;
 let usingCardList = [];
 
-function makeCardList(deck,kind){
+/****************************************************************************
+*** Function Name       : makeCardList()
+*** Designer            : 曾根悠太
+*** Date                : 2022.07.03
+*** Function            : 画像データを読み込むための配列とハンドラの登録
+*** Return              : なし
+****************************************************************************/
+
+function makeCardList(deck, //表示したいカードの配列
+                     kind) //カードの種類
+{
     usingCardList = [];
     select = -1;
     page = 1;
@@ -51,7 +75,16 @@ function makeCardList(deck,kind){
     usingMain();
 }
 
-function invisible() {
+/****************************************************************************
+*** Function Name       : invisible()
+*** Designer            : 曾根悠太
+*** Date                : 2022.07.03
+*** Function            : 画面から非表示にする
+*** Return              : なし
+****************************************************************************/
+
+function invisible()
+{
     using.style.display = 'none';
     using.style.pointerEvents ='none';
     using.removeEventListener('mouseover', onMouseOver, false);
@@ -59,7 +92,16 @@ function invisible() {
     using.removeEventListener('click', onClick, false);
 }
 
-function usingRemove(){
+/****************************************************************************
+*** Function Name       : usingRemove()
+*** Designer            : 曾根悠太
+*** Date                : 2022.07.03
+*** Function            : イベントの削除
+*** Return              : なし
+****************************************************************************/
+
+function usingRemove()
+{
     using.removeEventListener('mouseover', onMouseOver, false);
     using.removeEventListener('mouseout', onMouseOut, false);
     using.removeEventListener('click', onClick, false);

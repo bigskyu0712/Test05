@@ -7,12 +7,6 @@
 ***
 *******************************************************************/
 
-/*
-*** Revision :
-*** v1.0 : 武田 和大, 2022.07.02
-*** v1.1 : 曾根 悠太, 2022.07.04
-*/
-
 const Card = require("./card.js");
 
 
@@ -22,20 +16,11 @@ module.exports = class c6 extends Card {
     static cardType = 1;
 
     //コンストラクタ，必要がなければいじらなくて大丈夫です．
-    constructor(board,   //boardクラス
-                player)  //playerクラス
-    {
+    constructor(board,player) {
         super(board,player);
     }
 
-/******************************************************************
-*** Method Name         : effect()
-*** Designer            : 曾根 悠太
-*** Date                : 2022.07.04
-*** Method              : カードの効果を適応する
-*** Return              : なし
-******************************************************************/
-
+    //処理を記述
     effect(){
         let itemSum = 0; 
         for(i = 0;i < 4; i++){
@@ -51,37 +36,19 @@ module.exports = class c6 extends Card {
         }
     }
 
-/******************************************************************
-*** Method Name         : afterEffect()
-*** Designer            : 武田 和大
-*** Date                : 2022.07.04
-*** Method              : クライアントから送信後データを受け取った後の処理
-*** Return              : なし
-******************************************************************/
-
-afterEffect(data){ // sendData
-    if(data == "noneaction"){
-    }else{
-        this.stealItem(this.player, data);
+    afterEffect(data){
+        if(data == "noneaction"){
+        }else{
+            this.stealItem(this.player, data);
+        }
     }
-}
 
-/******************************************************************
-*** Method Name         : stealItem()
-*** Designer            : 曾根 悠太
-*** Date                : 2022.07.04
-*** Method              : アイテムを奪う
-*** Return              : なし
-******************************************************************/
-
-    stealItem(player,  //playerクラス
-              data)    //sendData
-    {
+    stealItem(player, data){
         let itemId = this.board.players[data.playerNum].item[data.cardNum];
         this.board.players[data.playerNum].deleteItemNum(data.cardNum);
         player.addItem(itemId);
         this.display.effectAddItem(this.board.roomId,itemId,player.getUserNum());
-        this.display.effectDeleteItem(this.board.roomId,data.cardNum,data.playerNum);   
+        this.display.effectDeleteItem(this.board.roomId,data.cardNum,data.playerNum);  
     }
 
     //全てのアイテムカードを消去
