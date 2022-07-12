@@ -25,7 +25,7 @@ const Game = require('./game.js');
 
 /******************************************************************
 *** Method Name         : start()
-*** Designer            : 曾根 悠太悠太
+*** Designer            : 曾根 悠太
 *** Date                : 2022.07.04
 *** Method              : 入退室処理
 *** Return              : なし
