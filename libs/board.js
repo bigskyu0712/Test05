@@ -656,12 +656,12 @@ module.exports = class Board{
 
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : effectAddItem()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c3カードの効果
                               
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     effectAddItem(player,   // ユーザ
                   itemNum)  // アイテム番号
@@ -673,12 +673,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : addCardRandom()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c4カードの効果
                               ランダムにカードを入手
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     addCardRandom(player)   // ユーザ
     {
@@ -692,12 +692,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : deleteCardRandom()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c5カードの効果
                               ランダムにカードを消去
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     deleteCardRandom(player)    // ユーザ
     {
@@ -708,12 +708,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : deleteAllItem()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c6カードの効果
                               全てのアイテムカードを消去
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     deleteAllItem(player)   // ユーザ
     {
@@ -726,12 +726,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : deleteAllCard()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c7カードの効果
                               全てのカードを消去
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     deleteAllCard(player)   // ユーザ
     {
@@ -746,12 +746,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : everyoneDeleteRandom()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c8カードの効果
                               全員がランダムにカードを消去
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     everyoneDeleteRandom()
     {
@@ -764,12 +764,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : everyoneDeleteAllCard()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c9カードの効果
                               全員が全てのカードを消去
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     everyoneDeleteAllCard(player)   // ユーザ
     {
@@ -787,12 +787,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : everyoneDeleteAndAdd()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c10カードの効果
                               全員が全てのカードを消去し、3枚手札に加える
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     everyoneDeleteAndAdd()
     {
@@ -804,12 +804,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : effectAddCard()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c11カードの効果
                               カードを追加する
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     effectAddCard(player,   // ユーザ
                   cardNum)  // カード番号
@@ -821,12 +821,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : deleteCard()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c3カードの効果
                               カードIdからカードを消去
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     deleteCard(player,  // ユーザ
                cardId)  // カード番号
@@ -835,12 +835,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : rest()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c14カードの効果
                               board
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     rest(player)    // ユーザ
     {
@@ -848,11 +848,11 @@ module.exports = class Board{
     }
     
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : effectGetNextUser()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : boardのgetNextUserについて
-    *** Return              : 0
+    *** Return              : 次のターン
     ****************************************************************************/
     effectGetNextUser(turn) // 手番
     {
@@ -862,19 +862,19 @@ module.exports = class Board{
             if(this.players[nextTurn]==0){
                 break;
             }
-            this.players[nextTurn].rest = 0; //���͍s���ł���
+            this.players[nextTurn].rest = 0; //次は行動可能
         }
         return nextTurn;
 
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : getRank()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c15カードの効果
                               現在の順位を取得
-    *** Return              : 0
+    *** Return              : 現在の順位
     ****************************************************************************/
     getRank(player) // ユーザ
     {
@@ -889,12 +889,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : getTurn()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c17カードの効果
                               現在のターンを取得
-    *** Return              : 0
+    *** Return              : 現在のターン
     ****************************************************************************/
     getTurn()
     {
@@ -902,12 +902,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : changePositionRandom()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c19カードの効果
                               ランダムに位置を入れ替え
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     changePositionRandom(player)    // ユーザ
     {
@@ -920,12 +920,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : diceDueToCard()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c20カードの効果
                               サイコロを振る
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     diceDueToCard(player)   // ユーザ
     {
@@ -934,12 +934,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : moveDueToCard()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c20カードの効果
                               位置を更新し、コマが動く
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     moveDueToCard(player,   // ユーザ
                   dice)     // サイコロ
@@ -953,12 +953,12 @@ module.exports = class Board{
 
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : stealCardRandom()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c24カードの効果
                               ランダムにカードを奪う
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     stealCardRandom(player,     // ユーザ
                     data)       // データ
@@ -974,11 +974,11 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : selectPlayerHand()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : ユーザのカードを選択する
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     selectPlayerHand(player)    // ユーザ
     {
@@ -986,12 +986,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : changeCardRandom()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c25カードの効果
                               ランダムにカードを交換
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     changeCardRandom(player,        // ユーザ
                      selectPlayer)  // 選択したユーザ
@@ -1005,12 +1005,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : changeAllcard()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c26カードの効果
                               全てのカードを交換
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     changeAllcard(player,       // ユーザ
                   selectPlayer) // 選択したユーザ
@@ -1022,12 +1022,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : stealCard()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c28カードの効果
                               カードを奪う    
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     stealCard(player,       // ユーザ
               selectPlayer, // 選択したユーザ
@@ -1038,12 +1038,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : changeCard()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c29カードの効果
                               全てのカードを交換
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     changeCard(player,          // ユーザ
                selectPlayer,    // 選択したユーザ
@@ -1057,12 +1057,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : changePosition()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : c30カードの効果
                               位置を入れ替え
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     changePosition(player,          // ユーザ
                    selectPlayer)    // 選択したユーザ
@@ -1074,12 +1074,12 @@ module.exports = class Board{
     }
 
     /****************************************************************************
-    *** Function Name       : checkWinTerm()
+    *** Function Name       : updatePosition()
     *** Designer            : 武田和大
     *** Date                : 2022.07.04
     *** Function            : playerのupdatePosition
                             　マイナスになった時の対応
-    *** Return              : 0
+    *** Return              : なし
     ****************************************************************************/
     updatePosition(dice)    // サイコロ
     {
