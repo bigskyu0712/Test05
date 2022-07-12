@@ -84,7 +84,7 @@ function setDirection(myplayerNum){
 
 /****************************************************************************
 *** Function Name       : initSendData()
-*** Designer            : 曾根 悠太 悠太
+*** Designer            : 曾根 悠太
 *** Date                : 2022.6.30
 *** Function            : sendDataの初期化
 *** Return              : なし
@@ -103,7 +103,7 @@ function initSendData() {
 
 /****************************************************************************
 *** Function Name       : initGameData()
-*** Designer            : 曾根 悠太 悠太
+*** Designer            : 曾根 悠太
 *** Date                : 2022.6.30
 *** Function            : gameDataの初期化
 *** Return              : なし

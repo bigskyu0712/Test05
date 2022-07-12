@@ -5,7 +5,7 @@
 ***  Designer       : 曾根 悠太
 =======
 ***  Version        : V1.0
-***  Designer       : 曾根 悠太 悠太
+***  Designer       : 曾根 悠太
 >>>>>>> d87acba4ac194ea1f8837573f1c7fbe294734498
 ***  Date           : 2022.07.02
 ***  Purpose        : アイテムカードのオブジェクト

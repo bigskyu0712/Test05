@@ -1,19 +1,19 @@
 /*******************************************************************
 ***  File Name          : board.js
 ***  Version            : V1.6
-***  Designer           : 曾根 悠太悠太
+***  Designer           : 曾根 悠太
 ***  Date               : 2022.07.10
 ***  Purpose            : ゲーム操作に関する各工程の記述
 ***
 *******************************************************************/
 /*
 *** Revision :
-*** v1.0 : 曾根 悠太悠太, 2022.05.17
-*** v1.1 : 曾根 悠太悠太, 2022.06.03 仕様変更に伴い全モジュール変更
-*** V1.2 : 曾根 悠太悠太, 2022.06.14 仕様変更に伴い全モジュール変更
-*** V1.3 : 曾根 悠太悠太, 2022.06.28 各カード処理を行うためモジュール追加
-*** V1.4 : 曾根 悠太悠太, 2022.07.04 受け入れテストへ向けて修正
-*** V1.5 : 曾根 悠太悠太, 2022.07.10 バグ修正，drawPhase(),nextTurn()の修正
+*** v1.0 : 曾根 悠太, 2022.05.17
+*** v1.1 : 曾根 悠太, 2022.06.03 仕様変更に伴い全モジュール変更
+*** V1.2 : 曾根 悠太, 2022.06.14 仕様変更に伴い全モジュール変更
+*** V1.3 : 曾根 悠太, 2022.06.28 各カード処理を行うためモジュール追加
+*** V1.4 : 曾根 悠太, 2022.07.04 受け入れテストへ向けて修正
+*** V1.5 : 曾根 悠太, 2022.07.10 バグ修正，drawPhase(),nextTurn()の修正
 */
 
 const Player = require('./player.js');
@@ -30,7 +30,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : constructor()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.28
     *** Function            : ボードの初期化
     *** Return              : なし
@@ -59,7 +59,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : disconnect()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.14
     *** Function            : ユーザの切断
     *** Return              : ゲーム内でのユーザの番号
@@ -75,7 +75,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : initRule()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.14
     *** Function            : ユーザの切断
     *** Return              : なし
@@ -86,7 +86,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : initdeck()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.14
     *** Function            : デッキの初期化
     *** Return              : なし
@@ -100,7 +100,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : initItem()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.14
     *** Function            : アイテムの初期化
     *** Return              : なし
@@ -111,7 +111,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : getPlayer()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.14
     *** Function            : idからplayerを取得
     *** Return              : 入力されたIDのユーザ
@@ -123,7 +123,7 @@ module.exports = class Board{
     
     /****************************************************************************
     *** Function Name       : addItem()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.14
     *** Function            : アイテムを追加(ID指定)
     *** Return              : なし
@@ -138,7 +138,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : addItemNum()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.14
     *** Function            : アイテムを追加(アイテム番号指定)
     *** Return              : なし
@@ -153,7 +153,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : addItemRandom()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.14
     *** Function            : アイテムを追加(ランダム)
     *** Return              : なし
@@ -170,7 +170,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : deleteItem()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.14
     *** Function            : アイテムを消去(Id指定)
     *** Return              : なし
@@ -183,7 +183,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : deleteHand()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.14
     *** Function            : 指定した手札を削除
     *** Return              : なし
@@ -197,7 +197,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : deleteItemRandom()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.14
     *** Function            : アイテムを消去(ランダム)
     *** Return              : なし
@@ -210,7 +210,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : changeSquare()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.14
     *** Function            : マスの変更(マスカードの設置等)
     *** Return              : なし
@@ -229,7 +229,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : draw()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.14
     *** Function            : カードをドロー
     *** Return              : なし
@@ -250,7 +250,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : selectPlayer()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.28
     *** Function            : ユーザを選択
     *** Return              : なし
@@ -263,7 +263,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : selectCardFromHand()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.28
     *** Function            : 他のユーザからカードを選択
     *** Return              : なし
@@ -276,7 +276,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : selectItemCard()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.28
     *** Function            : アイテムカードを選択
     *** Return              : なし
@@ -290,7 +290,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : effectSelectCardFromDeck()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.28
     *** Function            : アイテムカードを選択
     *** Return              : なし
@@ -303,7 +303,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : effectSelectItem()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.28
     *** Function            : アイテムカードを選択
     *** Return              : なし
@@ -317,7 +317,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : extraWin()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.07.04
     *** Function            : エクストラウィン
     *** Return              : なし
@@ -340,7 +340,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : gameEnd()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.07.04
     *** Function            : ゲーム終了
     *** Return              : なし
@@ -358,7 +358,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : changedRule()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.07.04
     *** Function            : ルール変更
     *** Return              : なし
@@ -372,7 +372,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : nonAction()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.07.04
     *** Function            : 手番を飛ばす
     *** Return              : なし
@@ -384,7 +384,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : changeState()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.07.04
     *** Function            : ゲームの進行状況を変更
     *** Return              : なし
@@ -397,7 +397,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : startGame()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.06.28
     *** Function            : ゲームをスタート
     *** Return              : なし
@@ -414,7 +414,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : setFirstPlayers()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.07.04
     *** Function            : 最初のユーザを設定
     *** Return              : なし
@@ -426,7 +426,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : firstDraw()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.07.04
     *** Function            : 最初のドロー
     *** Return              : なし
@@ -441,7 +441,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : addCard()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.07.04
     *** Function            : カードを追加
     *** Return              : なし
@@ -454,7 +454,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : drawPhase()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.07.04
     *** Function            : ドローするフェーズに移行
     *** Return              : 0
@@ -476,7 +476,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : selectCard()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.07.04
     *** Function            : 手札からカードを選択
     *** Return              : 0
@@ -522,7 +522,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : dice()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.07.04
     *** Function            : サイコロを振る
     *** Return              : 0
@@ -545,7 +545,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : move()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.07.04
     *** Function            : コマを動かす
     *** Return              : 0
@@ -569,7 +569,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : action()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.07.04
     *** Function            : 踏んだマスのアクション
     *** Return              : 0
@@ -606,7 +606,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : getNextUser()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.07.04
     *** Function            : 次の手番のユーザを取得
     *** Return              : 0
@@ -633,7 +633,7 @@ module.exports = class Board{
 
     /****************************************************************************
     *** Function Name       : checkWinTerm()
-    *** Designer            : 曾根 悠太 悠太
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.07.04
     *** Function            : 勝利条件の確認
     *** Return              : 0
