@@ -95,13 +95,14 @@
                 e.preventDefault();
 
                 var msg = document.querySelector("#userName");
-                if(msg.value=="" && msg.value.length > 17){
+                if(msg.value.length == 0 || msg.value.length > 17){
                     return false;
+                }else{
+                    myData.name = userName.value;
+                    initGameData();
+                    socket.emit('login',userName.value);
+                    formLogin();
                 }
-                myData.name = userName.value;
-                initGameData();
-                socket.emit('login',userName.value);
-                formLogin();
             });
 
         </script>
