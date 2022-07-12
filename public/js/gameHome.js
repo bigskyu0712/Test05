@@ -14,7 +14,6 @@
 */
 
 
-
 var cards = [];
 var cardSpacing = 0
 var cardWidth = 0
@@ -83,15 +82,7 @@ function main() {
           }else{
             sendData.cardNum = -1;
           }
-          /*
-          if(gameData.hand[sendData.cardNum] > 31 && showCardType == 0){
-            console.log("socket send");
-            socket.emit("reply", sendData); 
-            gameData.hand.splice(sendData.cardNum,1); 
-            gameState = 3;
-            break;       
-          }
-          */
+          
          if(sendData.cardNum == undefined){
           sendData.cardNum = -1;
          }
@@ -129,7 +120,6 @@ function main() {
       x: point.clientX,
       y: point.clientY
     };
-    //gridClicked(ctx, canvas, hoverPoint, gridSize)
 
     var hoverCardHeight = canvas.height*0.8 // 拡大表示されるカードのサイズ
     if (hoverCardHeight > 380){
@@ -248,7 +238,6 @@ function makeSwitchButton(canvas){
 }
 
 
-
 /****************************************************************************
 *** Function Name       : switchCards()
 *** Designer            : 岩上 雄飛
@@ -329,11 +318,8 @@ function showItemCards(ctx,       //canvasのcontext
                        cardData,  //表示するアイテムカード情報
                        hovercard) //マウスオーバーされたカード
 {
-  //cardWidth = (canvas.width / 2 - 10*cardData.length) / cardData.length //カードの幅
   cardWidth = (canvas.width / 2 - 10*4) / 4 //カードの幅
-  //if (cardWidth > 140){
-  //  cardWidth = 140
-  //}
+  
   cardSpacing = cardWidth/8 //カードの間隔
 
   for (let index = 0; index < cardData.length; index++) {

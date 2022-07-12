@@ -6,6 +6,7 @@
 ***  Purpose        : 画面の文字を表示する
 ***
 *******************************************************************/
+
 /*
 *** Revision :
 *** V1.0 : 武田和大, 2022.06.28
@@ -183,22 +184,6 @@ function drawName() {
     let players = gameData.playerName; //仮置き
     let name = [];
     let j = 0;
-
-    //バグ修正
-   
-    for (let i=gameData.myPlayerNum; i<gameData.myPlayerNum + 4; ++i){
-        console.log(i % 4);
-        if(player==players[i % 4]){
-            continue;
-        }
-        name[j] = players[i % 4];
-        ++j;
-    }
-　　
-
-    for(i = 0;i < 4;i++){
-        name[i] = gameData.playerName[gameData.direction[i]];
-    }
 
     */
 

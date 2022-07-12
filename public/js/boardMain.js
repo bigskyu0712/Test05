@@ -260,25 +260,24 @@ function init()
   *** Return              : なし
   ****************************************************************************/ 
   function hoverGoal(raycaster){ //raycaster
-          // その光線とぶつかったオブジェクトを得る
-          const intersects = raycaster.intersectObjects(goalCard);
-            goalCard.map((mesh) => {
-            // 交差しているオブジェクトが1つ以上存在し、
-            // 交差しているオブジェクトの1番目(最前面)のものだったら
-            if (intersects.length > 0 && mesh === intersects[0].object) {
-              //カードInfoとhoverCardを更新
-              cardInfo.id = gameData.term;
-              cardInfo.type = "card";
-              return; //処理を終了
-            }
-            else {
+    // その光線とぶつかったオブジェクトを得る
+    const intersects = raycaster.intersectObjects(goalCard);
+      goalCard.map((mesh) => {
+      // 交差しているオブジェクトが1つ以上存在し、
+      // 交差しているオブジェクトの1番目(最前面)のものだったら
+      if (intersects.length > 0 && mesh === intersects[0].object) {
+        //カードInfoとhoverCardを更新
+        cardInfo.id = gameData.term;
+        cardInfo.type = "card";
+        return; //処理を終了
+      }
+      else {
 
-            }
-          });
-          
+      }
+    });
     
     return 0;
-}
+  }
 
   //gamestate
 
@@ -333,8 +332,6 @@ function init()
         }
         
         break;
-
-
 
       default:
         break;
