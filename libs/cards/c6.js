@@ -1,7 +1,7 @@
 /*******************************************************************
 ***  File Name          : c6.js
 ***  Version            : V1.1
-***  Designer           : 曾根悠太
+***  Designer           : 曾根 悠太悠太
 ***  Date               : 2022.07.02
 ***  Purpose            : 自分のアイテムカードをすべて捨てる
 ***
@@ -10,7 +10,7 @@
 /*
 *** Revision :
 *** v1.0 : 武田 和大, 2022.07.02
-*** c1.1 : 曾根 悠太, 2022.07.04 effect, afterEffect, stealItemの更新
+*** c1.1 : 曾根 悠太 悠太, 2022.07.04 effect, afterEffect, stealItemの更新
 */
 
 const Card = require("./card.js");
@@ -23,7 +23,7 @@ module.exports = class c6 extends Card {
 
     /****************************************************************************
     *** Method Name         : constructor()
-    *** Designer            : 曾根 悠太
+    *** Designer            : 曾根 悠太 悠太
     *** Date                : 2022.07.02
     *** Method              : playerとboardオブジェクトの設定
     *** Return              : なし
@@ -36,7 +36,7 @@ module.exports = class c6 extends Card {
 
     /******************************************************************
     *** Method Name         : effect()
-    *** Designer            : 曾根 悠太
+    *** Designer            : 曾根 悠太 悠太
     *** Date                : 2022.07.04
     *** Method              : カードの効果を適応する
     *** Return              : なし
@@ -60,7 +60,7 @@ module.exports = class c6 extends Card {
     
     /******************************************************************
     *** Method Name         : afterEffect()
-    *** Designer            : 曾根 悠太
+    *** Designer            : 曾根 悠太 悠太
     *** Date                : 2022.07.04
     *** Method              : クライアントから送信後データを受け取った後の処理
     *** Return              : なし
@@ -75,7 +75,7 @@ module.exports = class c6 extends Card {
 
     /******************************************************************
     *** Method Name         : stealItem()
-    *** Designer            : 曾根 悠太
+    *** Designer            : 曾根 悠太 悠太
     *** Date                : 2022.07.04
     *** Method              : アイテムを奪う
     *** Return              : なし

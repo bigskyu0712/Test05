@@ -24,7 +24,7 @@ module.exports = class c29 extends Card {
 
     /****************************************************************************
     *** Method Name         : constructor()
-    *** Designer            : 曾根 悠太
+    *** Designer            : 曾根 悠太 悠太
     *** Date                : 2022.07.02
     *** Method              : playerとboardオブジェクトの設定
     *** Return              : なし

@@ -1,7 +1,7 @@
 /*******************************************************************
 ***  File Name		: usingCaed.js
 ***  Version		: V1.1
-***  Designer		: 曾根悠太
+***  Designer		: 曾根 悠太悠太
 ***  Date			: 2022.07.03
 ***  Purpose       	: W5 カード使用画面
 ***
@@ -9,7 +9,7 @@
 /*
 *** Revision :
 *** V1.0 : 風間絃吹, 2022.06.28
-*** V1.1 : 曾根悠太, 2022.07.03
+*** V1.1 : 曾根 悠太悠太, 2022.07.03
 */
 
 window.addEventListener('DOMContentLoaded', initUsing);
@@ -18,7 +18,7 @@ let using;
 
 /****************************************************************************
 *** Function Name       : initUsing()
-*** Designer            : 曾根悠太
+*** Designer            : 曾根 悠太悠太
 *** Date                : 2022.07.03
 *** Function            : 初期化
 *** Return              : なし
@@ -44,7 +44,7 @@ let usingCardList = [];
 
 /****************************************************************************
 *** Function Name       : makeCardList()
-*** Designer            : 曾根悠太
+*** Designer            : 曾根 悠太悠太
 *** Date                : 2022.07.03
 *** Function            : 画像データを読み込むための配列とハンドラの登録
 *** Return              : なし
@@ -77,7 +77,7 @@ function makeCardList(deck, //表示したいカードの配列
 
 /****************************************************************************
 *** Function Name       : invisible()
-*** Designer            : 曾根悠太
+*** Designer            : 曾根 悠太悠太
 *** Date                : 2022.07.03
 *** Function            : 画面から非表示にする
 *** Return              : なし
@@ -94,7 +94,7 @@ function invisible()
 
 /****************************************************************************
 *** Function Name       : usingRemove()
-*** Designer            : 曾根悠太
+*** Designer            : 曾根 悠太悠太
 *** Date                : 2022.07.03
 *** Function            : イベントの削除
 *** Return              : なし

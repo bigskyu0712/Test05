@@ -1,7 +1,7 @@
 /*******************************************************************
 ***  File Name      : DrawCard.js
 ***  Version        : V1.0
-***  Designer       : 
+***  Designer       : 曾根 悠太
 ***  Date           : 2022.06.28
 ***  Purpose        : ドローに関する処理
 ***
@@ -15,7 +15,7 @@ class DrawCard extends THREE.Mesh {
 
     /****************************************************************************
     *** Method Name       　: constructor()
-    *** Designer            : 
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.6.28
     *** Function            : カードの生成
     *** Return              : なし
@@ -42,7 +42,7 @@ class DrawCard extends THREE.Mesh {
 
     /****************************************************************************
     *** Method Name       　: draw()
-    *** Designer            : 
+    *** Designer            : 曾根 悠太
     *** Date                : 2022.6.28
     *** Function            : ドローのアニメーション処理
     *** Return              : なし
