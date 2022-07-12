@@ -1,7 +1,7 @@
 /*******************************************************************
 ***  File Name      : gameData.js
 ***  Version        : V1.2
-***  Designer       : 曾根悠太
+***  Designer       : 曾根 悠太悠太
 ***  Date           : 2022.07.10
 ***  Purpose        : クライアントが保持するゲームデータについて
 ***
@@ -9,9 +9,9 @@
 
 /*
 *** Revision :
-*** V1.0 : 曾根悠太, 2022.06.30
-*** V1.1 : 曾根悠太, 2022.07.02 cardInfo追加
-*** V1.2 : 曾根悠太, 2022.07.03 direction,term追加
+*** V1.0 : 曾根 悠太悠太, 2022.06.30
+*** V1.1 : 曾根 悠太悠太, 2022.07.02 cardInfo追加
+*** V1.2 : 曾根 悠太悠太, 2022.07.03 direction,term追加
 */
 
 
@@ -84,7 +84,7 @@ function setDirection(myplayerNum){
 
 /****************************************************************************
 *** Function Name       : initSendData()
-*** Designer            : 曾根 悠太
+*** Designer            : 曾根 悠太 悠太
 *** Date                : 2022.6.30
 *** Function            : sendDataの初期化
 *** Return              : なし
@@ -103,7 +103,7 @@ function initSendData() {
 
 /****************************************************************************
 *** Function Name       : initGameData()
-*** Designer            : 曾根 悠太
+*** Designer            : 曾根 悠太 悠太
 *** Date                : 2022.6.30
 *** Function            : gameDataの初期化
 *** Return              : なし

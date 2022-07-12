@@ -10,7 +10,7 @@
 /*
 *** Revision :
 *** v1.0 : 武田 和大, 2022.07.02
-*** v1.1 : 曾根 悠太, 2022.07.04 effect, afterEffectの更新
+*** v1.1 : 曾根 悠太 悠太, 2022.07.04 effect, afterEffectの更新
 */
 
 const Card = require("./card.js");
@@ -23,7 +23,7 @@ module.exports = class c14 extends Card {
 
     /****************************************************************************
     *** Method Name         : constructor()
-    *** Designer            : 曾根 悠太
+    *** Designer            : 曾根 悠太 悠太
     *** Date                : 2022.07.02
     *** Method              : playerとboardオブジェクトの設定
     *** Return              : なし

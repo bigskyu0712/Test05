@@ -1,7 +1,7 @@
 /*******************************************************************
 ***  File Name          : card.js
 ***  Version            : V1.0
-***  Designer           : 曾根 悠太
+***  Designer           : 曾根 悠太 悠太
 ***  Date               : 2022.07.02
 ***  Purpose            : c0~c33の親クラスを作成する
 ***
@@ -9,7 +9,7 @@
 
 /*
 *** Revision :
-*** v1.0 : 曾根 悠太, 2022.07.02
+*** v1.0 : 曾根 悠太 悠太, 2022.07.02
 */
 
 const Display = require('../display');
@@ -20,7 +20,7 @@ module.exports = class Card {
 
     /****************************************************************************
     *** Method Name         : constructor()
-    *** Designer            : 曾根 悠太
+    *** Designer            : 曾根 悠太 悠太
     *** Date                : 2022.07.02
     *** Method              : playerとboardオブジェクトの設定
     *** Return              : なし
@@ -37,7 +37,7 @@ module.exports = class Card {
     
     /****************************************************************************
     *** Method Name         : getType()
-    *** Designer            : 曾根 悠太
+    *** Designer            : 曾根 悠太 悠太
     *** Date                : 2022.07.02
     *** Method              : カードの種類の取得
     *** Return              : カードのタイプ
@@ -54,7 +54,7 @@ module.exports = class Card {
 
     /******************************************************************
     *** Method Name         : effect()
-    *** Designer            : 曾根 悠太
+    *** Designer            : 曾根 悠太 悠太
     *** Date                : 2022.07.02
     *** Method              : カードの効果を適応する
     *** Return              : なし
@@ -66,7 +66,7 @@ module.exports = class Card {
 
     /******************************************************************
     *** Method Name         : afterEffect()
-    *** Designer            : 曾根 悠太
+    *** Designer            : 曾根 悠太 悠太
     *** Date                : 2022.07.02
     *** Method              : クライアントから送信後データを受け取った後の処理
     *** Return              : なし
@@ -78,7 +78,7 @@ module.exports = class Card {
 
     /******************************************************************
     *** Method Name         : addRule()
-    *** Designer            : 曾根 悠太
+    *** Designer            : 曾根 悠太 悠太
     *** Date                : 2022.07.02
     *** Method              : ルールを追加する
     *** Return              : なし
