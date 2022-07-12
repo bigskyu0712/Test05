@@ -1,5 +1,5 @@
 /*******************************************************************
-***  File Name		: usingCaed.js
+***  File Name		: usingCard.js
 ***  Version		: V1.1
 ***  Designer		: 曾根悠太
 ***  Date			: 2022.07.03
