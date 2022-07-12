@@ -70,50 +70,56 @@ function main() {
       } else {
         showCardType = 1
       }
-      switchCards(ctx, canvas)
-    }
+      switchCards(ctx, canvas);
+    }else{
 
-    switch(gameState){
-      case 2:
+        switch(gameState){
+          case 2:
 
 
-        console.log("sendata: ", sendData);
-        if(showCardType == 0){
-          sendData.cardNum = tmp;
-        }else{
+          console.log("sendata: ", sendData);
+          if(showCardType == 0){
+            sendData.cardNum = tmp;
+          }else{
+            sendData.cardNum = -1;
+          }
+          /*
+          if(gameData.hand[sendData.cardNum] > 31 && showCardType == 0){
+            console.log("socket send");
+            socket.emit("reply", sendData); 
+            gameData.hand.splice(sendData.cardNum,1); 
+            gameState = 3;
+            break;       
+          }
+          */
+         if(sendData.cardNum == undefined){
           sendData.cardNum = -1;
-        }
-        if(gameData.hand[sendData.cardNum] > 31 && showCardType == 0){
-          console.log("socket send");
-          socket.emit("reply", sendData); 
-          gameData.hand.splice(sendData.cardNum,1); 
-          gameState = 3;
-          break;       
-        }
-        if(sendData.cardNum != -1 && sendData.position != -1 && showCardType == 0){
-          console.log("socket send");
-          socket.emit("reply", sendData);
-          cardData.splice(sendData.cardNum, 1);
+         }
+          if(sendData.cardNum != -1 && sendData.position != -1 && showCardType == 0 && sendData.cardNum){
+            console.log("socket send");
+            socket.emit("reply", sendData);
+            cardData.splice(sendData.cardNum, 1);
           
-          gameData.hand.splice(sendData.cardNum,1);
-          isUpdate = true;
-          gameState = 3;
-        }
-        break;
+            gameData.hand.splice(sendData.cardNum,1);
+            isUpdate = true;
+            gameState = 3;
+          }
+          break;
 
-      case 10:
-        console.log("sendata: ", sendData);
-        sendData.cardNum = tmp;
-        if(sendData.cardNum != -1){
-          console.log("socket send");
-          socket.emit("effectReply", sendData);
-          cardData.splice(sendData.cardNum, 1);
-          gameData.hand.splice(sendData.cardNum,1);
-          isUpdate = true;
-          gameState = 0;
-        }
-      default:
-        break;
+        case 10:
+          console.log("sendata: ", sendData);
+          sendData.cardNum = tmp;
+          if(sendData.cardNum != -1){
+            console.log("socket send");
+            socket.emit("effectReply", sendData);
+            cardData.splice(sendData.cardNum, 1);
+            gameData.hand.splice(sendData.cardNum,1);
+            isUpdate = true;
+            gameState = 0;
+          }
+        default:
+          break;
+      }
     }
   });
 
