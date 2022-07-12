@@ -12,7 +12,7 @@
 
 /****************************************************************************
 *** Function Name       : makeDialog()
-*** Designer            : 
+*** Designer            : 曾根 悠太
 *** Date                : 2022.07.06
 *** Function            : ダイアログボックスの背景を作成する
 *** Return              : なし
@@ -30,7 +30,7 @@ function makeDialog(){
 
 /****************************************************************************
 *** Function Name       : form()
-*** Designer            : 
+*** Designer            : 曾根 悠太
 *** Date                : 2022.07.06
 *** Function            : ユーザ名入力フォームを作成する
 *** Return              : なし
@@ -56,7 +56,7 @@ function form(){
 
 /****************************************************************************
 *** Function Name       : formLogin()
-*** Designer            : 
+*** Designer            : 金森 嵩天
 *** Date                : 2022.07.06
 *** Function            : W2マッチング待機画面を表示する
 *** Return              : なし
@@ -77,7 +77,7 @@ function formLogin(){
 
 /****************************************************************************
 *** Function Name       : dialogueHide()
-*** Designer            : 
+*** Designer            : 曾根 悠太
 *** Date                : 2022.07.06
 *** Function            : フォームを消す
 *** Return              : なし
@@ -125,7 +125,7 @@ function showResult(){
 
 /****************************************************************************
 *** Function Name       : displayAvater()
-*** Designer            : 
+*** Designer            : 曾根 悠太
 *** Date                : 2022.07.06
 *** Function            : W6結果画面のアバター画像を配置する
 *** Return              : なし
@@ -143,7 +143,7 @@ function displayAvater(i){
 
 /****************************************************************************
 *** Function Name       : showNext()
-*** Designer            : 
+*** Designer            : 曾根 悠太
 *** Date                : 2022.07.06
 *** Function            : W7退出画面を表示する
 *** Return              : なし
@@ -173,7 +173,7 @@ let dialogueCursor = {
 
 /****************************************************************************
 *** Function Name       : makebutton()
-*** Designer            : 
+*** Designer            : 曾根 悠太
 *** Date                : 2022.07.06
 *** Function            : W7のボタンを作成する
 *** Return              : なし
@@ -197,7 +197,7 @@ function makebutton(){
 
 /****************************************************************************
 *** Function Name       : onClickEvent()
-*** Designer            : 
+*** Designer            : 曾根 悠太
 *** Date                : 2022.07.06
 *** Function            : W7のボタンが押された際の処理
 *** Return              : なし
