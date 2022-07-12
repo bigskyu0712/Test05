@@ -1,7 +1,7 @@
 /*******************************************************************
 ***  File Name          : square.js
 ***  Version            : V1.0
-***  Designer           : 曾根 悠太 悠太
+***  Designer           : 曾根 悠太
 ***  Date               : 2022.07.04
 ***  Purpose            : 
 ***
@@ -9,7 +9,7 @@
 
 /*
 *** Revision :
-*** v1.0 : 曾根 悠太 悠太, 2022.07.04
+*** v1.0 : 曾根 悠太, 2022.07.04
 */
 
 class Square extends THREE.Group{
@@ -64,7 +64,7 @@ class Square extends THREE.Group{
 
 /****************************************************************************
 *** Function Name       : onMouse()
-*** Designer            : 曾根 悠太
+*** Designer            : 曾根
 *** Date                : 2022.6.14
 *** Function            : マスにカーソルを合わせると赤くする処理
 *** Return              : マス番号
@@ -96,7 +96,7 @@ class Square extends THREE.Group{
 
 /****************************************************************************
 *** Function Name       : getPosition()
-*** Designer            : 曾根 悠太
+*** Designer            : 曾根
 *** Date                : 2022.6.14
 *** Function            : 位置の取得
 *** Return              : 位置情報
@@ -108,7 +108,7 @@ class Square extends THREE.Group{
     }
 /****************************************************************************
 *** Function Name       : setId()
-*** Designer            : 曾根 悠太
+*** Designer            : 曾根
 *** Date                : 2022.6.14
 *** Function            : カードにIDをセットする
 *** Return              : なし
@@ -119,7 +119,7 @@ class Square extends THREE.Group{
     }
 /****************************************************************************
 *** Function Name       : getCardId()
-*** Designer            : 曾根 悠太
+*** Designer            : 曾根
 *** Date                : 2022.6.14
 *** Function            : カードIDを取得
 *** Return              : カードリスト
@@ -133,7 +133,7 @@ class Square extends THREE.Group{
     }
 /****************************************************************************
 *** Function Name       : setNum()
-*** Designer            : 曾根 悠太
+*** Designer            : 曾根
 *** Date                : 2022.6.14
 *** Function            : マス番号をセット
 *** Return              : なし
@@ -143,7 +143,7 @@ class Square extends THREE.Group{
     }
 /****************************************************************************
 *** Function Name       : getNum()
-*** Designer            : 曾根 悠太
+*** Designer            : 曾根
 *** Date                : 2022.6.14
 *** Function            : マス番号の取得
 *** Return              : なし

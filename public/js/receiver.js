@@ -2,16 +2,16 @@
 /*******************************************************************
 ***  File Name		: receiver.js
 ***  Version        : V1.2
-***  Designer	    : 曾根 悠太悠太
+***  Designer	    : 曾根悠太
 ***  Date		    : 2022.07.10
 ***  Purpose        : クライアントから受信
 ***
 *******************************************************************/
 /*
 *** Revision :
-*** V1.0 : 曾根 悠太悠太, 2022.06.28
-*** V1.1 : 曾根 悠太悠太, 2022.07.06 effectAddItem,effectDeleteItem,selectPlayerHand,selectPlayerItem追加
-*** V1.2 : 曾根 悠太悠太, 2022.07.10 バグ修正
+*** V1.0 : 曾根悠太, 2022.06.28
+*** V1.1 : 曾根悠太, 2022.07.06 effectAddItem,effectDeleteItem,selectPlayerHand,selectPlayerItem追加
+*** V1.2 : 曾根悠太, 2022.07.10 バグ修正
 */
 
 //プレイヤーの名前を受け取った時

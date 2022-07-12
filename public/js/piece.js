@@ -1,7 +1,7 @@
 /*******************************************************************
 ***  File Name      : piece.js
 ***  Version        : V1.1
-***  Designer       : 曾根 悠太悠太
+***  Designer       : 曾根悠太
 ***  Date           : 2022.07.02
 ***  Purpose        : コマに関する処理
 ***
@@ -16,7 +16,7 @@ class Piece extends THREE.Sprite{
 
     /****************************************************************************
     *** Function Name       : constructor()
-    *** Designer            : 曾根 悠太悠太
+    *** Designer            : 曾根悠太
     *** Date                : 2022.7.2
     *** Function            : 画像の読み込み
     *** Return              : なし
@@ -37,7 +37,7 @@ class Piece extends THREE.Sprite{
 
     /****************************************************************************
     *** Function Name       : moveTo()
-    *** Designer            : 曾根 悠太悠太
+    *** Designer            : 曾根悠太
     *** Date                : 2022.7.2
     *** Function            : 所定の位置までwalkToNextを行う
     *** Return              : なし
@@ -60,7 +60,7 @@ class Piece extends THREE.Sprite{
 
     /****************************************************************************
     *** Function Name       : setPosition()
-    *** Designer            : 曾根 悠太悠太
+    *** Designer            : 曾根悠太
     *** Date                : 2022.7.2
     *** Function            : 所定の位置までwalkToNextを行う
     *** Return              : なし
@@ -82,7 +82,7 @@ class Piece extends THREE.Sprite{
 
     /****************************************************************************
     *** Function Name       : walkToNext()
-    *** Designer            : 曾根 悠太悠太
+    *** Designer            : 曾根悠太
     *** Date                : 2022.7.2
     *** Function            : 次のマスまで移動する
     *** Return              : なし
