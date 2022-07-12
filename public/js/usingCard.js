@@ -454,4 +454,3 @@ function clearCard() {
 function clearExp() { 
     usingContext.clearRect(197 * s, 100 * s, (63 * 1.5 + 5) * s, (88 * 1.5 + 5) * s);
 }
-
