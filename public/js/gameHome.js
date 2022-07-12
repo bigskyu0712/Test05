@@ -220,7 +220,7 @@ function makeSwitchButton(canvas){
   sqr.fill();
 
   var txt = ctx;
-  txt.font = "40px Arial";
+  txt.font = "40px serif";
   txt.textAlign = 'center';
   txt.Baseline = 'center';
   if (showCardType == 0){
