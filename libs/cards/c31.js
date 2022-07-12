@@ -1,7 +1,7 @@
 /*******************************************************************
 ***  File Name          : c31.js
 ***  Version            : V1.0
-***  Designer           : 曾根 悠太
+***  Designer           : 曾根 悠太 悠太
 ***  Date               : 2022.07.02
 ***  Purpose            : ゲームを終了する。
 ***
@@ -9,7 +9,7 @@
 
 /*
 *** Revision :
-*** v1.0 : 曾根 悠太, 2022.07.02
+*** v1.0 : 曾根 悠太 悠太, 2022.07.02
 */
 
 const Card = require('./card.js');
@@ -22,7 +22,7 @@ module.exports = class c31 extends Card {
 
     /****************************************************************************
     *** Method Name         : constructor()
-    *** Designer            : 曾根 悠太
+    *** Designer            : 曾根 悠太 悠太
     *** Date                : 2022.07.02
     *** Method              : playerとboardオブジェクトの設定
     *** Return              : なし
@@ -36,7 +36,7 @@ module.exports = class c31 extends Card {
 
     /******************************************************************
     *** Method Name         : effect()
-    *** Designer            : 曾根 悠太
+    *** Designer            : 曾根 悠太 悠太
     *** Date                : 2022.07.02
     *** Method              : カードの効果を適応する
     *** Return              : なし
@@ -49,7 +49,7 @@ module.exports = class c31 extends Card {
     
     /******************************************************************
     *** Method Name         : afterEffect()
-    *** Designer            : 曾根 悠太
+    *** Designer            : 曾根 悠太 悠太
     *** Date                : 2022.07.02
     *** Method              : クライアントから送信後データを受け取った後の処理
     *** Return              : なし

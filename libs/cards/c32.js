@@ -1,7 +1,7 @@
 /*******************************************************************
 ***  File Name          : c32.js
 ***  Version            : V1.0
-***  Designer           : 曾根 悠太
+***  Designer           : 曾根 悠太 悠太
 ***  Date               : 2022.07.04
 ***  Purpose            : ルールカードの設定
 ***
@@ -9,7 +9,7 @@
 
 /*
 *** Revision :
-*** v1.0 : 曾根 悠太, 2022.07.04
+*** v1.0 : 曾根 悠太 悠太, 2022.07.04
 */
 
 const Card = require("./card.js");
@@ -22,7 +22,7 @@ module.exports = class c32 extends Card {
 
     /****************************************************************************
     *** Method Name         : constructor()
-    *** Designer            : 曾根 悠太
+    *** Designer            : 曾根 悠太 悠太
     *** Date                : 2022.07.04
     *** Method              : playerとboardオブジェクトの設定
     *** Return              : なし
@@ -37,7 +37,7 @@ module.exports = class c32 extends Card {
 
     /******************************************************************
     *** Method Name         : effect()
-    *** Designer            : 曾根 悠太
+    *** Designer            : 曾根 悠太 悠太
     *** Date                : 2022.07.04
     *** Method              : カードの効果を適応する
     *** Return              : なし

@@ -1,7 +1,7 @@
 /*******************************************************************
 ***  File Name    : card.js
 ***  Version      : V1.0
-***  Designer     : 曾根悠太
+***  Designer     : 曾根 悠太悠太
 ***  Date         : 2022.06.28
 ***  Purpose      : カードの親クラス
 ***
@@ -15,7 +15,7 @@ class Card extends THREE.Mesh {
     
     /****************************************************************************
     *** Function Name       : constructor()
-    *** Designer            : 曾根悠太
+    *** Designer            : 曾根 悠太悠太
     *** Date                : 2022.6.28
     *** Function            : カードの設定
     *** Return              : なし

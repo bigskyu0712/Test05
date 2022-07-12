@@ -1,7 +1,7 @@
 /*******************************************************************
 ***  File Name		: createSquare.js
 ***  Version		: V1.0
-***  Designer		: 曾根 悠太
+***  Designer		: 曾根 悠太 悠太
 ***  Date			  : 2022.06.28
 ***  Purpose    : マスについての処理
 ***
@@ -10,7 +10,7 @@
 
 /******************************************************************
 *** Function Name       : createSquare()
-*** Designer            : 曾根悠太
+*** Designer            : 曾根 悠太悠太
 *** Date                : 2022.06.28
 *** Function            : マスの作成
 *** Return              : meshList
@@ -49,7 +49,7 @@ function createSquare(scene, //シーン
 
 /******************************************************************
 *** Function Name       : onMouse()
-*** Designer            : 曾根悠太
+*** Designer            : 曾根 悠太悠太
 *** Date                : 2022.06.28
 *** Function            : マスのマウスオーバー処理
 *** Return              : meshList
