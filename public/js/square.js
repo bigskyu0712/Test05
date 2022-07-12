@@ -1,7 +1,7 @@
 /*******************************************************************
 ***  File Name          : square.js
 ***  Version            : V1.0
-***  Designer           : 曾根 悠太 悠太
+***  Designer           : 曾根 悠太
 ***  Date               : 2022.07.04
 ***  Purpose            : 
 ***
@@ -9,7 +9,7 @@
 
 /*
 *** Revision :
-*** v1.0 : 曾根 悠太 悠太, 2022.07.04
+*** v1.0 : 曾根 悠太, 2022.07.04
 */
 
 class Square extends THREE.Group{
