@@ -1,5 +1,5 @@
 /*******************************************************************
-***  File Name      : ItemCard.js
+***  File Name      : HandCard.js
 ***  Version        : V1.0
 ***  Designer       : 曾根 悠太
 ***  Date           : 2022.07.02

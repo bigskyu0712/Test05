@@ -58,7 +58,7 @@ function form(){
 *** Function Name       : formLogin()
 *** Designer            : 
 *** Date                : 2022.07.06
-*** Function            : ユーザ名入力フォームを作成する
+*** Function            : W2マッチング待機画面を表示する
 *** Return              : なし
 ****************************************************************************/ 
 
@@ -127,7 +127,7 @@ function showResult(){
 *** Function Name       : displayAvater()
 *** Designer            : 
 *** Date                : 2022.07.06
-*** Function            : アバター画像を配置する
+*** Function            : W6結果画面のアバター画像を配置する
 *** Return              : なし
 ****************************************************************************/ 
 
@@ -145,10 +145,9 @@ function displayAvater(i){
 *** Function Name       : showNext()
 *** Designer            : 
 *** Date                : 2022.07.06
-*** Function            : ユーザ名入力フォームを作成する
+*** Function            : W7退出画面を表示する
 *** Return              : なし
 ****************************************************************************/ 
-
 function showNext(){
     usingContext.clearRect(0,0,800,600);
     makeDialog();
@@ -166,6 +165,7 @@ function showNext(){
     makebutton();
 }
 
+// W7画面表示時のマウスの場所
 let dialogueCursor = {
 	x: 0,
 	y: 0
@@ -175,10 +175,9 @@ let dialogueCursor = {
 *** Function Name       : makebutton()
 *** Designer            : 
 *** Date                : 2022.07.06
-*** Function            : ボタンを作成する
+*** Function            : W7のボタンを作成する
 *** Return              : なし
 ****************************************************************************/ 
-
 function makebutton(){
     usingContext.closePath();
     using.removeEventListener('click', showNext, false);
@@ -200,10 +199,9 @@ function makebutton(){
 *** Function Name       : onClickEvent()
 *** Designer            : 
 *** Date                : 2022.07.06
-*** Function            : クリックイベント
+*** Function            : W7のボタンが押された際の処理
 *** Return              : なし
 ****************************************************************************/ 
-
 function onClickEvent(){
     if(
         (dialogueCursor.x > 200 && dialogueCursor.x  < 350) && (dialogueCursor.y > 300 && dialogueCursor.y  < 380)
