@@ -1,15 +1,15 @@
 /*******************************************************************
-***  File Name		: usingCaed.js
+***  File Name		: usingCard.js
 ***  Version		: V1.1
-***  Designer		: 曾根 悠太悠太
+***  Designer		: 曾根 悠太
 ***  Date			: 2022.07.03
 ***  Purpose       	: W5 カード使用画面
 ***
 *******************************************************************/
 /*
 *** Revision :
-*** V1.0 : 風間絃吹, 2022.06.28
-*** V1.1 : 曾根 悠太悠太, 2022.07.03
+*** V1.0 : 風間 絃吹, 2022.06.28
+*** V1.1 : 曾根 悠太, 2022.07.03
 */
 
 window.addEventListener('DOMContentLoaded', initUsing);
@@ -18,7 +18,7 @@ let using;
 
 /****************************************************************************
 *** Function Name       : initUsing()
-*** Designer            : 曾根 悠太悠太
+*** Designer            : 曾根 悠太
 *** Date                : 2022.07.03
 *** Function            : 初期化
 *** Return              : なし
@@ -44,7 +44,7 @@ let usingCardList = [];
 
 /****************************************************************************
 *** Function Name       : makeCardList()
-*** Designer            : 曾根 悠太悠太
+*** Designer            : 曾根 悠太
 *** Date                : 2022.07.03
 *** Function            : 画像データを読み込むための配列とハンドラの登録
 *** Return              : なし
@@ -77,7 +77,7 @@ function makeCardList(deck, //表示したいカードの配列
 
 /****************************************************************************
 *** Function Name       : invisible()
-*** Designer            : 曾根 悠太悠太
+*** Designer            : 曾根 悠太
 *** Date                : 2022.07.03
 *** Function            : 画面から非表示にする
 *** Return              : なし
@@ -94,7 +94,7 @@ function invisible()
 
 /****************************************************************************
 *** Function Name       : usingRemove()
-*** Designer            : 曾根 悠太悠太
+*** Designer            : 曾根 悠太
 *** Date                : 2022.07.03
 *** Function            : イベントの削除
 *** Return              : なし
@@ -115,7 +115,7 @@ var maxPage;
 
 /**************************************************************************** 
 *** Function Name       : usingMain() 
-*** Designer            : 風間絃吹 
+*** Designer            : 風間 絃吹 
 *** Date                : 2022.07.03 
 *** Function            : メイン (ボタンの表示等)  
 *** Return              : select 
@@ -157,7 +157,7 @@ function usingMain() {
 
 /**************************************************************************** 
 *** Function Name       : onMouseOver(e) 
-*** Designer            : 風間絃吹 
+*** Designer            : 風間 絃吹 
 *** Date                : 2022.07.03 
 *** Function            : canvasにマウスが乗ったことを検知  
 *** Return              : なし
@@ -169,7 +169,7 @@ function onMouseOver(e) {
 
 /**************************************************************************** 
 *** Function Name       : onMouseOver() 
-*** Designer            : 風間絃吹 
+*** Designer            : 風間 絃吹 
 *** Date                : 2022.07.03 
 *** Function            : canvasからマウスが離れたことを検知  
 *** Return              : なし
@@ -180,7 +180,7 @@ function onMouseOut() {
 
 /**************************************************************************** 
 *** Function Name       : usingOnMouseMove(e)
-*** Designer            : 風間絃吹 
+*** Designer            : 風間 絃吹 
 *** Date                : 2022.07.03 
 *** Function            : canvas上でマウスが動いていることを検知  
 *** Return              : なし
@@ -198,7 +198,7 @@ function usingOnMouseMove(e) {
 
 /**************************************************************************** 
 *** Function Name       : moveActions
-*** Designer            : 風間絃吹 
+*** Designer            : 風間 絃吹 
 *** Date                : 2022.07.03 
 *** Function            : どのマウスオーバー領域にいるかの検知
 *** Return              : なし
@@ -246,7 +246,7 @@ var moveActions = {
 
 /**************************************************************************** 
 *** Function Name       : usingDrawRect()
-*** Designer            : 風間絃吹 
+*** Designer            : 風間 絃吹 
 *** Date                : 2022.07.03 
 *** Function            : マウスオーバー領域に乗る前、及び離れた時に実行される機能の呼び出し
 *** Return              : なし
@@ -264,7 +264,7 @@ function usingDrawRect() {
 
 /**************************************************************************** 
 *** Function Name       : usingDrawRectIsHover()
-*** Designer            : 風間絃吹 
+*** Designer            : 風間 絃吹 
 *** Date                : 2022.07.03 
 *** Function            : マウスオーバー領域に乗った時に実行される機能の呼び出し
 *** Return              : なし
@@ -287,7 +287,7 @@ var clickY = 0;
 
 /**************************************************************************** 
 *** Function Name       : onClick(e)
-*** Designer            : 風間絃吹 
+*** Designer            : 風間 絃吹 
 *** Date                : 2022.07.03 
 *** Function            : クリック位置の測定
 *** Return              : なし
@@ -309,7 +309,7 @@ function onClick(e) {
 
 /**************************************************************************** 
 *** Function Name       : usingClick()
-*** Designer            : 風間絃吹 
+*** Designer            : 風間 絃吹 
 *** Date                : 2022.07.03 
 *** Function            : クリック位置ごとに機能呼び出しまたは代入
 *** Return              : なし
@@ -334,7 +334,7 @@ function usingClick() {
 
 /**************************************************************************** 
 *** Function Name       : prevPage()
-*** Designer            : 風間絃吹 
+*** Designer            : 風間 絃吹 
 *** Date                : 2022.07.03 
 *** Function            : ページを戻す処理
 *** Return              : なし
@@ -357,7 +357,7 @@ function prevPage() {
 
 /**************************************************************************** 
 *** Function Name       : nextPage()
-*** Designer            : 風間絃吹 
+*** Designer            : 風間 絃吹 
 *** Date                : 2022.07.03 
 *** Function            : ページを進める処理
 *** Return              : なし
@@ -379,7 +379,7 @@ function nextPage() {
 
 /**************************************************************************** 
 *** Function Name       : cardDisp(cardAddress, pod)
-*** Designer            : 風間絃吹 
+*** Designer            : 風間 絃吹 
 *** Date                : 2022.07.03 
 *** Function            : カードを4枚表示
 *** Return              : なし
@@ -409,7 +409,7 @@ function cardDisp(cardAddress, pod)  {
 
 /**************************************************************************** 
 *** Function Name       : expDisp(cardAddress)
-*** Designer            : 風間絃吹 
+*** Designer            : 風間 絃吹 
 *** Date                : 2022.07.03 
 *** Function            : カードを拡大表示
 *** Return              : なし
@@ -424,7 +424,7 @@ function expDisp(expAddress) {
 
 /**************************************************************************** 
 *** Function Name       : clearCard()
-*** Designer            : 風間絃吹 
+*** Designer            : 風間 絃吹 
 *** Date                : 2022.07.03 
 *** Function            : cardDispで表示したカードの消去
 *** Return              : なし
@@ -446,7 +446,7 @@ function clearCard() {
 
 /**************************************************************************** 
 *** Function Name       : clearExp()
-*** Designer            : 風間絃吹 
+*** Designer            : 風間 絃吹 
 *** Date                : 2022.07.03 
 *** Function            : expDispで表示したカードの消去
 *** Return              : なし
