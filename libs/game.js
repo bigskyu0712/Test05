@@ -29,6 +29,14 @@ module.exports = class Game{
     waitUserId = 0;
     alive = 4;
 
+/****************************************************************************
+*** Method Name         : constructor()
+*** Designer            : 曾根 悠太
+*** Date                : 2022.06.30
+*** Function            : 初期化
+*** Return              : 
+****************************************************************************/
+
     //クラスの初期化
     constructor(roomId,userList){
         this.board = new Board(roomId,userList,this);
@@ -38,9 +46,14 @@ module.exports = class Game{
         this.board.initdeck();
     }
 
-    wait(){
 
-    }
+/****************************************************************************
+*** Method Name         : startGame()
+*** Designer            : 曾根 悠太
+*** Date                : 2022.06.30
+*** Function            : ゲームの開始
+*** Return              : 
+****************************************************************************/
 
     startGame(){
         this.board.startGame();
@@ -50,12 +63,28 @@ module.exports = class Game{
         this.loadGameFlow(null);
     }
 
+/****************************************************************************
+*** Method Name         : next()
+*** Designer            : 曾根 悠太
+*** Date                : 2022.06.30
+*** Function            : 次の人の番へ
+*** Return              : 
+****************************************************************************/
+
     next(){
         this.received = 0;
         this.gameState++;
         this.loadGameFlow(null);
     }
 
+
+/****************************************************************************
+*** Method Name         : receive()
+*** Designer            : 曾根 悠太
+*** Date                : 2022.06.30
+*** Function            : クライアントからソケットを受け取った時
+*** Return              : 
+****************************************************************************/
 
     receive(data,socketid){
         console.log("wait=" + this.waitUserId + ",socketid=" + socketid);
@@ -70,7 +99,14 @@ module.exports = class Game{
             }
         }
     }
-    
+
+/****************************************************************************
+*** Method Name         : disconnectUser()
+*** Designer            : 曾根 悠太
+*** Date                : 2022.06.30
+*** Function            : ユーザが切断したとき
+*** Return              : 
+****************************************************************************/    
     
     disconnectUser(socketid){
         this.alive--;
@@ -87,6 +123,13 @@ module.exports = class Game{
         this.board.disconnect(socketid);
     }
 
+/****************************************************************************
+*** Method Name         : looadGameFlow()
+*** Designer            : 曾根 悠太
+*** Date                : 2022.06.30
+*** Function            : ゲームフローを読み込む
+*** Return              : 
+****************************************************************************/
 
     loadGameFlow(data){
 

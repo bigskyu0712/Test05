@@ -236,4 +236,34 @@ cardTexts = [
         cardName:"ゴールカード②",
         cardText:"音楽とケーキのアイテムカードを集めた人が勝利"
     },
+    {
+        cardId:34,
+        cardType:1,
+        cardName:"ゴールカード③",
+        cardText:"色鉛筆とコインのアイテムカードを集めた人が勝利"
+    },
+    {
+        cardId:35,
+        cardType:1,
+        cardName:"ゴールカード④",
+        cardText:"太陽とコインのアイテムカードを集めた人が勝利"
+    },
+    {
+        cardId:36,
+        cardType:1,
+        cardName:"ゴールカード⑤",
+        cardText:"星と太陽のアイテムカードを集めた人が勝利"
+    },
+    {
+        cardId:37,
+        cardType:1,
+        cardName:"ゴールカード⑥",
+        cardText:"愛と音楽のアイテムカードを集めた人が勝利"
+    },
+    {
+        cardId:38,
+        cardType:1,
+        cardName:"ゴールカード⑥",
+        cardText:"ケーキとコップのアイテムカードを集めた人が勝利"
+    },
 ];
