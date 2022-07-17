@@ -60,7 +60,7 @@ cardTexts = [
         cardId:6,
         cardType:1,
         cardName:"アイテムをすべて捨てる",
-        cardText:"他のプレイヤー1人を指定し,そのプレイヤーのアイテムを1枚選んで奪う"
+        cardText:"他のプレイヤー1人を指定し,そのプレイヤーのアイテムカードを1枚選んで奪う"
     },
     {
         cardId:7,
