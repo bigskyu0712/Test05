@@ -60,7 +60,7 @@ cardTexts = [
         cardId:6,
         cardType:1,
         cardName:"アイテムをすべて捨てる",
-        cardText:"自分が所持しているアイテムを全て捨てる"
+        cardText:"他のプレイヤー1人を指定し,そのプレイヤーのアイテムを1枚選んで奪う"
     },
     {
         cardId:7,
@@ -246,7 +246,7 @@ cardTexts = [
         cardId:35,
         cardType:1,
         cardName:"ゴールカード④",
-        cardText:"太陽とコインのアイテムカードを集めた人が勝利"
+        cardText:"太陽とコップのアイテムカードを集めた人が勝利"
     },
     {
         cardId:36,
